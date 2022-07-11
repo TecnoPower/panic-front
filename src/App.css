@@ -1,0 +1,8 @@
+.btn-default,.btn-default:active, .btn-default:visited {
+    background-color: #5271FF !important;
+    color: white!important;
+  } 
+  .btn-default:hover{
+    background-color: #3451d0 !important;
+    color: white!important;
+  }

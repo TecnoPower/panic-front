@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'
+import {createPortal} from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div className='container'>
+  <>
     <App />
-    
-  </div>
+    {createPortal(<Footer/>,document.getElementById('footer'))}
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
