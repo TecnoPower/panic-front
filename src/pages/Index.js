@@ -6,7 +6,7 @@ return(
             <div className="form-floating text-center">
                 <img className="mb-2 img-fluid" src="uploads/panic.gif" alt=""/>
             </div>
-            <h4 className="mb-3 mx-auto text-center">Plataforma de Apadrinhamento de Necessidades Integras e Comuns</h4>
+            <h4 className="mb-3 mx-auto text-center">Plataforma de Apadrinhamento de Necessidades Íntegras e Comuns</h4>
             <div className="form-floating pb-3">
                 <input required type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
                 <label htmlFor="floatingInput">Email</label>

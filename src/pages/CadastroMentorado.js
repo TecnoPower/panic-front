@@ -49,7 +49,7 @@ function CadastroMentorado() {
                             <div className="form-floating mb-3">
                                 <input required type="email" className="form-control" id="campo-email"
                                     placeholder="nome@dominio.com" />
-                                <label htmlFor="campo-email" className="form-label">Email</label>
+                                <label htmlFor="campo-email" className="form-label">E-mail</label>
                             </div>
                         </div>
                         <div className="col-md ps-4">
