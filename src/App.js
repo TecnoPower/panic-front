@@ -1,44 +1,32 @@
 import './App.css';
-import './_css/login.css'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import Index from './pages/Index';
+import MentorCad from './pages/CadastroMentor';
+import CadastroMentorado from './pages/CadastroMentorado.js';
+import Mentor from './pages/Mentor.js';
+import Mentorado from './pages/Mentorado.js';
+import SenhaLog from './pages/SenhaLog.js';
+import SenhaNoLog from './pages/SenhaNoLog.js';
+import SenhaSeg from './pages/SenhaSeg.js';
+import Sobre from './pages/Sobre.js';
+//import { Routes } from './routes';
 function App() {
   return (
-    <>
-      <div className="container form-login w-60">
-        <form>
-          <div className="form-floating text-center">
-            <img className="mb-2 img-fluid" src="/_uploads/panic.gif" alt="" />
-          </div>
-          <p className="mb-3 mx-auto text-center">Plataforma de Apadrinhamento de Necessidades Integras e Comuns</p>
-          <div className="form-floating">
-            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-            <label htmlFor="floatingInput">Email</label>
-          </div>
-          <div className="form-floating">
-            <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-            <label htmlFor="floatingPassword">Senha</label>
-          </div>
-          <div className="container">
-          <p className="text-center">
-          <button className="w-50 btn btn-lg btn-default mt-3" type="submit">Entrar</button>
-          </p>
-        </div>
-          
-        </form>
-
-        <div className="container">
-          <p className="text-center mt-2">
-            <a href="#" className="link-dark">Esqueci minha senha</a>
-          </p>
-        </div>
-        <div className="d-grid gap-2 w-100 mx-auto">
-          <button type="button" className="btn btn-default">Cadastre-se como mentor</button>
-          <button type="button" className="btn btn-default">Cadastre-se como mentorado</button>
-        </div>
-      </div>
-     
-    </>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Index />} />
+        <Route exact path="/index.html" element={<Index />} />
+        <Route exact path="/cad-mentor" element={<MentorCad />} />
+        <Route exact path="/cad-mentorado" element={<CadastroMentorado />} />
+        <Route exact path="/mentorado" element={<Mentorado />} />
+        <Route exact path="/mentor" element={<Mentor />} />
+        <Route exact path="/senha-log" element={<SenhaLog />} />
+        <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
+        <Route exact path="/senha-seg" element={<SenhaSeg />} />
+        <Route exact path="/sobre" element={<Sobre />} />
+      </Routes>
+    </Router>
   );
 }
 
