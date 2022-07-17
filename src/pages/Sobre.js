@@ -11,6 +11,7 @@ export const Sobre =  ()=> {
         </nav>
 
         <div className="container mx-auto pt-5">
+        <h3 className="mb-3 mx-auto text-center">Sobre Nós TecnoPower</h3>
             <div className="card-group">
                 <div className="card ps-3 pe-3">
                     <img src="uploads/danilo.png" className="card-img-top" alt="..." />
@@ -19,15 +20,15 @@ export const Sobre =  ()=> {
                         <div className="card-footer bg-white">
                             <div className="row">
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                             </div>
@@ -41,15 +42,15 @@ export const Sobre =  ()=> {
                         <div className="card-footer bg-white">
                             <div className="row">
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                             </div>
@@ -63,15 +64,15 @@ export const Sobre =  ()=> {
                         <div className="card-footer bg-white">
                             <div className="row">
                                 <div className="col">
-                                    <a href="#" target="_blank"><img src="uploads/linkedin.png" className="img-fluid"
+                                    <a href="#" target="_blank"><img src="uploads/linkedin.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"><img src="uploads/instagram.png" className="img-fluid"
+                                    <a href="#" target="_blank"><img src="uploads/instagram.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"><img src="uploads/github.png" className="img-fluid"
+                                    <a href="#" target="_blank"><img src="uploads/github.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                             </div>
@@ -85,15 +86,15 @@ export const Sobre =  ()=> {
                         <div className="card-footer bg-white">
                             <div className="row">
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/instagram.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                                 <div className="col">
-                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid"
+                                    <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
                                         alt="..." /></a>
                                 </div>
                             </div>

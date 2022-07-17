@@ -14,9 +14,12 @@ body {
 }
 
 .form-login{
-    min-width: 280px!important;
+    min-width: 350px!important;
+    max-width: 30%!important;
 }
-
+#img-login{
+    padding-top: 20px;
+}
 .form-login .form-floating:focus-within {
     z-index: 2;
 }
