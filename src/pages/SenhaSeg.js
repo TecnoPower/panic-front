@@ -1,4 +1,4 @@
-function SenhaSeg(){
+export const SenhaSeg = ()=>{
     return(
     <>
    <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -40,4 +40,3 @@ function SenhaSeg(){
     </>
     )
 }
-export default SenhaSeg;

@@ -1,4 +1,4 @@
-function Mentorado() {
+export const Mentorado = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">

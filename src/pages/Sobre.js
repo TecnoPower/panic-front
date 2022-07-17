@@ -1,4 +1,4 @@
-function Sobre() {
+export const Sobre =  ()=> {
     return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -105,4 +105,3 @@ function Sobre() {
     </>
     )
 }
-export default Sobre;

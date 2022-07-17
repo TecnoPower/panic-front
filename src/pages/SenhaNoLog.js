@@ -1,4 +1,4 @@
-function SenhaNoLog(){
+export const SenhaNoLog = ()=>{
     return(
     <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -34,4 +34,3 @@ function SenhaNoLog(){
     </>
     )
 }
-export default SenhaNoLog;
