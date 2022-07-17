@@ -22,6 +22,10 @@
     padding-top: 65% !important;
 }
 
+.padding-buttom-3 {
+    padding-top: 15.5% !important;
+}
+
 .background-gradient-1 {
     background: rgb(193, 193, 193);
     background: linear-gradient(90deg, rgb(238,238,238,1) 0%, rgb(193, 193, 193) 98%);

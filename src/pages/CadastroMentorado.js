@@ -24,18 +24,16 @@ export const CadastroMentorado = () => {
                                     <div
                                         className="card d-flex align-items-center justify-content-center position-absolute w-100 h-100 opacity-50 bg-dark">
                                     </div>
-                                    <div className="d-flex align-items-center justify-content-center position-absolute">
-                                        <h5 className="card-title text-center position-relative text-light">De acordo
-                                            com uma pesquisa realizada pelo CPS (Cedaspy Professional School - rede de escolas de
-                                            capacitação e profissionalização) durante a Expo CIEE 2019,
-                                            60% dos jovens ainda têm dúvida
-                                            quanto ao futuro profissional.</h5>
+                                    <div className="d-flex align-items-center position-absolute ps-2 pe-2 w-75">
+                                        <h5 className="card-title position-relative text-center text-light justify-content-center">De acordo
+                                            com uma pesquisa realizada pelo CPS (Cedaspy Professional School - rede de escolas de capacitação e profissionalização) durante a Expo CIEE 2019, 60% dos jovens ainda têm dúvida quanto ao futuro profissional.</h5>
                                     </div>
                                 </div>
                             </div>
                             <div className="col pt-3">
                                 <div className="container h-100">
                                     <form action="" method="get" className="h-100">
+                                    <div className='d-sm-none d-md-none d-lg-none d-xl-block padding-buttom-3'></div>
                                         <div className="row">
                                             <div className="col-lg">
                                                 <div className="col-lg">
@@ -140,7 +138,6 @@ export const CadastroMentorado = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='d-sm-none d-md-none d-lg-none d-xl-block padding-buttom-2'></div>
                                         <div className="container pt-4 pb-2">
                                             <div className="text-center">
                                                 <button className="w-50 btn btn-lg btn-primary" type="submit">Cadastrar</button>
