@@ -10,6 +10,7 @@ import {SenhaLog} from './pages/SenhaLog.js';
 import {SenhaNoLog} from './pages/SenhaNoLog.js';
 import {SenhaSeg} from './pages/SenhaSeg.js';
 import {Sobre} from './pages/Sobre.js';
+import {NotFound404} from './pages/NotFound404';
 //import { Routes } from './routes';
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
         <Route exact path="/senha-seg" element={<SenhaSeg />} />
         <Route exact path="/sobre" element={<Sobre />} />
+        <Route exact path="/*" element={<NotFound404 />} />
       </Routes>
     </Router>
   );

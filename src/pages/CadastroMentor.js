@@ -1,11 +1,11 @@
 import '../css/aux-bootstrap.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-
+import Popover from 'react-bootstrap/Popover'; 
 export const CadastroMentor = () => {
     return (
 
         <>
+        
             <div className="background-gradient-1">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
                     <a className="navbar-brand ps-4" href="#">
