@@ -1,20 +1,12 @@
 import '../css/aux-bootstrap.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-
+import { Navbar } from '../components/Navbar';
 export const CadastroMentorado = () => {
     return (
-
         <>
+        <Navbar titulo={"Cadastro Mentorado"} tipo={1}/>
             <div className="background-gradient-1">
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-                    <a className="navbar-brand ps-4" href="#">
-                        <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
-                    </a>
-                    <ul className="nav justify-content-center pe-4">
-                        <h2 className="text-light">Cadastro Mentorado</h2>
-                    </ul>
-                </nav>
                 <div className="container overflow-auto pt-5 pb-3">
                     <div className='card'>
                         <div className="row row-cols-1 row-cols-lg-2 g-4 ">

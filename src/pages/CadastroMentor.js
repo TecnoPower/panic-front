@@ -1,26 +1,20 @@
 import '../css/aux-bootstrap.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover'; 
+import Popover from 'react-bootstrap/Popover';
+import { Navbar } from '../components/Navbar';
 export const CadastroMentor = () => {
     return (
 
         <>
-        
+            <Navbar titulo={"Cadastro Mentor"} tipo={1}/>
             <div className="background-gradient-1">
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-                    <a className="navbar-brand ps-4" href="#">
-                        <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
-                    </a>
-                    <ul className="nav justify-content-center pe-4">
-                        <h2 className="text-light">Cadastro Mentor</h2>
-                    </ul>
-                </nav>
+
                 <div className="container overflow-auto pt-5 pb-3">
                     <div className='card'>
                         <div className="row row-cols-1 row-cols-lg-2 g-4 ">
                             <div className="container col">
                                 <div className="card w-100 d-flex align-items-center justify-content-center position-relative h-100">
-                                    <img src="uploads/moca.png" className="card-img" alt="..." />
+                                    <img src="uploads/teste.svg" className="card-img" alt="..." />
                                     <div
                                         className="card d-flex align-items-center justify-content-center position-absolute w-100 h-100 opacity-50 bg-dark">
                                     </div>
@@ -33,7 +27,7 @@ export const CadastroMentor = () => {
                             <div className="col pt-3">
                                 <div className="container h-100">
                                     <form action="" method="get" className="h-100">
-                                    <div className='d-sm-none d-md-none d-lg-none d-xl-block padding-buttom-3'></div>
+                                        <div className='d-sm-none d-md-none d-lg-none d-xl-block padding-buttom-3'></div>
                                         <div className="row">
                                             <div className="col-lg">
                                                 <div className="col-lg">

@@ -1,15 +1,8 @@
+import { Navbar } from '../components/Navbar';
 export const SenhaNoLog = ()=>{
     return(
     <>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <a className="navbar-brand ps-4" href="index.html">
-            <img src="uploads/panic_no_padding.gif" alt="..." height="50"/>
-        </a>
-        <ul className="nav justify-content-center pe-4">
-            <h2 className="text-light">Esqueci minha senha</h2>
-        </ul>
-    </nav>
-
+    <Navbar titulo={"Esqueci minha senha"} tipo={1}/>
     <div className="container mx-auto pt-3">
         <form action="" method="get">
             <div className="row g-2 pt-2">
