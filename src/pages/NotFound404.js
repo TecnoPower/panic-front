@@ -9,7 +9,7 @@ export const NotFound404 = () => {
                 <p className="lead text-white">
                     A página que você está procurando não existe.
                 </p>
-                <a href="/" className="btn btn-dark text-center text-light">Voltar para página inicial</a>
+                <button onClick={()=>{window.history.back()}} className="btn btn-dark text-center text-light">Voltar</button>
             </div>
         </div>
     )
