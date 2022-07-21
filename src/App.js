@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 import {Index} from './pages/Index';
 import {CadastroMentor} from './pages/CadastroMentor';
 import {CadastroMentorado} from './pages/CadastroMentorado.js';
