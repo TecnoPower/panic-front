@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { createPortal } from 'react-dom';
-import './index.css';
 import './css/aux-bootstrap.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
