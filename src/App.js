@@ -18,14 +18,16 @@ export const UserContext = React.createContext({});
 function App() {
 
   const [token, setToken] = useState('');
+  const [rota, setRota] = useState('');
   useEffect(()=>{
-     if(localStorage.getItem('token')){
+     if(localStorage.getItem('token')||localStorage.getItem('rota')){
       setToken(localStorage.getItem('token'));
+      setRota(localStorage.getItem('rota'))
      }
   },[]);
 
   return (
-    <UserContext.Provider value={{ token, setToken }}>
+    <UserContext.Provider value={{ token, setToken,rota,setRota }}>
       <Router>
         <Routes>
           <Route exact path="/" element={<Index />} />

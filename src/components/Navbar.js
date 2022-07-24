@@ -5,6 +5,8 @@ import { UserContext } from '../App';
 import { Navigate } from 'react-router';
 export const Navbar = (props) => {
     const { token, setToken } = useContext(UserContext);
+    const { rota, setRota } = useContext(UserContext);
+    console.log("token> "+token);
     if (!token) {
         return <Navigate to='/' replace={true} />;
     }
@@ -61,6 +63,8 @@ export const Navbar = (props) => {
                                         onClick={() => {
                                             localStorage.removeItem('token');
                                             setToken(null);
+                                            localStorage.removeItem('rota');
+                                            setRota(null);
                                         }} >Log-out</a>
                                 </li>
                             </ul>

@@ -8,7 +8,7 @@ import { Navigate } from 'react-router';
 import { UserContext } from '../App';
 
 export const Index = () => {
-    const [rota, setRota] = useState();
+    const [rota, setRota] = useState(UserContext);
     const { token, setToken } = useContext(UserContext);
 
     const [show, setShow] = useState(false);
@@ -29,6 +29,7 @@ export const Index = () => {
             } else {
                 localStorage.setItem('token', res.data.token);
                 setRota("/" + res.data.type);
+                localStorage.setItem('rota', "/" + res.data.type)
                 setToken(res.data.token);
             }
         });
@@ -36,7 +37,8 @@ export const Index = () => {
 
     return (
         <div className="container form-login w-50">
-            {token ? <Navigate to={rota} replace={true} /> : <></>}
+            {token ? <Navigate to={localStorage.getItem('rota')} replace={true} /> : <></>}
+            {console.log("rota> ", localStorage.getItem('rota'))}
             <form className='pt-5'>
                 <div className="form-floating text-center" id='img-login'>
                     <img className="mb-2 img-fluid" src="uploads/panic.gif" alt="" />
@@ -48,7 +50,7 @@ export const Index = () => {
                     <label htmlFor="floatingInput">Email</label>
                 </div>
                 <div className="form-floating">
-                    <input value={login.pass} onChange={(e) => { setLogin({ ...login, pass: e.target.value }) }} required type="password" className="form-control" id="senha-campo" placeholder="Password" />
+                    <input value={login.pass} onChange={(e) => { setLogin({ ...login, pass: e.target.value }) }} required type="password" className="form-control" id="senha-campo" placeholder="Password" autoComplete="off" />
                     <label htmlFor="senha-campo">Senha</label>
                 </div>
 
