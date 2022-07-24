@@ -4,22 +4,30 @@
     background-color: #5271FF !important;
     color: white !important;
 }
-.text-default{
+
+.cursorPointer {
+    cursor: pointer;
+}
+
+.text-default {
     color: #5271FF !important;
 }
-.bg-default{
+
+.bg-default {
     background-color: #5271FF !important;
 }
+
 .btn-default:hover {
     background-color: #3451d0 !important;
     color: white !important;
 }
 
-.text-xg{
-    font-size: 30vw!important;
+.text-xg {
+    font-size: 30vw !important;
 }
-.text-xl{
-    font-size: 100pt!important;
+
+.text-xl {
+    font-size: 100pt !important;
 }
 
 .maximo-pagina {
@@ -854,6 +862,7 @@
 .mw-100 {
     min-width: 100% !important;
 }
+
 .h-1 {
     height: 1% !important;
 }

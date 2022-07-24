@@ -1,5 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import '../css/aux-bootstrap.css';
+import React, { useContext } from 'react';
+import { UserContext } from '../App';
+import { Navigate } from 'react-router';
 export const Navbar = (props) => {
+    const { token, setToken } = useContext(UserContext);
+    if (!token) {
+        return <Navigate to='/' replace={true} />;
+    }
     if (props.tipo == null || props.tipo == "" || props.tipo == 1) {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -48,7 +56,12 @@ export const Navbar = (props) => {
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
-                                <li><a className="dropdown-item" href="#">Log-out</a>
+                                <li>
+                                    <a className="dropdown-item cursorPointer"
+                                        onClick={() => {
+                                            localStorage.removeItem('token');
+                                            setToken(null);
+                                        }} >Log-out</a>
                                 </li>
                             </ul>
                         </li>
