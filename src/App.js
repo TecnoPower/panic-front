@@ -46,7 +46,6 @@ function App() {
           <Route exact path="/*" element={<NotFound404 />} />
           <Route exact path="/404" element={<NotFound404 />} />
         </Routes>
-        <Footer />
       </Router>
     </UserContext.Provider>
   );

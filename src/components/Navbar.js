@@ -11,10 +11,10 @@ export const Navbar = (props) => {
     if (props.tipo == null || props.tipo == "" || props.tipo == 1) {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-                <a className="navbar-brand ps-4" href="/">
+                <a className="navbar-brand ps-2" href="/">
                     <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                 </a>
-                <ul className="nav justify-content-center pe-4">
+                <ul className="nav justify-content-center pe-2">
                     <h2 className="text-light">{props.titulo}</h2>
                 </ul>
             </nav>
@@ -25,9 +25,9 @@ export const Navbar = (props) => {
                 <a className="navbar-brand ps-4" href="/">
                     <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                 </a>
-                
+
                 <ul className="nav justify-content-rigth pe-2">
-                <h2 className="text-light pe-2">{props.titulo}</h2>
+                    <h2 className="text-light pe-2">{props.titulo}</h2>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -53,8 +53,8 @@ export const Navbar = (props) => {
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
-                                <li><a className="dropdown-item" href="#" 
-                                onClick={()=>{navigate("/senha-log")}}>Editar Senha</a>
+                                <li><a className="dropdown-item" href="#"
+                                    onClick={() => { navigate("/senha-log") }}>Editar Senha</a>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />

@@ -162,7 +162,7 @@ export const CadastroMentorado = () => {
         <>
             <Navbar titulo={"Cadastro Mentorado"} tipo={1} />
             <div className="background-gradient-1">
-                <div className="container overflow-auto pt-5 pb-3">
+                <div className="container overflow-auto pt-5 pb-3 ">
                     <div className='card'>
                         <div className="row row-cols-1 row-cols-lg-2 g-4 ">
                             <div className="container col">
@@ -248,14 +248,14 @@ export const CadastroMentorado = () => {
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
                                                     <input value={cadastro.pass} required onChange={(e) => { setCadastro({ ...cadastro, pass: e.target.value }) }} type="password" placeholder="Senha" className="form-control"
-                                                        id="campo-senha1" autoComplete='off'/>
+                                                        id="campo-senha1" autoComplete='off' />
                                                     <label htmlFor="campo-senha1" className="form-label">Senha</label>
                                                 </div>
                                             </div>
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
                                                     <input value={cadastro.confirmPass} required onChange={(e) => { setCadastro({ ...cadastro, confirmPass: e.target.value }) }} type="password" placeholder="Repetir Senha" className="form-control"
-                                                        id="campo-senha2" autoComplete='off'/>
+                                                        id="campo-senha2" autoComplete='off' />
                                                     <label htmlFor="campo-senha2" className="form-label">Repetir Senha</label>
                                                 </div>
                                             </div>
@@ -294,8 +294,8 @@ export const CadastroMentorado = () => {
                                             </div>
                                         </div>
                                         <div className="container pt-4 pb-2">
-                                        <div className="text-center">
-                                                <button className="w-50 btn btn-lg btn-primary" type="submit" onClick={submitCadastro}>Cadastrar</button>
+                                            <div className="text-center">
+                                                <button className="w-50 minimo-140 btn btn-lg btn-primary" type="submit" onClick={submitCadastro}>Cadastrar</button>
                                             </div>
                                             <ModalMsgPreenchimento
                                                 show={modalShowPreencher}

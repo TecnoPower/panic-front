@@ -165,7 +165,7 @@ export const CadastroMentor = () => {
     return (
         <>
             <Navbar titulo={"Cadastro Mentor"} tipo={1} />
-            <div className="background-gradient-1">
+            <div className="background-gradient-1 ">
                 <div className="container overflow-auto pt-5 pb-3">
                     <div className='card'>
                         <div className="row row-cols-1 row-cols-lg-2 g-4 ">
@@ -330,7 +330,7 @@ export const CadastroMentor = () => {
                                         </div>
                                         <div className="container pt-4 pb-2">
                                             <div className="text-center">
-                                                <button className="w-50 btn btn-lg btn-primary" type="submit" onClick={submitCadastro}>Cadastrar</button>
+                                                <button className="w-50 minimo-140 btn btn-lg btn-primary" type="submit" onClick={submitCadastro}>Cadastrar</button>
                                             </div>
                                             <ModalMsgPreenchimento
                                                 show={modalShowPreencher}
