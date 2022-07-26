@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import InputMask from "react-input-mask";
 export const CadastroMentorado = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -36,7 +37,13 @@ export const CadastroMentorado = () => {
 
     function submitCadastro(e) {
         e.preventDefault();
-        console.log(cadastro)
+        
+        cadastro.cpf = cadastro.cpf.replaceAll("-", "").replaceAll(".", "");
+        cadastro.date = cadastro.date.replaceAll("/", "").replaceAll("/", "");
+        cadastro.contato = cadastro.contato.replaceAll("-", "").replaceAll("(", "")
+            .replaceAll(")", "").replaceAll(" ", "");
+        console.log(cadastro);
+
         if (cadastro.name === "" ||
             cadastro.date === "" ||
             cadastro.sexo === "" ||
@@ -209,7 +216,7 @@ export const CadastroMentorado = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <input required type="text" value={cadastro.cpf} onChange={(e) => { setCadastro({ ...cadastro, cpf: e.target.value }) }} className="form-control" id="campo-cpf"
+                                                    <InputMask mask="999.999.999-99" required type="text" value={cadastro.cpf} onChange={(e) => { setCadastro({ ...cadastro, cpf: e.target.value }) }} className="form-control" id="campo-cpf"
                                                         placeholder="CPF" />
                                                     <label htmlFor="campo-cpf" className="form-label">CPF</label>
                                                 </div>
@@ -231,14 +238,14 @@ export const CadastroMentorado = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <input value={cadastro.contato} required onChange={(e) => { setCadastro({ ...cadastro, contato: e.target.value }) }} type="text" placeholder="Contato" className="form-control"
+                                                    <InputMask mask="(99) 9 9999-9999" value={cadastro.contato} required onChange={(e) => { setCadastro({ ...cadastro, contato: e.target.value }) }} type="text" placeholder="Contato" className="form-control"
                                                         id="campo-numero" />
                                                     <label htmlFor="campo-numero" className="form-label">Contato</label>
                                                 </div>
                                             </div>
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <input value={cadastro.date} required onChange={(e) => { setCadastro({ ...cadastro, date: e.target.value }) }} type="text" className="form-control" id="float-date"
+                                                    <InputMask mask="99/99/9999" value={cadastro.date} required onChange={(e) => { setCadastro({ ...cadastro, date: e.target.value }) }} type="text" className="form-control" id="float-date"
                                                         placeholder="Data de Nascimento" />
                                                     <label htmlFor="float-date">Data de Nascimento</label>
                                                 </div>
