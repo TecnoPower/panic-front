@@ -12,10 +12,6 @@ export const Home = () => {
             <>
                 <Navbar tipo={2} />
                 <div className="container mx-auto pt-3">
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Nome" aria-label="Search" />
-                        <button className="btn btn-outline-primary" type="submit">Pesquisar</button>
-                    </form>
                     <div className="row row-cols-1 row-cols-md-2 g-4 pt-2">
                         <div className="col">
                             <div className="card">
@@ -65,10 +61,7 @@ export const Home = () => {
                 <Navbar tipo={2} />
     
                 <div className="container mx-auto pt-3">
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Nome" aria-label="Search" />
-                        <button className="btn btn-outline-primary" type="submit">Pesquisar</button>
-                    </form>
+                    
                     <table className="table">
                         <thead>
                             <tr>

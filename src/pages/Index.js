@@ -126,7 +126,7 @@ export const Index = () => {
 
             <div className="container">
                 <p className="text-center mt-2 pt-2">
-                    <a className="link-dark cursorPointer">Esqueci minha senha</a>
+                    <a className="link-dark cursorPointer" onClick={() => { navigate("/senha-no-log") }}>Esqueci minha senha</a>
                 </p>
             </div>
             <div className="d-grid gap-2 mx-auto pb-5">
