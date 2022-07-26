@@ -90,6 +90,9 @@ export const Sobre = () => {
                         </div>
                     </div>
                 </div>
+                <div className='text-center padding-buttom-3 pb-4'>
+                    <button onClick={() => { window.history.back() }} className="btn btn-dark text-center text-light mw-20">Voltar</button>
+                </div>
             </div>
         </>
     )

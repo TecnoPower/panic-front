@@ -1,15 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import '../css/aux-bootstrap.css';
+import '../css/auxBootstrap.css';
 import React, { useContext } from 'react';
 import { UserContext } from '../App';
 import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 export const Navbar = (props) => {
     const { token, setToken } = useContext(UserContext);
-    const { rota, setRota } = useContext(UserContext);
-    console.log("token> "+token);
-    if (!token) {
-        return <Navigate to='/' replace={true} />;
-    }
+    const { tipo, setTipo } = useContext(UserContext);
+    let navigate = useNavigate();
     if (props.tipo == null || props.tipo == "" || props.tipo == 1) {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -27,7 +25,9 @@ export const Navbar = (props) => {
                 <a className="navbar-brand ps-4" href="/">
                     <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                 </a>
+                
                 <ul className="nav justify-content-rigth pe-2">
+                <h2 className="text-light pe-2">{props.titulo}</h2>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -53,7 +53,8 @@ export const Navbar = (props) => {
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
-                                <li><a className="dropdown-item" href="#">Editar Senha</a>
+                                <li><a className="dropdown-item" href="#" 
+                                onClick={()=>{navigate("/senha-log")}}>Editar Senha</a>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
@@ -63,8 +64,9 @@ export const Navbar = (props) => {
                                         onClick={() => {
                                             localStorage.removeItem('token');
                                             setToken(null);
-                                            localStorage.removeItem('rota');
-                                            setRota(null);
+                                            localStorage.removeItem('tipo');
+                                            setTipo(null);
+                                            navigate("/")
                                         }} >Log-out</a>
                                 </li>
                             </ul>

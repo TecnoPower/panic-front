@@ -10,6 +10,8 @@ import { SenhaNoLog } from './pages/SenhaNoLog.js';
 import { SenhaSeg } from './pages/SenhaSeg.js';
 import { Sobre } from './pages/Sobre.js';
 import { NotFound404 } from './pages/NotFound404';
+import { Home } from './pages/Home';
+import Footer from './components/Footer';
 import { createContext, useContext, useEffect, useState } from 'react';
 import React from 'react';
 
@@ -18,22 +20,23 @@ export const UserContext = React.createContext({});
 function App() {
 
   const [token, setToken] = useState('');
-  const [rota, setRota] = useState('');
-  useEffect(()=>{
-     if(localStorage.getItem('token')||localStorage.getItem('rota')){
+  const [tipo, setTipo] = useState('');
+  useEffect(() => {
+    if (localStorage.getItem('token') || localStorage.getItem('tipo')) {
       setToken(localStorage.getItem('token'));
-      setRota(localStorage.getItem('rota'))
-     }
-  },[]);
+      setToken(localStorage.getItem('tipo'));
+    }
+  }, []);
 
   return (
-    <UserContext.Provider value={{ token, setToken,rota,setRota }}>
+    <UserContext.Provider value={{ token, setToken, tipo, setTipo }}>
       <Router>
         <Routes>
           <Route exact path="/" element={<Index />} />
           <Route exact path="/index.html" element={<Index />} />
           <Route exact path="/cad-mentor" element={<CadastroMentor />} />
           <Route exact path="/cad-mentorado" element={<CadastroMentorado />} />
+          <Route exact path="/home" element={<Home />} />
           <Route exact path="/mentorado" element={<Mentorado />} />
           <Route exact path="/mentor" element={<Mentor />} />
           <Route exact path="/senha-log" element={<SenhaLog />} />
@@ -41,7 +44,9 @@ function App() {
           <Route exact path="/senha-seg" element={<SenhaSeg />} />
           <Route exact path="/sobre" element={<Sobre />} />
           <Route exact path="/*" element={<NotFound404 />} />
+          <Route exact path="/404" element={<NotFound404 />} />
         </Routes>
+        <Footer />
       </Router>
     </UserContext.Provider>
   );

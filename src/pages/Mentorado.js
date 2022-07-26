@@ -1,9 +1,8 @@
 import { Navbar } from '../components/Navbar';
-
 export const Mentorado = () => {
     return (
         <>
-             <Navbar  tipo={2}/>
+            <Navbar tipo={2} />
             <div className="container mx-auto pt-3">
                 <form className="d-flex">
                     <input className="form-control me-2" type="search" placeholder="Nome" aria-label="Search" />
@@ -50,5 +49,6 @@ export const Mentorado = () => {
             </div>
         </>
     )
+    
 }
 export default Mentorado;
