@@ -7,7 +7,6 @@ import { Mentor } from './pages/Mentor.js';
 import { Mentorado } from './pages/Mentorado.js';
 import { SenhaLog } from './pages/SenhaLog.js';
 import { SenhaNoLog } from './pages/SenhaNoLog.js';
-import { SenhaSeg } from './pages/SenhaSeg.js';
 import { Sobre } from './pages/Sobre.js';
 import { NotFound404 } from './pages/NotFound404';
 import { Home } from './pages/Home';
@@ -24,7 +23,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('token') || localStorage.getItem('tipo')) {
       setToken(localStorage.getItem('token'));
-      setToken(localStorage.getItem('tipo'));
+      setTipo(localStorage.getItem('tipo'));
     }
   }, []);
 
@@ -41,7 +40,6 @@ function App() {
           <Route exact path="/mentor" element={<Mentor />} />
           <Route exact path="/senha-log" element={<SenhaLog />} />
           <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
-          <Route exact path="/senha-seg" element={<SenhaSeg />} />
           <Route exact path="/sobre" element={<Sobre />} />
           <Route exact path="/*" element={<NotFound404 />} />
           <Route exact path="/404" element={<NotFound404 />} />
