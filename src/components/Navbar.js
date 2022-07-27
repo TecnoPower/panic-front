@@ -72,13 +72,19 @@ export const Navbar = (props) => {
                             </ul>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                            <a className="nav-link text-light" href="#">Editar meu Dados</a>
+                            <a className="nav-link text-light cursorPointer">Editar meu Dados</a>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                            <a className="nav-link text-light" href="#">Editar Senha</a>
+                            <a className="nav-link text-light cursorPointer">Editar Senha</a>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                            <a className="nav-link text-light" href="#">Log-out</a>
+                            <a className="nav-link text-light cursorPointer" onClick={() => {
+                                localStorage.removeItem('token');
+                                setToken(null);
+                                localStorage.removeItem('tipo');
+                                setTipo(null);
+                                navigate("/")
+                            }} >Log-out</a>
                         </li>
                     </ul>
                 </div>

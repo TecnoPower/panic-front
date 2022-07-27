@@ -70,7 +70,7 @@
 
 .background-gradient-1 {
     background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 99%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(220,220,220,1) 88%);
 }
 
 .w-1 {
