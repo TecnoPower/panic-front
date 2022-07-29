@@ -21,7 +21,7 @@ export const Navbar = (props) => {
         );
     } else {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top w-100">
                 <a className="navbar-brand ps-4" href="/">
                     <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                 </a>

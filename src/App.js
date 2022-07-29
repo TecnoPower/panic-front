@@ -10,6 +10,7 @@ import { SenhaNoLog } from './pages/SenhaNoLog.js';
 import { Sobre } from './pages/Sobre.js';
 import { NotFound404 } from './pages/NotFound404';
 import { Home } from './pages/Home';
+import { EditCad } from './pages/EditCad';
 import Footer from './components/Footer';
 import { createContext, useContext, useEffect, useState } from 'react';
 import React from 'react';
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/senha-log" element={<SenhaLog />} />
           <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
           <Route exact path="/sobre" element={<Sobre />} />
+          <Route exact path="/edit" element={<EditCad />} />
           <Route exact path="/*" element={<NotFound404 />} />
           <Route exact path="/404" element={<NotFound404 />} />
         </Routes>

@@ -40,6 +40,9 @@
 .minimo-350 {
     min-width: 350px !important;
 }
+.minimo-320 {
+    min-width: 320px !important;
+}
 
 .minimo-650 {
     min-width: 650px !important;
