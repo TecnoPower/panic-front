@@ -16,7 +16,7 @@ export const SenhaLog = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const { token, setToken } = useContext(UserContext);
     useEffect(() => {
-        if (token == null) {
+        if (token ===null) {
             navigate("/");
         }
     });
@@ -35,13 +35,13 @@ export const SenhaLog = () => {
             troca.currentPass === "") {
             setModalShowPreencher(true)
         } else {
-            if (troca.pass != troca.confirmPass) {
+            if (troca.pass !== troca.confirmPass) {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post('/auth/senha-log', {
                     pass: troca.pass
                 }).then((res) => {
-                    if (res.status == 200) {
+                    if (res.status ===200) {
                         setModalShowSucesso(true);
                     } else {
                         setModalShowErro(true);
@@ -171,7 +171,7 @@ export const SenhaLog = () => {
                             </div>
                             <div className="container">
                                 <p className="text-center">
-                                    <button className="btn btn-lg btn-primary mt-3" onClick={submit} type="submit">Trocar Senha</button>
+                                    <button className="btn btn-lg btn-default mt-3" onClick={submit} type="submit">Trocar Senha</button>
                                 </p>
                             </div>
                         </form>
