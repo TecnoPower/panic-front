@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Index } from './pages/Index';
 import { CadastroMentor } from './pages/CadastroMentor';
 import { CadastroMentorado } from './pages/CadastroMentorado.js';
-import { Mentor } from './pages/Mentor.js';
-import { Mentorado } from './pages/Mentorado.js';
 import { SenhaLog } from './pages/SenhaLog.js';
 import { SenhaNoLog } from './pages/SenhaNoLog.js';
 import { Sobre } from './pages/Sobre.js';
@@ -37,8 +35,6 @@ function App() {
           <Route exact path="/cad-mentor" element={<CadastroMentor />} />
           <Route exact path="/cad-mentorado" element={<CadastroMentorado />} />
           <Route exact path="/home" element={<Home />} />
-          <Route exact path="/mentorado" element={<Mentorado />} />
-          <Route exact path="/mentor" element={<Mentor />} />
           <Route exact path="/senha-log" element={<SenhaLog />} />
           <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
           <Route exact path="/sobre" element={<Sobre />} />
