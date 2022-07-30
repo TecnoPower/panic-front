@@ -17,7 +17,7 @@ export const CadastroMentor = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     let navigate = useNavigate();
     useEffect(() => {
-        if (localStorage.getItem('tipo') != null) {
+        if (localStorage.getItem('tipo') !== null) {
             navigate("/home");
         }
     });
@@ -58,7 +58,7 @@ export const CadastroMentor = () => {
             cadastro.desc === "") {
             setModalShowPreencher(true)
         } else {
-            if (cadastro.pass != cadastro.confirmPass) {
+            if (cadastro.pass !== cadastro.confirmPass) {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post("/api/mentor", cadastro).then((res) => {
@@ -336,7 +336,7 @@ export const CadastroMentor = () => {
                                         </div>
                                         <div className="container pt-4 pb-2">
                                             <div className="text-center">
-                                                <button className="w-50 minimo-140 btn btn-lg btn-primary" type="submit" onClick={submitCadastro}>Cadastrar</button>
+                                                <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitCadastro}>Cadastrar</button>
                                             </div>
                                             <ModalMsgPreenchimento
                                                 show={modalShowPreencher}
