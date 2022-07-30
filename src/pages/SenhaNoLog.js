@@ -12,7 +12,7 @@ export const SenhaNoLog = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     let navigate = useNavigate();
     useEffect(() => {
-        if (localStorage.getItem('tipo') != null) {
+        if (localStorage.getItem('tipo') !== null) {
             navigate("/home");
         }
     });
@@ -34,12 +34,12 @@ export const SenhaNoLog = () => {
             troca.seg === "") {
             setModalShowPreencher(true)
         } else {
-            if (troca.pass != troca.confirmPass) {
+            if (troca.pass !== troca.confirmPass) {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post("/auth/senha", troca).then((res) => {
                     troca._id = res.data.user._id;
-                    if (res.status == 202) {
+                    if (res.status ===202) {
                         if (res.data.user.tipo === "mentor") {
                             axiosInstance.put("/api/mentor", troca).then((res) => {
                                 if (res.status === 202) {
@@ -195,7 +195,7 @@ export const SenhaNoLog = () => {
                             </div>
                             <div className="container">
                                 <p className="text-center">
-                                    <button className="btn btn-lg btn-primary mt-3" onClick={submit} type="submit">Trocar Senha</button>
+                                    <button className="btn btn-lg btn-default mt-3" onClick={submit} type="submit">Trocar Senha</button>
                                 </p>
                             </div>
                         </form>
