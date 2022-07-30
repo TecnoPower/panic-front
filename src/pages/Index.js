@@ -21,7 +21,7 @@ export const Index = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        if (localStorage.getItem('tipo') != null) {
+        if (localStorage.getItem('tipo') !== null) {
             navigate("/home");
         }
     }, []);
@@ -33,12 +33,12 @@ export const Index = () => {
 
     function submitLogin(e) {
         e.preventDefault();
-        if (login.email == "" || login.pass == "") {
+        if (login.email ==="" || login.pass ==="") {
             setModalShowPreencher(true);
         } else {
             axiosInstance.post("/auth/login", login).then((res) => {
                 console.log(res)
-                if (res.status == 203) {
+                if (res.status ===203) {
                     setModalShowModalServidor(true);
                 } else {
                     localStorage.setItem('token', res.data.token);
@@ -120,7 +120,7 @@ export const Index = () => {
 
                 <div className="d-grid col-3 mx-auto pt-3">
                     <button onClick={submitLogin}
-                        className="btn btn-primary" type="submit">Entrar</button>
+                        className="btn btn-default" type="submit">Entrar</button>
                 </div>
             </form>
 
