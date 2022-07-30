@@ -3,93 +3,61 @@ export const Sobre = () => {
     return (
         <>
             <Navbar titulo={"Sobre Nós"} tipo={1} />
-            <div className="container mx-auto pt-5">
-                <h3 className="mb-3 mx-auto text-center">Sobre Nós TecnoPower</h3>
-                <div className="row row-cols-1 row-cols-lg-4 g-4 ">
-                    <div className="card ps-3 pe-3 pt-2">
-                        <img src="uploads/danilo.png" className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title text-center">Danilo Ferreira</h5>
-                            <div className="card-footer bg-white">
-                                <div className="row">
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
+            <div className="mx-auto pt-5">
+                <h1 className="mb-3 text-center">Sobre Nós TecnoPower</h1>
+                <div className="container w-65 minimo-350">
+                    <div className="row row-cols-1 row-cols-md-2 g-4">
+                        <div className="col">
+                            <div className="card">
+                                <img src="uploads/danilo.png" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h3 className="card-title text-center pb-2">Danilo Ferreira</h3>
+                                    <p className="card-text text-center">
+                                        <a href='https://www.linkedin.com/in/danilofdasilva/' target="_blank"><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
+                                        <a href="https://www.github.com/daniloeb19" target="_blank"><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="card ps-3 pe-3 pt-2">
-                        <img src="uploads/paulo.png" className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title text-center">Paulo Vinícius</h5>
-                            <div className="card-footer bg-white">
-                                <div className="row">
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
+                        <div className="col">
+                            <div className="card">
+                                <img src="uploads/ghabryellen.png" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h3 className="card-title text-center pb-2">Paulo Vinícius</h3>
+                                    <p className="card-text text-center">
+                                        <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
+                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="card ps-3 pe-3 pt-2">
-                        <img src="uploads/mateus.png" className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title text-center">Mateus Moura</h5>
-                            <div className="card-footer bg-white">
-                                <div className="row">
-                                    <div className="col">
-                                        <a href="#" target="_blank">
-                                            <img src="uploads/linkedin.png" className="img-fluid w-100"
-                                                alt="..." />
-                                        </a>
-                                    </div>
-                                    <div className="col">
-                                        <a href="#" target="_blank">
-                                            <img src="uploads/github.png" className="img-fluid w-100"
-                                                alt="..." />
-                                        </a>
-                                    </div>
+                        <div className="col">
+                            <div className="card">
+                                <img src="uploads/mateus.png" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h3 className="card-title text-center pb-2">Mateus Moura</h3>
+                                    <p className="card-text text-center">
+                                        <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
+                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="card ps-3 pe-3 pt-2">
-                        <img src="uploads/ghabryellen.png" className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title text-center">Ghabryellen Aleska</h5>
-                            <div className="card-footer bg-white">
-                                <div className="row">
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/linkedin.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
-                                    <div className="col">
-                                        <a href="#" target="_blank"> <img src="uploads/github.png" className="img-fluid w-100"
-                                            alt="..." />
-                                        </a>
-                                    </div>
+                        <div className="col">
+                            <div className="card">
+                                <img src="uploads/paulo.png" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h3 className="card-title text-center pb-2">Paulo Vinícius</h3>
+                                    <p className="card-text text-center">
+                                        <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
+                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div className='text-center padding-buttom-3 pb-4'>
                     <button onClick={() => { window.history.back() }} className="btn btn-dark text-center text-light mw-20">Voltar</button>
                 </div>
