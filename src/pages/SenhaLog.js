@@ -59,7 +59,7 @@ export const SenhaLog = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Sucesso!
                 </Modal.Title>
