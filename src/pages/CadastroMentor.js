@@ -81,7 +81,7 @@ export const CadastroMentor = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Sucesso!
                 </Modal.Title>
@@ -109,7 +109,8 @@ export const CadastroMentor = () => {
             </Modal.Header>
             <Modal.Body>
                 <h4>Ocorreu Um erro</h4>
-                <p>Usuário não Criado, tente novamente mais tarde.</p>
+                <p>Usuário não Criado.</p>
+                <p>Se já não for cadastrado em nossa plataforma, tente novamente mais tarde.</p>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Fechar</Button>
