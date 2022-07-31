@@ -33,12 +33,12 @@ export const Index = () => {
 
     function submitLogin(e) {
         e.preventDefault();
-        if (login.email ==="" || login.pass ==="") {
+        if (login.email === "" || login.pass === "") {
             setModalShowPreencher(true);
         } else {
             axiosInstance.post("/auth/login", login).then((res) => {
                 console.log(res)
-                if (res.status ===203) {
+                if (res.status === 203) {
                     setModalShowModalServidor(true);
                 } else {
                     localStorage.setItem('token', res.data.token);
