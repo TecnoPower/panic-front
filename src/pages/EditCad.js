@@ -96,8 +96,10 @@ export const EditCad = () => {
         if (cadastroMentor.name === "" ||
             cadastroMentor.date === "" ||
             cadastroMentor.sexo === "" ||
+            cadastroMentor.sexo === "Selecione" ||
             cadastroMentor.email === "" ||
             cadastroMentor.area === "" ||
+            cadastroMentor.area === "Selecione" ||
             cadastroMentor.profissao === "" ||
             cadastroMentor.cpf === "" ||
             cadastroMentor.contato === "" ||
@@ -130,8 +132,10 @@ export const EditCad = () => {
         cadastroMentorado.date = cadastroMentorado.date.replaceAll("/", "").replaceAll("/", "");
         cadastroMentorado.contato = cadastroMentorado.contato.replaceAll("-", "").replaceAll("(", "")
             .replaceAll(")", "").replaceAll(" ", "");
+            console.log("sexo: ",cadastroMentorado.sexo)
         if (cadastroMentorado.name === "" ||
             cadastroMentorado.date === "" ||
+            cadastroMentorado.sexo === "Selecione" ||
             cadastroMentorado.sexo === "" ||
             cadastroMentorado.email === "" ||
             cadastroMentorado.cpf === "" ||
@@ -293,7 +297,7 @@ export const EditCad = () => {
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
                                                 <Form.Select value={cadastroMentorado.sexo} onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, sexo: e.target.value }) }} className="form-select" id="float-genero" aria-label="Gênero">
-                                                    <option value={null}>Selecione</option>
+                                                    <option value="">Selecione</option>
                                                     <option value="Masculino">Masculino</option>
                                                     <option value="Feminino">Feminino</option>
                                                     <option value="Não binário">Não binário</option>
@@ -423,7 +427,7 @@ export const EditCad = () => {
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
                                                 <Form.Select value={cadastroMentor.sexo} onChange={(e) => { setCadastroMentor({ ...cadastroMentor, sexo: e.target.value }) }} className="form-select" id="float-genero" aria-label="Gênero">
-                                                    <option value={null}>Selecione</option>
+                                                    <option value="">Selecione</option>
                                                     <option value="Masculino">Masculino</option>
                                                     <option value="Feminino">Feminino</option>
                                                     <option value="Não binário">Não binário</option>
@@ -455,7 +459,7 @@ export const EditCad = () => {
                                         <div className="col-lg">
                                             <div className="form-floating">
                                                 <Form.Select value={cadastroMentor.area} onChange={(e) => { setCadastroMentor({ ...cadastroMentor, area: e.target.value }) }} className="form-select" id="select-area" aria-label="Área de Atuação">
-                                                    <option value={null}>Selecione</option>
+                                                    <option value="">Selecione</option>
                                                     <option value="Linguística, Letras e Artes">Linguística, Letras e Artes
                                                     </option>
                                                     <option value="Ciências Sociais Aplicadas">Ciências Sociais Aplicadas
