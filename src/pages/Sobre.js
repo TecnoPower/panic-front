@@ -13,8 +13,8 @@ export const Sobre = () => {
                                 <div className="card-body">
                                     <h3 className="card-title text-center pb-2">Danilo Ferreira</h3>
                                     <p className="card-text text-center">
-                                        <a href='https://www.linkedin.com/in/danilofdasilva/' target="_blank"><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
-                                        <a href="https://www.github.com/daniloeb19" target="_blank"><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                        <a href="https://www.github.com/daniloeb19" target="_blank"><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
+                                        <a href="https://www.linkedin.com/in/danilofdasilva/" target="_blank"><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
                                     </p>
                                 </div>
                             </div>
@@ -26,7 +26,7 @@ export const Sobre = () => {
                                     <h3 className="card-title text-center pb-2">Paulo Vinícius</h3>
                                     <p className="card-text text-center">
                                         <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
-                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                        <a href=''><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
                                     </p>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@ export const Sobre = () => {
                                     <h3 className="card-title text-center pb-2">Mateus Moura</h3>
                                     <p className="card-text text-center">
                                         <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
-                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                        <a href=''><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
                                     </p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@ export const Sobre = () => {
                                     <h3 className="card-title text-center pb-2">Paulo Vinícius</h3>
                                     <p className="card-text text-center">
                                         <a href=''><img src="/uploads/github.png" className="redes-sociais" alt="..." /></a>
-                                        <a><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
+                                        <a href=''><img src="/uploads/linkedin.png" className="redes-sociais" alt="..." /></a>
                                     </p>
                                 </div>
                             </div>
