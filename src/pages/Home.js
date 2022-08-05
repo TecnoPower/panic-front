@@ -22,12 +22,12 @@ export const Home = () => {
     useEffect(() => {
         if (tipo === "mentorado") {
             axiosInstance.get('/api/mentor').then((res) => {
-                setMentores(res.data)
+                //setMentores(res.data)
             });
         }
         if (tipo === "mentor") {
             axiosInstance.get('/api/mentoria').then((res) => {
-                setMentorados(res.data)
+               // setMentorados(res.data)
             });
         }
     }, []);
