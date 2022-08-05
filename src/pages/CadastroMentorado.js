@@ -20,7 +20,7 @@ export const CadastroMentorado = () => {
         if (localStorage.getItem('tipo') !== null) {
             navigate("/home");
         }
-    });
+    },[]);
     const [cadastro, setCadastro] = useState({
         name: "",
         date: "",

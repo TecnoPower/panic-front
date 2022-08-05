@@ -15,7 +15,7 @@ export const SenhaNoLog = () => {
         if (localStorage.getItem('tipo') !== null) {
             navigate("/home");
         }
-    });
+    },[]);
 
     const [troca, setTroca] = useState({
         confirmPass: "",

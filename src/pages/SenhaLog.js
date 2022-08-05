@@ -19,7 +19,7 @@ export const SenhaLog = () => {
         if (token ===null) {
             navigate("/");
         }
-    });
+    },[]);
 
     const [troca, setTroca] = useState({
         confirmPass: "",

@@ -25,7 +25,7 @@ export const EditCad = () => {
         if (token === null) {
             navigate("/");
         }
-    });
+    },[]);
     const [cadastroMentor, setCadastroMentor] = useState({
         name: "",
         date: "",
