@@ -13,6 +13,7 @@ export const Home = () => {
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     let navigate = useNavigate();
+    let nameUser;
     useEffect(() => {
         if (!token) {
             navigate("/");
@@ -31,6 +32,7 @@ export const Home = () => {
             });
         }
     }, []);
+   
     function conectar(_id_mentor) {
         axiosInstance.post('/api/mentoria', { _id_mentor }).then((res) => {
             if (res.status === 201) {
@@ -42,6 +44,7 @@ export const Home = () => {
             setModalShowErro(true);
         });
     }
+
     function ModalSucesso(props) {
         return (<Modal
             {...props}
@@ -59,8 +62,8 @@ export const Home = () => {
                 <h4>Sucesso</h4>
                 <p>Conexão Realizada com Sucesso.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -80,16 +83,17 @@ export const Home = () => {
                 <h4>Houve um probleminha</h4>
                 <p>Talvez você já tenha uma conexão.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
-    if (localStorage.getItem('tipo') == 'mentorado') {
+    if (tipo === 'mentorado') {
         return (
             <>
                 <Navbar tipo={2} />
                 <div className="container mx-auto pt-3">
+
                     <div className="row row-cols-1 row-cols-md-2 g-4 pt-2">
                         {mentores.map((mentor) => (
                             <div className="col" key={mentor._id}>
@@ -122,10 +126,9 @@ export const Home = () => {
             </>
         )
     }
-    if (localStorage.getItem('tipo') == 'mentor') {
+    if (tipo === 'mentor') {
         return (
             <>
-
                 <Navbar tipo={2} />
                 <div className="container mx-auto pt-3">
                     <div className="bd-example">
