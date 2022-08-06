@@ -1,12 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/auxBootstrap.css';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../App';
 import { Navigate } from 'react-router';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../config/axios';
 export const Navbar = (props) => {
     const { token, setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
+    const [nameUser, setNameUser] = useState('')
+    useEffect(() => {
+        if (tipo) {
+            axiosInstance.get('/api/return/name').then((res) => {
+                setNameUser(res.data.name);
+            })
+        }
+    }, [])
     let navigate = useNavigate();
     if (props.tipo === null || props.tipo === "" || props.tipo === 1) {
         return (
@@ -37,7 +46,7 @@ export const Navbar = (props) => {
                 <div className="collapse navbar-collapse ps-2" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link text-light cursorPointer" aria-current="page" onClick={() => navigate("/home")} >Home</a>
+                            <a className="nav-link text-light cursorPointer" onClick={() => navigate("/home")} >Home</a>
                         </li>
                         <li className="nav-item dropdown d-none d-lg-block">
                             <a className="nav-link dropdown-toggle text-light cursorPointer" id="navbarDropdown" role="button"
@@ -45,13 +54,21 @@ export const Navbar = (props) => {
                                 Opções
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item cursorPointer" onClick={() => { navigate("/edit") }}>Editar meu Dados</a>
+                                <li>
+                                    <p className="dropdown-item fw-bold texto-nome">Logado como: {nameUser.split(' ').slice(0, 1).join(' ')}</p>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
-                                <li><a className="dropdown-item cursorPointer"
-                                    onClick={() => { navigate("/senha-log") }}>Editar Senha</a>
+                                <li>
+                                    <a className="dropdown-item cursorPointer" onClick={() => { navigate("/edit") }}>Editar meu Dados</a>
+                                </li>
+                                <li>
+                                    <hr className="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a className="dropdown-item cursorPointer"
+                                        onClick={() => { navigate("/senha-log") }}>Editar Senha</a>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
@@ -69,10 +86,14 @@ export const Navbar = (props) => {
                             </ul>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
+                            <p className="nav-link text-light fw-bold texto-nome">Logado como: {nameUser.split(' ').slice(0, 1).join(' ')}</p>
+                            <hr className="dropdown-divider text-light" />
+                        </li>
+                        <li className="nav-item d-lg-none d-xxl-none d-xl-none">
                             <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/edit") }}>Editar meu Dados</a>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                            <a className="nav-link text-light cursorPointer"   onClick={() => { navigate("/senha-log") }}>Editar Senha</a>
+                            <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/senha-log") }}>Editar Senha</a>
                         </li>
                         <li className="nav-item d-lg-none d-xxl-none d-xl-none">
                             <a className="nav-link text-light cursorPointer" onClick={() => {
