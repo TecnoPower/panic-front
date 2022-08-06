@@ -16,10 +16,10 @@ export const SenhaLog = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const { token, setToken } = useContext(UserContext);
     useEffect(() => {
-        if (token ===null) {
+        if (token === null) {
             navigate("/");
         }
-    },[]);
+    }, []);
 
     const [troca, setTroca] = useState({
         confirmPass: "",
@@ -41,7 +41,7 @@ export const SenhaLog = () => {
                 axiosInstance.post('/auth/senha-log', {
                     pass: troca.pass
                 }).then((res) => {
-                    if (res.status ===200) {
+                    if (res.status === 200) {
                         setModalShowSucesso(true);
                     } else {
                         setModalShowErro(true);
@@ -68,8 +68,8 @@ export const SenhaLog = () => {
                 <h4>Sucesso</h4>
                 <p>Senha trocada com sucesso</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={() => { navigate("/home") }}>Ir para Home</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={() => { navigate("/home") }}>Ir para Home</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -89,8 +89,8 @@ export const SenhaLog = () => {
                 <h4>Ocorreu Um erro</h4>
                 <p>Tente novamente mais tarde.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -110,8 +110,8 @@ export const SenhaLog = () => {
                 <h4>Corrija sua Senha</h4>
                 <p>Senha e confirmação de senha não coincidem.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -135,8 +135,8 @@ export const SenhaLog = () => {
                         É necessário o preechimento de todos os campos.
                     </p>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Fechar</Button>
+                <Modal.Footer className='justify-content-center'>
+                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
                 </Modal.Footer>
             </Modal>
         );
