@@ -7,20 +7,28 @@ import { Navbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import CPF from 'cpf-check';
+import validator from 'validator';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import InputMask from "react-input-mask";
+import { UserContext } from '../App';
+import { useContext } from 'react';
 export const CadastroMentorado = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
+    const [modalShowCpf, setModalShowCpf] = useState(false);
+    const [modalShowEmail, setModalShowEmail] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
+    const { tipo, setTipo } = useContext(UserContext);
     let navigate = useNavigate();
     useEffect(() => {
-        if (localStorage.getItem('tipo') !== null) {
+        if (tipo) {
             navigate("/home");
         }
-    },[]);
+    }, []);
     const [cadastro, setCadastro] = useState({
         name: "",
         date: "",
@@ -37,8 +45,9 @@ export const CadastroMentorado = () => {
 
     function submitCadastro(e) {
         e.preventDefault();
-        
+
         cadastro.cpf = cadastro.cpf.replaceAll("-", "").replaceAll(".", "");
+        //console.log(CPF.validate(cadastro.cpf))
         cadastro.date = cadastro.date.replaceAll("/", "").replaceAll("/", "");
         cadastro.contato = cadastro.contato.replaceAll("-", "").replaceAll("(", "")
             .replaceAll(")", "").replaceAll(" ", "");
@@ -52,6 +61,7 @@ export const CadastroMentorado = () => {
             cadastro.email === "" ||
             cadastro.cpf === "" ||
             cadastro.contato === "" ||
+            cadastro.contato.length < 11 ||
             cadastro.seg === "" ||
             cadastro.desc === "") {
             setModalShowPreencher(true)
@@ -59,20 +69,29 @@ export const CadastroMentorado = () => {
             if (cadastro.pass !== cadastro.confirmPass) {
                 setModalShowSenha(true);
             } else {
-                axiosInstance.post("/api/mentorado", cadastro).then((res) => {
-                    console.log(res)
-                    if (res.status === 201) {
-                        setModalShowSucesso(true)
+                if (CPF.validate(cadastro.cpf) === false) {
+                    setModalShowCpf(true);
+                } else {
+                    if (validator.isEmail(cadastro.email) === false) {
+                        setModalShowEmail(true);
                     } else {
-                        setModalShowErro(true);
+                        axiosInstance.post("/api/mentorado", cadastro).then((res) => {
+                            console.log(res)
+                            if (res.status === 201) {
+                                setModalShowSucesso(true)
+                            } else {
+                                setModalShowErro(true);
+                            }
+                        })
                     }
-                })
+                }
+
             }
         }
 
     }
 
-    function ModalSucesso(props) {
+    function ModalCpf(props) {
         return (<Modal
             {...props}
             size="lg"
@@ -80,7 +99,48 @@ export const CadastroMentorado = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header>
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Ops...
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>CPF Inválido</h4>
+            </Modal.Body>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
+            </Modal.Footer>
+        </Modal>);
+    }
+    function ModalEmail(props) {
+        return (<Modal
+            {...props}
+            size="lg"
+            backdrop="static"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Ops...
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>Email Inválido</h4>
+            </Modal.Body>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
+            </Modal.Footer>
+        </Modal>);
+    }
+    function ModalSucesso(props) {
+        return (<Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter">
                     Sucesso!
                 </Modal.Title>
@@ -89,8 +149,8 @@ export const CadastroMentorado = () => {
                 <h4>Sucesso</h4>
                 <p>Cadastrado com sucesso</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={() => { navigate("/") }}>Ir para página Inicial</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={() => { navigate("/") }}>Ir para página Inicial</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -111,8 +171,8 @@ export const CadastroMentorado = () => {
                 <p>Usuário não Criado.</p>
                 <p>Se já não for cadastrado em nossa plataforma, tente novamente mais tarde.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -132,8 +192,8 @@ export const CadastroMentorado = () => {
                 <h4>Corrija sua Senha</h4>
                 <p>Senha e confirmação de senha não coincidem.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -157,9 +217,10 @@ export const CadastroMentorado = () => {
                         É necessário o preechimento de todos os campos.
                     </p>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Fechar</Button>
+                <Modal.Footer className='justify-content-center'>
+                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
                 </Modal.Footer>
+
             </Modal>
         );
 
@@ -292,7 +353,7 @@ export const CadastroMentorado = () => {
                                                             </Popover>
                                                         }
                                                     >
-                                                        <input value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="number" className="form-control" id="campo-seguranca"
+                                                       <InputMask mask="999999999999999999999999999"  value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control" id="campo-seguranca"
                                                             aria-describedby="seguranca-help" placeholder="Número de segurança" data-bs-toggle="popover"
                                                             data-bs-trigger="focus" title="Atenção" data-bs-content="Guarde esse número para um possível esquecimento de senha" />
 
@@ -320,6 +381,14 @@ export const CadastroMentorado = () => {
                                             <ModalSucesso
                                                 show={modalShowSucesso}
                                                 onHide={() => setModalShowSucesso(false)}
+                                            />
+                                            <ModalCpf
+                                                show={modalShowCpf}
+                                                onHide={() => setModalShowCpf(false)}
+                                            />
+                                            <ModalEmail
+                                                show={modalShowEmail}
+                                                onHide={() => setModalShowEmail(false)}
                                             />
                                         </div>
                                     </form>
