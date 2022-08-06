@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 export const SenhaLog = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
-    const [modalShowErro, setModalShowErro] = useState(false);
+    const [modalShowMensagem, setModalShowMensagem] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const { token, setToken } = useContext(UserContext);
@@ -39,12 +39,16 @@ export const SenhaLog = () => {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post('/auth/senha-log', {
-                    pass: troca.pass
+                    pass: troca.pass,
+                    currentPass: troca.currentPass
                 }).then((res) => {
-                    if (res.status === 200) {
+                    console.log(res);
+                    if (res.status === 202) {
                         setModalShowSucesso(true);
-                    } else {
-                        setModalShowErro(true);
+                    }
+                    //203 usuário encontrado mas senha incorreta;
+                    if (res.status === 203) {
+                        setModalShowMensagem(true);
                     }
                 })
             }
@@ -73,7 +77,7 @@ export const SenhaLog = () => {
             </Modal.Footer>
         </Modal>);
     }
-    function ModalErro(props) {
+    function ModalMensagem(props) {
         return (<Modal
             {...props}
             size="lg"
@@ -86,8 +90,8 @@ export const SenhaLog = () => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Ocorreu Um erro</h4>
-                <p>Tente novamente mais tarde.</p>
+                <h4>Ocorreu um erro</h4>
+                <p>Possívelmente sua senha atual não condiz com a armazenada no nosso banco de dados.</p>
             </Modal.Body>
             <Modal.Footer className='justify-content-center'>
                 <Button className='w-80' onClick={props.onHide}>Fechar</Button>
@@ -185,9 +189,9 @@ export const SenhaLog = () => {
                     show={modalShowSenha}
                     onHide={() => setModalShowSenha(false)}
                 />
-                <ModalErro
-                    show={modalShowErro}
-                    onHide={() => setModalShowErro(false)}
+                <ModalMensagem
+                    show={modalShowMensagem}
+                    onHide={() => setModalShowMensagem(false)}
                 />
                 <ModalSucesso
                     show={modalShowSucesso}

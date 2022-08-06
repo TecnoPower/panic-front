@@ -13,7 +13,6 @@ export const Home = () => {
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     let navigate = useNavigate();
-    let nameUser;
     useEffect(() => {
         if (!token) {
             navigate("/");
@@ -32,7 +31,7 @@ export const Home = () => {
             });
         }
     }, []);
-   
+
     function conectar(_id_mentor) {
         axiosInstance.post('/api/mentoria', { _id_mentor }).then((res) => {
             if (res.status === 201) {
