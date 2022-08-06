@@ -9,7 +9,7 @@ import { Sobre } from './pages/Sobre.js';
 import { NotFound404 } from './pages/NotFound404';
 import { Home } from './pages/Home';
 import { EditCad } from './pages/EditCad';
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 
 export const UserContext = React.createContext({});
