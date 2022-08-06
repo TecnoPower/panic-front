@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { axiosInstance } from '../config/axios';
+import CPF from 'cpf-check';
 import { useEffect } from 'react';
 import InputMask from "react-input-mask";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -177,8 +178,8 @@ export const EditCad = () => {
                 <h4>Sucesso</h4>
                 <p>Dados Atualizados com sucesso</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
+            <Modal.Footer  className='justify-content-center' >
+                <Button className='w-80' onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -199,8 +200,8 @@ export const EditCad = () => {
                 <h4>Ocorreu Um erro</h4>
                 <p>Não foi possível processar sua solicitação, tente mais tarde.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80'  onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -220,8 +221,8 @@ export const EditCad = () => {
                 <h4>Corrija sua Senha</h4>
                 <p>Senha e confirmação de senha não coincidem.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Fechar</Button>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -245,8 +246,8 @@ export const EditCad = () => {
                         É necessário o preechimento de todos os campos.
                     </p>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Fechar</Button>
+                <Modal.Footer  className='justify-content-center' >
+                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
                 </Modal.Footer>
             </Modal>
         );
