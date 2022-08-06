@@ -21,10 +21,10 @@ export const Index = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        if (localStorage.getItem('tipo') !== null) {
+        if (tipo) {
             navigate("/home");
         }
-    }, []);
+    }, [tipo]);
 
     const [login, setLogin] = useState({
         email: "",
@@ -70,8 +70,8 @@ export const Index = () => {
                         É necessário o preechimento de todos os campos.
                     </p>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Fechar</Button>
+                <Modal.Footer  className='justify-content-center' >
+                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
                 </Modal.Footer>
             </Modal>
         );
@@ -95,8 +95,8 @@ export const Index = () => {
                 <p>Perdão, não encontrei registro.</p>
                 <p>Verifique  login e senha.</p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Ok</Button>
+            <Modal.Footer  className='justify-content-center' >
+                <Button className='w-80' onClick={props.onHide}>Ok</Button>
             </Modal.Footer>
         </Modal>);
     }
@@ -174,8 +174,8 @@ export const Index = () => {
                             </div>
                         </>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary" onClick={handleClose}>
+                    <Modal.Footer className='justify-content-center' >
+                        <Button  className='w-80'onClick={handleClose}>
                             Fechar
                         </Button>
                     </Modal.Footer>
