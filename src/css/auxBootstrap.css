@@ -8,6 +8,9 @@
 .cursorPointer {
     cursor: pointer;
 }
+.texto-nome{
+cursor: context-menu;
+}
 
 .descricao-box {
     display: block;
