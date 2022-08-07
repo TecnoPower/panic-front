@@ -47,12 +47,10 @@ export const CadastroMentorado = () => {
         e.preventDefault();
 
         cadastro.cpf = cadastro.cpf.replaceAll("-", "").replaceAll(".", "");
-        //console.log(CPF.validate(cadastro.cpf))
         cadastro.date = cadastro.date.replaceAll("/", "").replaceAll("/", "");
         cadastro.contato = cadastro.contato.replaceAll("-", "").replaceAll("(", "")
             .replaceAll(")", "").replaceAll(" ", "");
         console.log(cadastro);
-
         if (cadastro.name === "" ||
             cadastro.date === "" ||
             cadastro.sexo === "" ||
@@ -76,7 +74,7 @@ export const CadastroMentorado = () => {
                         setModalShowEmail(true);
                     } else {
                         axiosInstance.post("/api/mentorado", cadastro).then((res) => {
-                            console.log(res)
+                            console.log("resposta: ",res)
                             if (res.status === 201) {
                                 setModalShowSucesso(true)
                             } else {
@@ -353,7 +351,7 @@ export const CadastroMentorado = () => {
                                                             </Popover>
                                                         }
                                                     >
-                                                       <InputMask mask="999999999999999999999999999"  value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control" id="campo-seguranca"
+                                                       <input value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control" id="campo-seguranca"
                                                             aria-describedby="seguranca-help" placeholder="Número de segurança" data-bs-toggle="popover"
                                                             data-bs-trigger="focus" title="Atenção" data-bs-content="Guarde esse número para um possível esquecimento de senha" />
 

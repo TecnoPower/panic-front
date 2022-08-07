@@ -1,8 +1,8 @@
 import { Navbar } from '../components/Navbar';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { UserContext } from '../App';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 export const SenhaNoLog = () => {
@@ -10,9 +10,10 @@ export const SenhaNoLog = () => {
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
+    const { tipo, setTipo } = useContext(UserContext);
     let navigate = useNavigate();
     useEffect(() => {
-        if (!tipo) {
+        if (tipo) {
             navigate("/home");
         }
     }, []);
