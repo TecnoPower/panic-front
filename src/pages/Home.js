@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../config/axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const Home = () => {
     const { token, setToken } = useContext(UserContext);
@@ -25,14 +27,36 @@ export const Home = () => {
             axiosInstance.get('/api/mentor').then((res) => {
                 setMentores(res.data)
             });
+            axiosInstance.get('/api/return/name').then((res) => {
+                toast.success("Olá " + res.data.name, {
+                    position: "bottom-center",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            })
         }
         if (tipo === "mentor") {
             axiosInstance.get('/api/mentoria').then((res) => {
                 setMentorados(res.data)
             });
+            axiosInstance.get('/api/return/name').then((res) => {
+                toast.success("Olá " + res.data.name, {
+                    position: "bottom-center",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            })
         }
-    }, []);
 
+    }, []);
     function conectar(_id_mentor) {
         axiosInstance.post('/api/mentoria', { _id_mentor }).then((res) => {
             if (res.status === 201) {
@@ -45,11 +69,22 @@ export const Home = () => {
         });
     }
 
-    
+
     if (tipo === 'mentorado') {
         return (
             <>
                 <Navbar tipo={2} />
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <div className="container mx-auto pt-3">
 
                     <div className="row row-cols-1 row-cols-md-2 g-4 pt-2">
@@ -88,6 +123,17 @@ export const Home = () => {
         return (
             <>
                 <Navbar tipo={2} />
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <div className="container mx-auto pt-3">
                     <div className="bd-example">
                         <table className="table table-dark table-hover">
