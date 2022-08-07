@@ -30,7 +30,9 @@ cursor: context-menu;
 .text-default {
     color: #5271FF !important;
 }
-
+.px-130{
+    height: 130px!important;
+}
 .bg-default {
     background-color: #5271FF !important;
 }

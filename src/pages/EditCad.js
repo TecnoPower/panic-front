@@ -174,7 +174,7 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg">
                                             <div className="col-lg pt-2">
-                                                <h2 className="text-center pb-2">Insira seus Dados</h2>
+                                                <h2 className="text-center pb-2">Edite seus Dados</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -237,8 +237,8 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você" id="floatingTextarea"></textarea>
-                                                <label htmlFor="floatingTextarea">Descrição Sobre Você</label>
+                                                <textarea maxLength="236" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
+                                                <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
                                             </div>
                                         </div>
                                     </div>
@@ -303,7 +303,7 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg">
                                             <div className="col-lg pt-2">
-                                                <h2 className="text-center pb-2">Insira seus Dados</h2>
+                                                <h2 className="text-center pb-2">Edite seus Dados</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -398,8 +398,8 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você" id="floatingTextarea"></textarea>
-                                                <label htmlFor="floatingTextarea">Descrição Sobre Você</label>
+                                                <textarea maxLength="236" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
+                                                <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
                                             </div>
                                         </div>
                                     </div>

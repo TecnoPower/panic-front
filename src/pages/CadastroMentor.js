@@ -227,8 +227,8 @@ export const CadastroMentor = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <textarea value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você" id="floatingTextarea"></textarea>
-                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você</label>
+                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
+                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
                                                 </div>
                                             </div>
                                         </div>

@@ -15,6 +15,7 @@ export const Home = () => {
     const [mentorados, setMentorados] = useState([]);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0);
     let navigate = useNavigate();
     useEffect(() => {
         if (!token) {
@@ -56,7 +57,8 @@ export const Home = () => {
             })
         }
 
-    }, []);
+    }, [refreshKey]);
+    
     function conectar(_id_mentor) {
         axiosInstance.post('/api/mentoria', { _id_mentor }).then((res) => {
             if (res.status === 201) {
