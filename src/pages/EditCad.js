@@ -13,7 +13,7 @@ import InputMask from "react-input-mask";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Form from 'react-bootstrap/Form';
-
+import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const EditCad = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
@@ -160,97 +160,6 @@ export const EditCad = () => {
 
             });
         }
-    }
-    function ModalSucesso(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header >
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Sucesso!
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Sucesso</h4>
-                <p>Dados Atualizados com sucesso</p>
-            </Modal.Body>
-            <Modal.Footer  className='justify-content-center' >
-                <Button className='w-80' onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalErro(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Ocorreu Um erro</h4>
-                <p>Não foi possível processar sua solicitação, tente mais tarde.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80'  onClick={() => { navigate("/home") }}>Ir para página Inicial</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgSenha(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Corrija sua Senha</h4>
-                <p>Senha e confirmação de senha não coincidem.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgPreenchimento(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Ops...
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>Atenção</h4>
-                    <p>
-                        É necessário o preechimento de todos os campos.
-                    </p>
-                </Modal.Body>
-                <Modal.Footer  className='justify-content-center' >
-                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-                </Modal.Footer>
-            </Modal>
-        );
     }
     
     if (tipo === "mentorado") {

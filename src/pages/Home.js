@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../config/axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const Home = () => {
     const { token, setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
@@ -44,49 +45,7 @@ export const Home = () => {
         });
     }
 
-    function ModalSucesso(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Sucesso!
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Sucesso</h4>
-                <p>Conexão Realizada com Sucesso.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalErro(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Houve um probleminha</h4>
-                <p>Talvez você já tenha uma conexão.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
+    
     if (tipo === 'mentorado') {
         return (
             <>

@@ -3,8 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../App';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const SenhaNoLog = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -63,98 +62,6 @@ export const SenhaNoLog = () => {
                 })
             }
         }
-
-    }
-    function ModalSucesso(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Sucesso!
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Sucesso</h4>
-                <p>Senha trocada com sucesso</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={() => { navigate("/") }}>Ir para página Inicial</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalErro(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Ocorreu Um erro</h4>
-                <p>Tente novamente mais tarde.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgSenha(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Corrija sua Senha</h4>
-                <p>Senha e confirmação de senha não coincidem.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgPreenchimento(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Ops...
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>Atenção</h4>
-                    <p>
-                        É necessário o preechimento de todos os campos.
-                    </p>
-                </Modal.Body>
-                <Modal.Footer className='justify-content-center'>
-                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-                </Modal.Footer>
-            </Modal>
-        );
-
 
     }
 

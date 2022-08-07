@@ -13,6 +13,7 @@ import Modal from 'react-bootstrap/Modal';
 import InputMask from "react-input-mask";
 import { UserContext } from '../App';
 import { useContext } from 'react';
+import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const CadastroMentor = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -88,142 +89,6 @@ export const CadastroMentor = () => {
         }
 
     }
-    function ModalCpf(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>CPF Inválido</h4>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalEmail(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Email Inválido</h4>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalSucesso(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Sucesso!
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Sucesso</h4>
-                <p>Cadastrado com sucesso</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={() => { navigate("/") }}>Ir para página Inicial</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalErro(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Ocorreu Um erro</h4>
-                <p>Usuário não Criado.</p>
-                <p>Se já não for cadastrado em nossa plataforma, tente novamente mais tarde.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgSenha(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Ops...
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Corrija sua Senha</h4>
-                <p>Senha e confirmação de senha não coincidem.</p>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
-    function ModalMsgPreenchimento(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Ops...
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>Atenção</h4>
-                    <p>
-                        É necessário o preechimento de todos os campos.
-                    </p>
-                </Modal.Body>
-                <Modal.Footer className='justify-content-center'>
-                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-                </Modal.Footer>
-            </Modal>
-        );
-
-
-    }
-
 
     return (
         <>
@@ -383,7 +248,7 @@ export const CadastroMentor = () => {
                                                             </Popover>
                                                         }
                                                     >
-                                                        <InputMask mask="999999999999999999999999999" value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control" id="campo-seguranca"
+                                                        <input value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control" id="campo-seguranca"
                                                             aria-describedby="seguranca-help" placeholder="Número de segurança" data-bs-toggle="popover"
                                                             data-bs-trigger="focus" title="Atenção" data-bs-content="Guarde esse número para um possível esquecimento de senha" />
 

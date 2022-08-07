@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { ModalServidor, ModalMsgPreenchimento } from '../components/Modal/Modal';
 
 export const Index = () => {
     const { token, setToken } = useContext(UserContext);
@@ -50,57 +51,8 @@ export const Index = () => {
             });
         }
     }
-    function ModalMsgPreenchimento(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Ops...
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>Atenção</h4>
-                    <p>
-                        É necessário o preechimento de todos os campos.
-                    </p>
-                </Modal.Body>
-                <Modal.Footer  className='justify-content-center' >
-                    <Button className='w-80' onClick={props.onHide}>Fechar</Button>
-                </Modal.Footer>
-            </Modal>
-        );
-
-
-    }
-    function ModalServidor(props) {
-        return (<Modal
-            {...props}
-            size="lg"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Mensagem do Servidor:
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <p>Perdão, não encontrei registro.</p>
-                <p>Verifique  login e senha.</p>
-            </Modal.Body>
-            <Modal.Footer  className='justify-content-center' >
-                <Button className='w-80' onClick={props.onHide}>Ok</Button>
-            </Modal.Footer>
-        </Modal>);
-    }
     return (
+
         <div className="container form-login w-50">
 
             <form className='pt-5'>
@@ -125,9 +77,9 @@ export const Index = () => {
             </form>
 
             <div className="container">
-                <p className="text-center mt-2 pt-2">
+                <div className="text-center mt-2 pt-2">
                     <a className="link-dark cursorPointer" onClick={() => { navigate("/senha-no-log") }}>Esqueci minha senha</a>
-                </p>
+                </div>
             </div>
             <div className="d-grid gap-2 mx-auto pb-5">
                 <Modal show={show}
@@ -175,7 +127,7 @@ export const Index = () => {
                         </>
                     </Modal.Body>
                     <Modal.Footer className='justify-content-center' >
-                        <Button  className='w-80'onClick={handleClose}>
+                        <Button className='w-80' onClick={handleClose}>
                             Fechar
                         </Button>
                     </Modal.Footer>
