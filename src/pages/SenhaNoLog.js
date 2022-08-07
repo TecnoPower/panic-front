@@ -163,7 +163,7 @@ export const SenhaNoLog = () => {
             <Navbar titulo={"Esqueci minha senha"} tipo={1} />
             <div className="container mx-auto pt-6">
                 <div className="row justify-content-center">
-                    <div className="card w-50 minimo-350">
+                    <div className="card w-50 minimo-320">
                         <h1 className='pt-2 pb-2 text-center'>Insira seus Dados</h1>
                         <form action="" method="get" >
                             <div className="row g-2 pt-2">

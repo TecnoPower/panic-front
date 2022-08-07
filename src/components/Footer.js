@@ -1,6 +1,5 @@
 import '../App.css';
 import '../css/login.css'
-import axios from 'axios';
 function Footer() {
     return (
         <div className="w-100 mx-auto">

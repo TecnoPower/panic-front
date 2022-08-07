@@ -31,10 +31,9 @@ export const Navbar = (props) => {
     } else {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top w-100">
-                <a className="navbar-brand ps-4" href="/">
+                <a className="navbar-brand ps-4" href="/home">
                     <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                 </a>
-
                 <ul className="nav justify-content-right me-2">
                     <h2 className="text-light d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block">{props.titulo}</h2>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
