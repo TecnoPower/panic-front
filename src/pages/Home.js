@@ -46,17 +46,17 @@ export const Home = () => {
             axiosInstance.get('/api/mentoria').then((res) => {
                 setMentorias(res.data)
             });
-            axiosInstance.get('/api/return/name').then((res) => {
-                // toast.success("Olá " + res.data.name, {
-                //     position: "bottom-center",
-                //     autoClose: 2500,
-                //     hideProgressBar: false,
-                //     closeOnClick: true,
-                //     pauseOnHover: true,
-                //     draggable: true,
-                //     progress: undefined,
-                // });
-            })
+            // axiosInstance.get('/api/return/name').then((res) => {
+            //     toast.success("Olá " + res.data.name, {
+            //         position: "bottom-center",
+            //         autoClose: 2500,
+            //         hideProgressBar: false,
+            //         closeOnClick: true,
+            //         pauseOnHover: true,
+            //         draggable: true,
+            //         progress: undefined,
+            //     });
+            // })
         }
 
     }, [reload]);
