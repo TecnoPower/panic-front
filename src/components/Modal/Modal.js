@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../../config/axios';
+import { Home } from '../../pages/Home';
 
-export const ModalMensagem = (props)=> {
+export const ModalMensagem = (props) => {
     return (<Modal
         {...props}
         size="lg"
@@ -73,7 +75,7 @@ export const ModalServidor = (props) => {
         </Modal.Footer>
     </Modal>);
 }
-export const ModalCpf = (props)=> {
+export const ModalCpf = (props) => {
     return (<Modal
         {...props}
         size="lg"
@@ -94,7 +96,7 @@ export const ModalCpf = (props)=> {
         </Modal.Footer>
     </Modal>);
 }
-export const ModalEmail = (props)=> {
+export const ModalEmail = (props) => {
     return (<Modal
         {...props}
         size="lg"
@@ -115,7 +117,7 @@ export const ModalEmail = (props)=> {
         </Modal.Footer>
     </Modal>);
 }
-export const ModalSucesso = (props)=> {
+export const ModalSucesso = (props) => {
     let navigate = useNavigate();
     return (<Modal
         {...props}
@@ -138,7 +140,7 @@ export const ModalSucesso = (props)=> {
         </Modal.Footer>
     </Modal>);
 }
-export const ModalErro = (props)=> {
+export const ModalErro = (props) => {
     return (<Modal
         {...props}
         size="lg"
@@ -159,7 +161,7 @@ export const ModalErro = (props)=> {
         </Modal.Footer>
     </Modal>);
 }
-export const ModalMsgSenha = (props)=> {
+export const ModalMsgSenha = (props) => {
     return (<Modal
         {...props}
         size="lg"
@@ -174,6 +176,26 @@ export const ModalMsgSenha = (props)=> {
         <Modal.Body>
             <h4>Corrija sua Senha</h4>
             <p>Senha e confirmação de senha não coincidem.</p>
+        </Modal.Body>
+        <Modal.Footer className='justify-content-center'>
+            <Button className='w-80' onClick={props.onHide}>Fechar</Button>
+        </Modal.Footer>
+    </Modal>);
+}
+export const GenericModal = (props) => {
+    return (<Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+    >
+        <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+                {props.titulo}
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <p>{props.textbody}</p>
         </Modal.Body>
         <Modal.Footer className='justify-content-center'>
             <Button className='w-80' onClick={props.onHide}>Fechar</Button>
