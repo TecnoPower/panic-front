@@ -13,20 +13,33 @@ import InputMask from "react-input-mask";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Form from 'react-bootstrap/Form';
-import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso, GenericModal } from '../components/Modal/Modal';
 export const EditCad = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
-    const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const { token, setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
+    const toastId = React.useRef(null);
+
+    const notify = (text) => toastId.current = toast.success(text, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
     useEffect(() => {
         if (token === null) {
             navigate("/");
         }
-    },[]);
+    }, []);
     const [cadastroMentor, setCadastroMentor] = useState({
         name: "",
         date: "",
@@ -113,7 +126,7 @@ export const EditCad = () => {
                     cadastroMentor._id = res.data.user._id;
                     axiosInstance.put('/api/mentor-data', cadastroMentor).then((res) => {
                         if (res.status === 200) {
-                            setModalShowSucesso(true);
+                            <>{notify("Salvo com Sucesso!")}</>
                         } else {
                             setModalShowErro(true)
                         }
@@ -133,7 +146,7 @@ export const EditCad = () => {
         cadastroMentorado.date = cadastroMentorado.date.replaceAll("/", "").replaceAll("/", "");
         cadastroMentorado.contato = cadastroMentorado.contato.replaceAll("-", "").replaceAll("(", "")
             .replaceAll(")", "").replaceAll(" ", "");
-            console.log("sexo: ",cadastroMentorado.sexo)
+        console.log("sexo: ", cadastroMentorado.sexo)
         if (cadastroMentorado.name === "" ||
             cadastroMentorado.date === "" ||
             cadastroMentorado.sexo === "Selecione" ||
@@ -151,7 +164,7 @@ export const EditCad = () => {
                     cadastroMentorado._id = res.data.user._id;
                     axiosInstance.put('/api/mentorado-data', cadastroMentorado).then((res) => {
                         if (res.status === 200) {
-                            setModalShowSucesso(true);
+                            <>{notify("Salvo com Sucesso!")}</>
                         } else {
                             setModalShowErro(true)
                         }
@@ -161,20 +174,31 @@ export const EditCad = () => {
             });
         }
     }
-    
+
     if (tipo === "mentorado") {
         return (
             <>
-                <Navbar titulo={"Alterar Dados"} tipo={2} />
+                <Navbar titulo={"Perfil"} tipo={2} />
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <div className="container mx-auto pt-6 pb-2">
                     <div className="row justify-content-center">
-                        <div className="card minimo-320 max-w-70">
+                        <div className="card minimo-320 max-w-75 shadow-lg p-3 mb-5 bg-body rounded">
                             <div className="container h-100 ">
                                 <form action="" method="get" className="h-100 pb-3">
                                     <div className="row">
                                         <div className="col-lg">
                                             <div className="col-lg pt-2">
-                                                <h2 className="text-center pb-2">Edite seus Dados</h2>
+                                                <h2 className="text-center pb-2">Atualize seus Dados</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -237,8 +261,8 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea maxLength="236" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
-                                                <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
+                                                <textarea maxLength="236" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                             </div>
                                         </div>
                                     </div>
@@ -269,7 +293,7 @@ export const EditCad = () => {
                                     </div>
                                     <div className="container pt-4 pb-2">
                                         <div className="text-center">
-                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentorado}>Atualizar Dados</button>
+                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentorado}>Salvar</button>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}
@@ -279,10 +303,7 @@ export const EditCad = () => {
                                             show={modalShowErro}
                                             onHide={() => setModalShowErro(false)}
                                         />
-                                        <ModalSucesso
-                                            show={modalShowSucesso}
-                                            onHide={() => setModalShowSucesso(false)}
-                                        />
+
                                     </div>
                                 </form>
                             </div>
@@ -294,16 +315,27 @@ export const EditCad = () => {
     } else {
         return (
             <>
-                <Navbar titulo={"Alterar Dados"} tipo={2} />
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <Navbar titulo={"Perfil"} tipo={2} />
                 <div className="container mx-auto pt-6 pb-2">
                     <div className="row justify-content-center">
-                        <div className="card minimo-320 max-w-75">
+                        <div className="card minimo-320 max-w-75 shadow-lg p-3 mb-5 bg-body rounded">
                             <div className="container h-100 ">
                                 <form action="" method="get" >
                                     <div className="row">
                                         <div className="col-lg">
                                             <div className="col-lg pt-2">
-                                                <h2 className="text-center pb-2">Edite seus Dados</h2>
+                                                <h2 className="text-center pb-2">Atualize seus Dados</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -398,8 +430,8 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea maxLength="236" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
-                                                <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
+                                                <textarea maxLength="236" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                             </div>
                                         </div>
                                     </div>
@@ -430,7 +462,7 @@ export const EditCad = () => {
                                     </div>
                                     <div className="container pt-4 pb-2">
                                         <div className="text-center">
-                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentor}>Atualizar Dados</button>
+                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentor}>Salvar</button>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}
@@ -443,10 +475,6 @@ export const EditCad = () => {
                                         <ModalErro
                                             show={modalShowErro}
                                             onHide={() => setModalShowErro(false)}
-                                        />
-                                        <ModalSucesso
-                                            show={modalShowSucesso}
-                                            onHide={() => setModalShowSucesso(false)}
                                         />
                                     </div>
                                 </form>

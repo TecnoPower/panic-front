@@ -5,11 +5,31 @@
     color: white !important;
 }
 
+.btn-default:hover {
+    background-color: #3451d0 !important;
+    color: white !important;
+}
+
+.btn-outline-default,
+.btn-outline-default:active,
+.btn-outline-default:visited {
+    color: #ffffff !important;
+    border-color: #b4b4b465 !important;
+}
+
+
+.btn-outline-default:hover {
+    color: #fff;
+    background-color: #b4b4b465 !important;
+
+}
+
 .cursorPointer {
     cursor: pointer;
 }
-.texto-nome{
-cursor: context-menu;
+
+.texto-nome {
+    cursor: context-menu;
 }
 
 .descricao-box {
@@ -23,6 +43,14 @@ cursor: context-menu;
     text-align: justify;
 }
 
+.minimo-40 {
+    min-height: 40px !important;
+}
+
+.minimo-fotos {
+    min-width: 200px !important;
+}
+
 .pt-6 {
     padding-top: 5rem !important;
 }
@@ -30,18 +58,18 @@ cursor: context-menu;
 .text-default {
     color: #5271FF !important;
 }
-.px-130{
-    height: 130px!important;
+
+.px-130 {
+    min-height: 130px !important;
 }
+
 .bg-default {
     background-color: #5271FF !important;
 }
 
-.btn-default:hover {
-    background-color: #3451d0 !important;
-    color: white !important;
+.px-86{
+    width: 86px!important;
 }
-
 .text-xg {
     font-size: 30vw !important;
 }
@@ -62,11 +90,15 @@ cursor: context-menu;
     min-width: 320px !important;
 }
 
-.redes-sociais {
-    max-width: 7rem !important;
-    padding-right: 10px !important;
-    padding-left: 10px !important;
+.minimo-160 {
+    min-width: 160px !important;
 }
+
+.minimo-160-2 {
+    min-width: 160px !important;
+    max-width: 80% !important;
+}
+
 
 .max-height {
     height: 280px !important;

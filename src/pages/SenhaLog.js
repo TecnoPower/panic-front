@@ -58,11 +58,11 @@ export const SenhaLog = () => {
     }
     return (
         <>
-            <Navbar titulo={"Alterar Senha"} tipo={2} />
+             <Navbar tipo={2} />
             <div className="container mx-auto pt-6">
                 <div className="row justify-content-center">
-                    <div className="card w-50 minimo-350">
-                        <h1 className='pt-2 pb-2 text-center'>Insira seus Dados</h1>
+                    <div className="card w-50 minimo-320 shadow-lg p-3 mb-5 bg-body rounded">
+                        <h1 className='pt-2 pb-2 text-center'>Insira suas Credenciais</h1>
                         <form action="" method="get" >
                             <div className="row g-2 pt-2">
                                 <div className="col-md form-floating">

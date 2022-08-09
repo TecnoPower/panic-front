@@ -18,15 +18,17 @@ function App() {
 
   const [token, setToken] = useState('');
   const [tipo, setTipo] = useState('');
+  const [nome, setNome] = useState('');
   useEffect(() => {
-    if (localStorage.getItem('token') || localStorage.getItem('tipo')) {
+    if (localStorage.getItem('token') || localStorage.getItem('tipo') || localStorage.getItem('nome')) {
       setToken(localStorage.getItem('token'));
       setTipo(localStorage.getItem('tipo'));
+      setNome(localStorage.getItem('nome'));
     }
   }, []);
 
   return (
-    <UserContext.Provider value={{ token, setToken, tipo, setTipo }}>
+    <UserContext.Provider value={{ token, setToken, tipo, setTipo, nome, setNome }}>
       <Router>
         <Routes>
           <Route exact path="/" element={<Index />} />

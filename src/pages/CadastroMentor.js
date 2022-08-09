@@ -95,7 +95,7 @@ export const CadastroMentor = () => {
             <Navbar titulo={"Cadastro Mentor"} tipo={1} />
             <div className="background-gradient-1 ">
                 <div className="container overflow-auto pt-5 pb-3">
-                    <div className='card'>
+                    <div className='card shadow p-3 mb-5 bg-body rounded'>
                         <div className="row row-cols-1 row-cols-lg-2 g-4 ">
                             <div className="container col">
                                 <div className="card w-100 d-flex align-items-center justify-content-center position-relative h-100">
@@ -227,8 +227,8 @@ export const CadastroMentor = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
-                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
+                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                                 </div>
                                             </div>
                                         </div>

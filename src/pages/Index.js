@@ -3,18 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React, { useContext, useState } from 'react';
 import { axiosInstance } from '../config/axios';
-import { NotFound404 } from '../pages/NotFound404';
-import { Navigate } from 'react-router';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
 import { ModalServidor, ModalMsgPreenchimento } from '../components/Modal/Modal';
 
 export const Index = () => {
-    const { token, setToken } = useContext(UserContext);
+    const { setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
+    const {nome, setNome } = useContext(UserContext);
     const [modalShowModalServidor, setModalShowModalServidor] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     let navigate = useNavigate();
@@ -25,7 +22,7 @@ export const Index = () => {
         if (tipo) {
             navigate("/home");
         }
-    }, [tipo]);
+    }, []);
 
     const [login, setLogin] = useState({
         email: "",
@@ -44,8 +41,10 @@ export const Index = () => {
                 } else {
                     localStorage.setItem('token', res.data.token);
                     localStorage.setItem('tipo', res.data.user.tipo);
+                    localStorage.setItem('nome', res.data.user.name);
                     setToken(res.data.token);
                     setTipo(res.data.user.tipo);
+                    setNome(res.data.user.name)
                     navigate("/home")
                 }
             });

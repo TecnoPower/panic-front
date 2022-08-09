@@ -193,8 +193,8 @@ export const CadastroMentorado = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você (Max 236 Caract)" id="floatingTextarea"></textarea>
-                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você (Max 236 Caract)</label>
+                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                    <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                                 </div>
                                             </div>
                                         </div>
