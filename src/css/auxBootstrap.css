@@ -59,17 +59,19 @@
     color: #5271FF !important;
 }
 
-.px-130 {
-    min-height: 130px !important;
+.px-250 {
+    min-height: 130px;
+    max-height: 250px;
 }
 
 .bg-default {
     background-color: #5271FF !important;
 }
 
-.px-86{
-    width: 86px!important;
+.px-86 {
+    width: 86px !important;
 }
+
 .text-xg {
     font-size: 30vw !important;
 }
@@ -104,6 +106,11 @@
     height: 280px !important;
 }
 
+.width-bt {
+    min-width: 120px !important;
+    width: 220px !important;
+}
+
 .card-img-top {
     padding: 20px !important;
 }
@@ -118,6 +125,10 @@
 
 .minimo-140 {
     min-width: 140px !important;
+}
+
+.minimo-170 {
+    min-width: 170px !important;
 }
 
 .padding-buttom-1 {

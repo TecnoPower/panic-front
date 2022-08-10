@@ -32,13 +32,14 @@ export const Navbar = (props) => {
                     </div>
                     <div className='col'></div>
                     <div className='col'>
-                        <Button className='px-86 btn btn-danger' onClick={() => {
+                        <Button className='px-86 btn btn-danger' onClick={
+                            () => {
                             localStorage.removeItem('token');
                             localStorage.removeItem('tipo');
                             localStorage.removeItem('nome');
-                            setToken(null);
-                            setTipo(null);
-                            setNome(null);
+                            setToken("");
+                            setTipo("");
+                            setNome("");
                             navigate("/")
                         }}>Sair</Button>
                     </div>
@@ -81,18 +82,18 @@ export const Navbar = (props) => {
                                 <span className="nav-link text-light fw-bold texto-nome">Olá,  {nome.split(' ').slice(0, 1).join(' ')}</span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer" onClick={() => navigate("/home")} >
+                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => navigate("/home")} >
                                     Home
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/edit") }} >
+                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/edit") }} >
                                     Perfil
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/sobre") }} >
-                                    Sobre Nós
+                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/sobre") }} >
+                                    Sobre nós
                                 </a>
                             </li>
                             <li className="nav-item dropdown d-none d-lg-block">

@@ -8,7 +8,7 @@ import { Home } from '../../pages/Home';
 export const ModalMensagem = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
@@ -32,7 +32,7 @@ export const ModalMsgPreenchimento = (props) => {
     return (
         <Modal
             {...props}
-            size="lg"
+            size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -56,7 +56,7 @@ export const ModalMsgPreenchimento = (props) => {
 export const ModalServidor = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         backdrop="static"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -68,7 +68,7 @@ export const ModalServidor = (props) => {
         </Modal.Header>
         <Modal.Body>
             <p>Perdão, não encontrei registro.</p>
-            <p>Verifique  login e senha.</p>
+            <p>Verifique login e senha.</p>
         </Modal.Body>
         <Modal.Footer className='justify-content-center' >
             <Button className='w-80' onClick={props.onHide}>Ok</Button>
@@ -78,7 +78,7 @@ export const ModalServidor = (props) => {
 export const ModalCpf = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         backdrop="static"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -99,7 +99,7 @@ export const ModalCpf = (props) => {
 export const ModalEmail = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         backdrop="static"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -121,7 +121,7 @@ export const ModalSucesso = (props) => {
     let navigate = useNavigate();
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         backdrop="static"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -143,7 +143,7 @@ export const ModalSucesso = (props) => {
 export const ModalErro = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
@@ -164,7 +164,7 @@ export const ModalErro = (props) => {
 export const ModalMsgSenha = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
@@ -185,7 +185,7 @@ export const ModalMsgSenha = (props) => {
 export const GenericModal = (props) => {
     return (<Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
@@ -199,6 +199,29 @@ export const GenericModal = (props) => {
         </Modal.Body>
         <Modal.Footer className='justify-content-center'>
             <Button className='w-80' onClick={props.onHide}>Fechar</Button>
+        </Modal.Footer>
+    </Modal>);
+}
+export const GenericModalClose = (props) => {
+    let navigate = useNavigate();
+    return (
+    <Modal
+        {...props}
+        size="md"
+        backdrop="static"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+    >
+        <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+                {props.titulo}
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <p>{props.textbody}</p>
+        </Modal.Body>
+        <Modal.Footer className='justify-content-center'>
+            <Button className='w-80' onClick={()=>navigate("/home")}>Fechar</Button>
         </Modal.Footer>
     </Modal>);
 }

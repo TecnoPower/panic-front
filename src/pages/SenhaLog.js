@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { axiosInstance } from '../config/axios';
 import { useEffect } from 'react';
-import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso, ModalMensagem } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalMsgSenha, ModalSucesso, ModalMensagem, GenericModal, GenericModalClose } from '../components/Modal/Modal';
 export const SenhaLog = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
@@ -16,8 +16,8 @@ export const SenhaLog = () => {
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const { token, setToken } = useContext(UserContext);
-    useEffect(() => {
-        if (token === null) {
+   useEffect(() => {
+        if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
             navigate("/");
         }
     }, []);
@@ -102,9 +102,11 @@ export const SenhaLog = () => {
                     show={modalShowMensagem}
                     onHide={() => setModalShowMensagem(false)}
                 />
-                <ModalSucesso
+                <GenericModalClose
                     show={modalShowSucesso}
                     onHide={() => setModalShowSucesso(false)}
+                    titulo={"Sucesso!"}
+                    textbody={"Senha Alterada com Sucesso!"}
                 />
             </div>
         </>

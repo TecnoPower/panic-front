@@ -20,11 +20,9 @@ function App() {
   const [tipo, setTipo] = useState('');
   const [nome, setNome] = useState('');
   useEffect(() => {
-    if (localStorage.getItem('token') || localStorage.getItem('tipo') || localStorage.getItem('nome')) {
-      setToken(localStorage.getItem('token'));
-      setTipo(localStorage.getItem('tipo'));
-      setNome(localStorage.getItem('nome'));
-    }
+    localStorage.getItem('token') && setToken(localStorage.getItem('token'));
+    localStorage.getItem('tipo') && setTipo(localStorage.getItem('tipo'));
+    localStorage.getItem('nome') && setNome(localStorage.getItem('nome'));
   }, []);
 
   return (

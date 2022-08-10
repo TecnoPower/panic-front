@@ -21,8 +21,10 @@ export const EditCad = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
+    const [modalShowDelete, setModalShowDelete] = useState(false);
     const { token, setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
+    const { nome, setNome } = useContext(UserContext);
     const toastId = React.useRef(null);
 
     const notify = (text) => toastId.current = toast.success(text, {
@@ -36,10 +38,11 @@ export const EditCad = () => {
     });
 
     useEffect(() => {
-        if (token === null) {
+        if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
             navigate("/");
         }
     }, []);
+
     const [cadastroMentor, setCadastroMentor] = useState({
         name: "",
         date: "",
@@ -66,39 +69,40 @@ export const EditCad = () => {
     });
 
     useEffect(() => {
-        axiosInstance.get('/auth/check').then((res) => {
+        if (localStorage.getItem('token')) {
+            axiosInstance.get('/auth/check').then((res) => {
 
-            if (res.status === 202) {
-                if (res.data.user.tipo === "mentorado") {
-                    setCadastroMentorado({
-                        name: res.data.user.name,
-                        date: res.data.user.date,
-                        email: res.data.user.email,
-                        cpf: res.data.user.cpf,
-                        seg: res.data.user.seg,
-                        contato: res.data.user.contato,
-                        sexo: res.data.user.sexo,
-                        desc: res.data.user.desc
-                    })
+                if (res.status === 202) {
+                    if (res.data.user.tipo === "mentorado") {
+                        setCadastroMentorado({
+                            name: res.data.user.name,
+                            date: res.data.user.date,
+                            email: res.data.user.email,
+                            cpf: res.data.user.cpf,
+                            seg: res.data.user.seg,
+                            contato: res.data.user.contato,
+                            sexo: res.data.user.sexo,
+                            desc: res.data.user.desc
+                        })
+                    }
+                    if (res.data.user.tipo === "mentor") {
+                        setCadastroMentor({
+                            name: res.data.user.name,
+                            date: res.data.user.date,
+                            sexo: res.data.user.sexo,
+                            email: res.data.user.email,
+                            area: res.data.user.area,
+                            profissao: res.data.user.profissao,
+                            cpf: res.data.user.cpf,
+                            contato: res.data.user.contato,
+                            seg: res.data.user.seg,
+                            desc: res.data.user.desc,
+                        });
+                    }
                 }
-                if (res.data.user.tipo === "mentor") {
-                    setCadastroMentor({
-                        name: res.data.user.name,
-                        date: res.data.user.date,
-                        sexo: res.data.user.sexo,
-                        email: res.data.user.email,
-                        area: res.data.user.area,
-                        profissao: res.data.user.profissao,
-                        cpf: res.data.user.cpf,
-                        contato: res.data.user.contato,
-                        seg: res.data.user.seg,
-                        desc: res.data.user.desc,
-                    });
-                }
-            }
 
-        })
-
+            })
+        }
     }, []);
 
     function submitMentor(e) {
@@ -174,6 +178,89 @@ export const EditCad = () => {
             });
         }
     }
+
+    function ModalDelete(props) {
+        let navigate = useNavigate();
+        return (<Modal
+            {...props}
+            size="lg"
+            backdrop="static"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Atenção!
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>Deseja realmente excluir sua conta? Você perderá todo o acesso a nossa plataforma!</h4>
+            </Modal.Body>
+            <Modal.Footer className='justify-content-center'>
+                <div className='row'>
+                    <div className='col'>
+                        <Button onClick={props.onHide}>Cancelar</Button>
+                    </div>
+                    <div className='col'></div>
+                    <div className='col'>
+                        <Button className='btn-danger' onClick={() => {
+                            if (tipo === "mentor") {
+                                axiosInstance.delete('/api/delete/mentor', {
+                                    headers: {
+                                        "x-access-token": localStorage.getItem('token'),
+                                        "content-type": "application/json"
+                                    }
+                                }).then((res) => {
+                                    console.log(res);
+                                    if (res.status === 202) {
+                                        axiosInstance.post('/api/delete/mentoria/mentor', {
+                                            headers: {
+                                                "x-access-token": localStorage.getItem('token'),
+                                                "content-type": "application/json"
+                                            }
+                                        }).then((res) => {
+                                            console.log(res)
+                                            localStorage.removeItem('token');
+                                            localStorage.removeItem('tipo');
+                                            localStorage.removeItem('nome');
+                                            setToken("");
+                                            setTipo("");
+                                            setNome("");
+                                            navigate("/")
+                                        })
+
+                                    }
+                                });
+                            }
+
+                            if (tipo === "mentorado") {
+                                axiosInstance.delete('/api/delete/mentorado', {
+                                    headers: {
+                                        "x-access-token": localStorage.getItem('token'),
+                                        "content-type": "application/json"
+                                    }
+                                }).then((res) => {
+                                    console.log(res);
+                                    if (res.status === 202) {
+                                        localStorage.removeItem('token');
+                                        localStorage.removeItem('tipo');
+                                        localStorage.removeItem('nome');
+                                        setToken("");
+                                        setTipo("");
+                                        setNome("");
+                                        navigate("/")
+                                    }
+
+                                });
+                            }
+
+                        }}> Deletar</Button>
+                    </div>
+                </div>
+            </Modal.Footer>
+        </Modal >);
+    }
+
 
     if (tipo === "mentorado") {
         return (
@@ -261,7 +348,7 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea maxLength="236" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                <textarea maxLength="100" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control px-250" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
                                                 <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                             </div>
                                         </div>
@@ -293,15 +380,26 @@ export const EditCad = () => {
                                     </div>
                                     <div className="container pt-4 pb-2">
                                         <div className="text-center">
-                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentorado}>Salvar</button>
+                                            <a className="w-50 minimo-170 btn btn-lg btn-default" onClick={submitMentorado}>Salvar</a>
+                                        </div>
+                                        <div className="text-center">
+                                            <a className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</a>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}
                                             onHide={() => setModalShowPreencher(false)}
                                         />
+                                        <ModalMsgSenha
+                                            show={modalShowSenha}
+                                            onHide={() => setModalShowSenha(false)}
+                                        />
                                         <ModalErro
                                             show={modalShowErro}
                                             onHide={() => setModalShowErro(false)}
+                                        />
+                                        <ModalDelete
+                                            show={modalShowDelete}
+                                            onHide={() => setModalShowDelete(false)}
                                         />
 
                                     </div>
@@ -312,7 +410,8 @@ export const EditCad = () => {
                 </div>
             </>
         )
-    } else {
+    }
+    if (tipo === "mentor") {
         return (
             <>
                 <ToastContainer
@@ -430,7 +529,7 @@ export const EditCad = () => {
                                     <div className="row">
                                         <div className="col-lg pt-2">
                                             <div className="form-floating">
-                                                <textarea maxLength="236" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                <textarea maxLength="100" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-250" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
                                                 <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                             </div>
                                         </div>
@@ -462,7 +561,10 @@ export const EditCad = () => {
                                     </div>
                                     <div className="container pt-4 pb-2">
                                         <div className="text-center">
-                                            <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitMentor}>Salvar</button>
+                                            <button className="w-50 minimo-170 btn btn-lg btn-default" type="submit" onClick={submitMentor}>Salvar</button>
+                                        </div>
+                                        <div className="text-center pt-2">
+                                            <a className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</a>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}
@@ -475,6 +577,10 @@ export const EditCad = () => {
                                         <ModalErro
                                             show={modalShowErro}
                                             onHide={() => setModalShowErro(false)}
+                                        />
+                                        <ModalDelete
+                                            show={modalShowDelete}
+                                            onHide={() => setModalShowDelete(false)}
                                         />
                                     </div>
                                 </form>

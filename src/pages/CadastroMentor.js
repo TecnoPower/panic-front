@@ -21,10 +21,10 @@ export const CadastroMentor = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const [modalShowCpf, setModalShowCpf] = useState(false);
     const [modalShowEmail, setModalShowEmail] = useState(false);
-    const { tipo, setTipo } = useContext(UserContext);
+    const { token, setToken } = useContext(UserContext);
     let navigate = useNavigate();
     useEffect(() => {
-        if (tipo) {
+        if (localStorage.getItem('token')) {
             navigate("/home");
         }
     }, []);
@@ -227,8 +227,10 @@ export const CadastroMentor = () => {
                                         <div className="row">
                                             <div className="col-lg pt-2">
                                                 <div className="form-floating">
-                                                    <textarea maxLength="236" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-130" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                    <textarea maxLength="100" value={cadastro.desc} required onChange={(e) => { setCadastro({ ...cadastro, desc: e.target.value }) }} className="form-control px-250" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
                                                     <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
+                                                    <div id="seguranca-help" className="form-text"><b></b>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

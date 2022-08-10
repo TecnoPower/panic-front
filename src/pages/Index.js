@@ -9,9 +9,9 @@ import { useEffect } from 'react';
 import { ModalServidor, ModalMsgPreenchimento } from '../components/Modal/Modal';
 
 export const Index = () => {
-    const { setToken } = useContext(UserContext);
+    const { token, setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
-    const {nome, setNome } = useContext(UserContext);
+    const { nome, setNome } = useContext(UserContext);
     const [modalShowModalServidor, setModalShowModalServidor] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     let navigate = useNavigate();
@@ -19,7 +19,7 @@ export const Index = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        if (tipo) {
+        if (localStorage.getItem('token')) {
             navigate("/home");
         }
     }, []);
@@ -69,9 +69,9 @@ export const Index = () => {
                     <label htmlFor="senha-campo">Senha</label>
                 </div>
 
-                <div className="d-grid col-3 mx-auto pt-3">
+                <div className="text-center pt-3">
                     <button onClick={submitLogin}
-                        className="btn btn-default" type="submit">Entrar</button>
+                        className="btn btn-default width-bt" type="submit">Entrar</button>
                 </div>
             </form>
 

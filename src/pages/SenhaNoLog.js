@@ -9,10 +9,10 @@ export const SenhaNoLog = () => {
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
-    const { tipo, setTipo } = useContext(UserContext);
+    const { token, setToken } = useContext(UserContext);
     let navigate = useNavigate();
     useEffect(() => {
-        if (tipo) {
+        if (localStorage.getItem('token')) {
             navigate("/home");
         }
     }, []);
