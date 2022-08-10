@@ -382,7 +382,7 @@ export const EditCad = () => {
                                         <div className="text-center">
                                             <a className="w-50 minimo-170 btn btn-lg btn-default" onClick={submitMentorado}>Salvar</a>
                                         </div>
-                                        <div className="text-center">
+                                        <div className="text-center pt-2">
                                             <a className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</a>
                                         </div>
                                         <ModalMsgPreenchimento
