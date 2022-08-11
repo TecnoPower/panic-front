@@ -1,13 +1,11 @@
 import { Navbar } from '../components/Navbar';
 import React, { useContext } from 'react';
 import { UserContext } from '../App';
-import { Navigate } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { axiosInstance } from '../config/axios';
-import CPF from 'cpf-check';
 import { useEffect } from 'react';
 import InputMask from "react-input-mask";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -15,16 +13,16 @@ import Popover from 'react-bootstrap/Popover';
 import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso, GenericModal } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha} from '../components/Modal/Modal';
 export const EditCad = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const [modalShowDelete, setModalShowDelete] = useState(false);
-    const { token, setToken } = useContext(UserContext);
+    const {  setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
-    const { nome, setNome } = useContext(UserContext);
+    const {  setNome } = useContext(UserContext);
     const toastId = React.useRef(null);
 
     const notify = (text) => toastId.current = toast.success(text, {
@@ -41,7 +39,7 @@ export const EditCad = () => {
         if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
             navigate("/");
         }
-    }, []);
+    }, [navigate]);
 
     const [cadastroMentor, setCadastroMentor] = useState({
         name: "",
@@ -380,10 +378,10 @@ export const EditCad = () => {
                                     </div>
                                     <div className="container pt-4 pb-2">
                                         <div className="text-center">
-                                            <a className="w-50 minimo-170 btn btn-lg btn-default" onClick={submitMentorado}>Salvar</a>
+                                            <button className="w-50 minimo-170 btn btn-lg btn-default" onClick={submitMentorado}>Salvar</button>
                                         </div>
                                         <div className="text-center pt-2">
-                                            <a className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</a>
+                                            <button className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</button>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}
@@ -564,7 +562,7 @@ export const EditCad = () => {
                                             <button className="w-50 minimo-170 btn btn-lg btn-default" type="submit" onClick={submitMentor}>Salvar</button>
                                         </div>
                                         <div className="text-center pt-2">
-                                            <a className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</a>
+                                            <button className="w-50 minimo-170 btn btn-lg btn-danger" onClick={() => setModalShowDelete(true)}>Deletar Conta</button>
                                         </div>
                                         <ModalMsgPreenchimento
                                             show={modalShowPreencher}

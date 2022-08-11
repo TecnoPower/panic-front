@@ -1,21 +1,19 @@
 import { Navbar } from '../components/Navbar';
-import React, { useContext, useState, useEffect } from 'react';
-import { UserContext } from '../App';
+import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento,  ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const SenhaNoLog = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
-    const [modalShowPreencher, setModalShowPreencher] = useState(false);
-    const { token, setToken } = useContext(UserContext);
+    const [modalShowPreencher, setModalShowPreencher] = useState(false)
     let navigate = useNavigate();
     useEffect(() => {
         if (localStorage.getItem('token')) {
             navigate("/home");
         }
-    }, []);
+    }, [navigate]);
 
     const [troca, setTroca] = useState({
         confirmPass: "",

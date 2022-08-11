@@ -1,51 +1,50 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/auxBootstrap.css';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../config/axios';
-import { GenericModal } from './Modal/Modal';
 import { Modal, Button } from 'react-bootstrap';
 export const Navbar = (props) => {
     const { setToken } = useContext(UserContext);
-    const { tipo, setTipo } = useContext(UserContext);
+    const { setTipo } = useContext(UserContext);
     const { nome, setNome } = useContext(UserContext);
     const [modalSair, showModalSair] = useState(false);
     let navigate = useNavigate();
 
     const ModalSair = (props) => {
         let navigate = useNavigate();
-        return (<Modal
-            {...props}
-            size="sm"
-            backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Body>
-                <h4>Deseja sair?</h4>
-            </Modal.Body>
-            <Modal.Footer className='justify-content-center'>
-                <div className='row'>
-                    <div className='col'>
-                        <Button className='px-86 btn' onClick={props.onHide}>Cancelar</Button>
+        return (
+            <Modal
+                {...props}
+                size="sm"
+                backdrop="static"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Body>
+                    <h4>Deseja sair?</h4>
+                </Modal.Body>
+                <Modal.Footer className='justify-content-center'>
+                    <div className='row'>
+                        <div className='col'>
+                            <Button className='px-86 btn' onClick={props.onHide}>Cancelar</Button>
+                        </div>
+                        <div className='col'></div>
+                        <div className='col'>
+                            <Button className='px-86 btn btn-danger' onClick={
+                                () => {
+                                    localStorage.removeItem('token');
+                                    localStorage.removeItem('tipo');
+                                    localStorage.removeItem('nome');
+                                    setToken("");
+                                    setTipo("");
+                                    setNome("");
+                                    navigate("/")
+                                }}>Sair</Button>
+                        </div>
                     </div>
-                    <div className='col'></div>
-                    <div className='col'>
-                        <Button className='px-86 btn btn-danger' onClick={
-                            () => {
-                            localStorage.removeItem('token');
-                            localStorage.removeItem('tipo');
-                            localStorage.removeItem('nome');
-                            setToken("");
-                            setTipo("");
-                            setNome("");
-                            navigate("/")
-                        }}>Sair</Button>
-                    </div>
-                </div>
-            </Modal.Footer>
-        </Modal>);
+                </Modal.Footer>
+            </Modal>);
     }
 
     if (props.tipo === null || props.tipo === "" || props.tipo === 1) {
@@ -82,25 +81,25 @@ export const Navbar = (props) => {
                                 <span className="nav-link text-light fw-bold texto-nome">Olá,  {nome.split(' ').slice(0, 1).join(' ')}</span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => navigate("/home")} >
+                                <span className="nav-link text-light cursorPointer pe-3" onClick={() => navigate("/home")} >
                                     Home
-                                </a>
+                                </span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/edit") }} >
+                                <span className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/edit") }} >
                                     Perfil
-                                </a>
+                                </span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/sobre") }} >
+                                <span className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/sobre") }} >
                                     Sobre nós
-                                </a>
+                                </span>
                             </li>
                             <li className="nav-item dropdown d-none d-lg-block">
-                                <a className="nav-link dropdown-toggle text-light cursorPointer" id="navbarDropdown" role="button"
+                                <span className="nav-link dropdown-toggle text-light cursorPointer" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Opções
-                                </a>
+                                </span>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li>
                                         <p className="dropdown-item fw-bold texto-nome">Olá,  {nome.split(' ').slice(0, 1).join(' ')}</p>
@@ -109,37 +108,37 @@ export const Navbar = (props) => {
                                         <hr className="dropdown-divider" />
                                     </li>
                                      <li>
-                                        <a className="dropdown-item cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</a>
+                                        <span className="dropdown-item cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</span>
                                     </li> */}
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <a className="dropdown-item cursorPointer"
-                                            onClick={() => { navigate("/senha-log") }}>Alterar Senha</a>
+                                        <span className="dropdown-item cursorPointer"
+                                            onClick={() => { navigate("/senha-log") }}>Alterar Senha</span>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <a className="dropdown-item cursorPointer"
+                                        <span className="dropdown-item cursorPointer"
                                             onClick={() => {
                                                 showModalSair(true);
-                                            }} >Sair</a>
+                                            }} >Sair</span>
                                     </li>
                                 </ul>
                             </li>
 
                             {/* <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                                <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</a>
+                                <span className="nav-link text-light cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</span>
                             </li> */}
                             <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                                <a className="nav-link text-light cursorPointer" onClick={() => { navigate("/senha-log") }}>Alterar Senha</a>
+                                <span className="nav-link text-light cursorPointer" onClick={() => { navigate("/senha-log") }}>Alterar Senha</span>
                             </li>
                             <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                                <a className="nav-link text-light cursorPointer" onClick={() => {
+                                <span className="nav-link text-light cursorPointer" onClick={() => {
                                     showModalSair(true);
-                                }} >Sair</a>
+                                }} >Sair</span>
                             </li>
                         </ul>
                     </div>

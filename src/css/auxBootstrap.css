@@ -101,6 +101,27 @@
     max-width: 80% !important;
 }
 
+.login-padding {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+.cad-padding {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+.cad-padding-size {
+    max-width: 80%;
+}
+
+.login-padding-input {
+    margin-left: 30%;
+    margin-right: 30%;
+}
 
 .max-height {
     height: 280px !important;
@@ -109,6 +130,117 @@
 .width-bt {
     min-width: 120px !important;
     width: 220px !important;
+}
+
+@media (max-width: 575.98px) {
+    .font-size-text-link {
+        font-size: 10pt;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .font-size-text-link {
+        font-size: 11pt;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .font-size-text-link {
+        font-size: 12pt;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .font-size-text-link {
+        font-size: 13pt;
+    }
+}
+
+@media (min-width: 1400px) {
+    .font-size-text-link {
+        font-size: 14pt;
+    }
+}
+
+@media (min-width: 1700px) {
+    .font-size-text-link {
+        font-size: 15pt;
+    }
+}
+
+@media (min-width: 2000px) {
+    .font-size-text-link {
+        font-size: 17pt;
+    }
+}
+
+@media (min-width: 2500px) {
+    .font-size-text-link {
+        font-size: 20pt;
+    }
+}
+
+@media (min-width: 3000px) {
+    .font-size-text-link {
+        font-size: 26pt;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .font-size-text {
+        font-size: 14pt;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .font-size-text {
+        font-size: 18pt;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .font-size-text {
+        font-size: 22pt;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .font-size-text {
+        font-size: 22pt;
+    }
+}
+
+@media (min-width: 1200px) {
+    .font-size-text {
+        font-size: 25pt;
+    }
+}
+
+@media (min-width: 1700px) {
+    .font-size-text {
+        font-size: 29pt;
+    }
+}
+
+@media (min-width: 2000px) {
+    .font-size-text {
+        font-size: 34pt;
+    }
+}
+
+@media (min-width: 2500px) {
+    .font-size-text {
+        font-size: 39pt;
+    }
+}
+
+@media (min-width: 3000px) {
+    .font-size-text {
+        font-size: 43pt;
+    }
 }
 
 .card-img-top {

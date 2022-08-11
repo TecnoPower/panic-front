@@ -1,9 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../../config/axios';
-import { Home } from '../../pages/Home';
 
 export const ModalMensagem = (props) => {
     return (<Modal
@@ -205,23 +202,77 @@ export const GenericModal = (props) => {
 export const GenericModalClose = (props) => {
     let navigate = useNavigate();
     return (
-    <Modal
-        {...props}
-        size="md"
-        backdrop="static"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-    >
-        <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-                {props.titulo}
-            </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <p>{props.textbody}</p>
-        </Modal.Body>
-        <Modal.Footer className='justify-content-center'>
-            <Button className='w-80' onClick={()=>navigate("/home")}>Fechar</Button>
-        </Modal.Footer>
-    </Modal>);
+        <Modal
+            {...props}
+            size="md"
+            backdrop="static"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    {props.titulo}
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>{props.textbody}</p>
+            </Modal.Body>
+            <Modal.Footer className='justify-content-center'>
+                <Button className='w-80' onClick={() => navigate("/home")}>Fechar</Button>
+            </Modal.Footer>
+        </Modal>);
+}
+
+export const ModalCadastros = (props) => {
+    return (
+        <Modal {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Formas de Cadastro</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <>
+                    <div className="row pt-2">
+                        <div className="card" >
+                            <div className="row g-0">
+                                <div className="col-md-4">
+                                    <img src="uploads/profissional.png" className="img-fluid rounded-start" alt="..." />
+                                </div>
+                                <div className="col-md-8">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Para Profissionais</h5>
+                                        <p className="card-text">Já tem uma área de atuação específica e gostaria de compartilhar sua tragetória com alguém que pode ter os mesmos interesses que você? e que futuramente pode torna-se um colega de trabalho? Se sim, <a  href="/cad-mentor" className='link-primary  font-size-text-link'>cadastre-se aqui</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row pt-2">
+                        <div className="card" >
+                            <div className="row g-0">
+                                <div className="col-md-4">
+                                    <img src="uploads/moca.png" className="img-fluid rounded-start" alt="..." />
+                                </div>
+                                <div className="col-md-8">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Para Você</h5>
+                                        <p className="card-text">Para você que está em pânico e não sabe ainda em qual carreira seguir, cadastre-se e procure um profissional na área que você deseja, para isso <a href="/cad-mentorado" className='link-primary cursorPointer'>cadastre-se aqui</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            </Modal.Body>
+            <Modal.Footer className='justify-content-center' >
+                <Button className='w-80' onClick={props.onHide}>
+                    Fechar
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
 }

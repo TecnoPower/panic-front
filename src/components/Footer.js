@@ -1,5 +1,5 @@
 import '../App.css';
-import '../css/login.css'
+import '../css/footer.css'
 function Footer() {
     return (
         <>

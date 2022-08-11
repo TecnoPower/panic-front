@@ -1,8 +1,16 @@
-.btn-default,.btn-default:active, .btn-default:visited {
-    background-color: #5271FF !important;
-    color: white!important;
-  } 
-  .btn-default:hover{
-    background-color: #3451d0 !important;
-    color: white!important;
-  }
+.btn-default,
+.btn-default:active,
+.btn-default:visited {
+  background-color: #5271FF !important;
+  color: white !important;
+}
+
+.btn-default:hover {
+  background-color: #3451d0 !important;
+  color: white !important;
+}
+
+body {
+  background: rgb(225, 225, 225);
+  /* background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 1) 65%); */
+}

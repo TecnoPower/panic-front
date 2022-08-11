@@ -1,0 +1,19 @@
+html,
+body {
+    height: 100%;
+
+}
+
+footer {
+    margin-bottom: -1px!important;
+    padding-bottom: -1px!important;
+    background-color: #5271FF;
+    color: white;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+footer p {
+    padding-left: 3%;
+    padding-right: 3%;
+}

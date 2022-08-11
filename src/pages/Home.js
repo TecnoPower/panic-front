@@ -7,10 +7,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ModalEmail, ModalErro, ModalSucesso, GenericModal } from '../components/Modal/Modal';
+import { ModalErro, ModalSucesso, GenericModal } from '../components/Modal/Modal';
 export const Home = () => {
-    const { token, setToken } = useContext(UserContext);
-    const { tipo, setTipo } = useContext(UserContext);
+
+    const { tipo, } = useContext(UserContext);
     const [mentores, setMentores] = useState([]);
     const [mentorias, setMentorias] = useState([]);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -30,50 +30,32 @@ export const Home = () => {
         progress: undefined,
     });
 
-    const dismiss = () => toast.dismiss(toastId.current);
 
     let navigate = useNavigate();
     useEffect(() => {
         if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
             navigate("/");
         }
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
-        if (tipo === "mentorado") {
-            axiosInstance.get('/api/mentor').then((res) => {
-                setMentores(res.data)
-            });
-            // axiosInstance.get('/api/return/name').then((res) => {
-            //     toast.success("Olá " + res.data.name, {
-            //         position: "bottom-center",
-            //         autoClose: 2500,
-            //         hideProgressBar: false,
-            //         closeOnClick: true,
-            //         pauseOnHover: true,
-            //         draggable: true,
-            //         progress: undefined,
-            //     });
-            // })
-        }
-        if (tipo === "mentor") {
-            axiosInstance.get('/api/mentoria').then((res) => {
-                setMentorias(res.data)
-            });
-            // axiosInstance.get('/api/return/name').then((res) => {
-            //     toast.success("Olá " + res.data.name, {
-            //         position: "bottom-center",
-            //         autoClose: 2500,
-            //         hideProgressBar: false,
-            //         closeOnClick: true,
-            //         pauseOnHover: true,
-            //         draggable: true,
-            //         progress: undefined,
-            //     });
-            // })
+        try {
+            if (tipo === "mentorado") {
+                axiosInstance.get('/api/mentor').then((res) => {
+                    setMentores(res.data)
+                });
+            }
+            if (tipo === "mentor") {
+                axiosInstance.get('/api/mentoria').then((res) => {
+                    setMentorias(res.data)
+                });
+                
+            }
+        } catch (err) {
+            
         }
 
-    }, [reload]);
+    }, [reload, tipo]);
 
     const conectar = (_id_mentor) => {
         axiosInstance.post('/api/mentoria', { _id_mentor }).then((res) => {
@@ -157,7 +139,7 @@ export const Home = () => {
                         <div className="row row-cols-1 row-cols-md-2 g-4 pt-2">
 
                             {mentores.map((mentor) => (
-                                <div className="col" key={mentor._id}>
+                                <div className="col mb-2" key={mentor._id}>
                                     <div className="card text-center max-height">
                                         <div className="card-header">
                                             {mentor.area}
@@ -165,11 +147,11 @@ export const Home = () => {
                                         <div className="card-body">
                                             <h5 className="card-title">{mentor.profissao}</h5>
                                             <h3 className="card-title">{mentor.name}</h3>
-                                            <p className="card-text descricao-box">{mentor.desc}</p>
+                                            <p className="card-text descricao-box text-center">{mentor.desc}</p>
                                         </div>
                                         <div className="card-footer">
-                                            <a className="btn btn-default cursorPointer w-80"
-                                                onClick={() => conectar(mentor._id)}>Conectar</a>
+                                            <button className="btn btn-default cursorPointer w-80"
+                                                onClick={() => conectar(mentor._id)}>Conectar</button>
                                         </div>
                                         <GenericModal
                                             show={modalShowErro}
