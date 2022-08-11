@@ -49,10 +49,10 @@ export const Home = () => {
                 axiosInstance.get('/api/mentoria').then((res) => {
                     setMentorias(res.data)
                 });
-                
+
             }
         } catch (err) {
-            
+
         }
 
     }, [reload, tipo]);

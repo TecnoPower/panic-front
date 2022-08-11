@@ -244,7 +244,7 @@ export const ModalCadastros = (props) => {
                                 <div className="col-md-8">
                                     <div className="card-body">
                                         <h5 className="card-title">Para Profissionais</h5>
-                                        <p className="card-text">Já tem uma área de atuação específica e gostaria de compartilhar sua tragetória com alguém que pode ter os mesmos interesses que você? e que futuramente pode torna-se um colega de trabalho? Se sim, <a  href="/cad-mentor" className='link-primary  font-size-text-link'>cadastre-se aqui</a>
+                                        <p className="card-text">Já tem uma área de atuação específica e gostaria de compartilhar sua tragetória com alguém que pode ter os mesmos interesses que você? e que futuramente pode torna-se um colega de trabalho? Se sim, <a href="/cad-mentor" className='link-primary  font-size-text-link'>cadastre-se aqui</a>
                                         </p>
                                     </div>
                                 </div>

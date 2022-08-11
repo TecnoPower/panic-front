@@ -2,7 +2,7 @@ import { Navbar } from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import { ModalMsgPreenchimento,  ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const SenhaNoLog = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
