@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+![panic doc](https://user-images.githubusercontent.com/67352385/184023034-e26e1dc2-dd72-45e7-8454-9001c1b8c561.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center"> 
+	PANIC
+</h4>
 
-## Available Scripts
+<p align="center">
+ <a href="#-Sobre">Sobre</a> •
+ <a href="#-Funcionalidades">Funcionalidades</a> •
+ <a href="#-Modelo-de-Desenvolvimento">Modelo de Desenvolvimento</a> • 
+ <a href="#-Tecnologias">Tecnologias</a> • 
+ <a href="#-Design">Design</a> • 
+ <a href="#-Licença">Licença</a>
+</p>
 
-In the project directory, you can run:
+## Sobre
 
-### `npm start`
+🎓 Panic é uma plataforma que tem como objetivo mitigar dúvidas relacionadas a escolha de profissão principalmente por parte dos jovens. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="center">Projeto desenvolvido para nota de avaliação final do projeto <b>START</b> do ano de 2022.</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Funcionalidades
 
-### `npm test`
+- Dois tipos de cadastro um para Mentor e outro para Mentorado:
+	### Cadastro Mentor com os seguintes dados:
+  1. Nome completo
+  2. Email
+  3. Data de Nascimento
+  4. Gênero
+  5. Senha
+  6. Breve descrição
+  7. Código de Segurança(Número da preferência do usuário)
+  ---
+  
+  ### Cadastro Mentor com os seguintes dados:
+  1. Nome completo
+  2. Email
+  3. Data de Nascimento
+  4. Gênero
+  5. Área de atuação
+  6. Profissão
+  7. Senha
+  8. Breve descrição
+  9. Código de Segurança(Número da preferência do usuário)
+  
+  
+- Mentores podem visualizar conexões com os mentorados e podem excluí-las caso necessário
+- Mentorados podem ver uma lista com vários mentores junto com: Nome, Área, Profissão e com a opção de conectar-se com um dos mesmos.
+## Tecnologias Principais
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### **Website**
+-   **[React](https://reactjs.org/)** 
+-   **[Axios](https://github.com/axios/axios)**
+-   **[React Bootstrap](https://react-bootstrap.github.io/)**
+-   **[Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/)**
+-   **[CPF Check](https://www.npmjs.com/package/cpf-check)**
+-   **[dotENV](https://github.com/motdotla/dotenv)**
+-   **[React Dom](https://www.npmjs.com/package/react-dom)**
+-   **[React Router Dom](https://www.npmjs.com/package/react-router-dom)**
+-   **[Validator](https://www.npmjs.com/package/validator)**
+-   **[Toastify](https://www.npmjs.com/package/react-toastify)**
+-   **[React Input Mask](https://www.npmjs.com/package/react-input-mask)**
 
-### `npm run build`
+> Veja o arquivo  [package.json](https://github.com/TecnoPower/panic-front/blob/main/package.json)
+#### **Server**
+-   **[Node.js](https://nodejs.org/en/)**
+-   **[Express](https://expressjs.com/)**
+-   **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
+-   **[Mongoose](https://mongoosejs.com/)**
+-   **[MongoDB](https://www.mongodb.com/)**
+-   **[body-parser](https://www.npmjs.com/package/body-parser)**
+-   **[Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)**
+-   **[dotENV](https://github.com/motdotla/dotenv)**
+-   **[bcrypt](https://www.npmjs.com/package/bcrypt)**
+> Veja o arquivo  [package.json](https://github.com/TecnoPower/panic-back/blob/main/package.json)
+#### []()**Utilitários**
+-   Protótipo:  **[Canva](https://www.canva.com/)**
+-   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
+-   Teste de API:  **[Insomnia](https://insomnia.rest/)**
+-   Ícones:  **[Bootstrap Icons](https://icons.getbootstrap.com/)**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Design
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Desktop**
+<div style='display: inline-flex;'>
+	<img alt="" src='https://user-images.githubusercontent.com/67352385/184072055-169a48d9-8278-4467-9cdf-db30773f5467.png' style="width: 30%;">
+	<img alt="" src='https://user-images.githubusercontent.com/67352385/184072058-ac7ae457-257d-4017-8614-a13348521397.png' style="width: 30%;">
+	<img alt="" src='https://user-images.githubusercontent.com/67352385/184072060-940ef674-43d3-4288-9b6c-3fdfa0fe759c.png' style="width: 30%;">  
+</div>
+**Mobile**
+<div style='display: inline-flex;'>
+ <img alt="" src='https://user-images.githubusercontent.com/67352385/184072197-43830fb0-5640-4c44-bc2d-ea5c342ceddb.png' style="width: 15%">
+ <img alt="" src='https://user-images.githubusercontent.com/67352385/184072201-be2f7f84-fc45-4fec-81e5-306ed3498dca.png' style="width: 15%">
+ <img alt="" src='https://user-images.githubusercontent.com/67352385/184072203-da2166da-989b-4cf6-a25e-61373f7729c3.png' style="width: 15%"> 
+</div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Licença
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+O projeto se encontra sob a licença [GPLv3](https://github.com/TecnoPower/panic-front/blob/main/LICENSE.md).
