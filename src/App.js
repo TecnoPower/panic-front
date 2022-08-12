@@ -30,12 +30,12 @@ function App() {
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem("theme");
-    localTheme ? setTheme(localTheme) : setMode("npmdark");
+    localTheme ? setTheme(localTheme) : setMode("dark");
   }, []);
 
   function themeToggler() {
     if (theme === "light") {
-      setMode("npmdark");
+      setMode("dark");
     } else {
       setMode("light");
     }
