@@ -23,6 +23,8 @@ function App() {
   const [token, setToken] = useState('');
   const [tipo, setTipo] = useState('');
   const [nome, setNome] = useState('');
+
+  
   const setMode = (mode) => {
     window.localStorage.setItem("theme", mode);
     setTheme(mode);
