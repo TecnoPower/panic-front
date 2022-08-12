@@ -4,16 +4,21 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
+import { Nav, CardModal } from './Styles/Styles';
+
 export const Navbar = (props) => {
     const { setToken } = useContext(UserContext);
     const { setTipo } = useContext(UserContext);
     const { nome, setNome } = useContext(UserContext);
     const [modalSair, showModalSair] = useState(false);
+
     let navigate = useNavigate();
+
 
     const ModalSair = (props) => {
         let navigate = useNavigate();
         return (
+
             <Modal
                 {...props}
                 size="sm"
@@ -21,49 +26,52 @@ export const Navbar = (props) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Body>
-                    <h4>Deseja sair?</h4>
-                </Modal.Body>
-                <Modal.Footer className='justify-content-center'>
-                    <div className='row'>
-                        <div className='col'>
-                            <Button className='px-86 btn' onClick={props.onHide}>Cancelar</Button>
+                <CardModal>
+                    <Modal.Body>
+                        <h4>Deseja sair?</h4>
+                    </Modal.Body>
+                    <Modal.Footer className='justify-content-center'>
+                        <div className='row'>
+                            <div className='col'>
+                                <Button className='px-86 btn' onClick={props.onHide}>Cancelar</Button>
+                            </div>
+                            <div className='col'></div>
+                            <div className='col'>
+                                <Button className='px-86 btn btn-danger' onClick={
+                                    () => {
+                                        localStorage.removeItem('token');
+                                        localStorage.removeItem('tipo');
+                                        localStorage.removeItem('nome');
+                                        setToken("");
+                                        setTipo("");
+                                        setNome("");
+                                        navigate("/")
+                                    }}>Sair</Button>
+                            </div>
                         </div>
-                        <div className='col'></div>
-                        <div className='col'>
-                            <Button className='px-86 btn btn-danger' onClick={
-                                () => {
-                                    localStorage.removeItem('token');
-                                    localStorage.removeItem('tipo');
-                                    localStorage.removeItem('nome');
-                                    setToken("");
-                                    setTipo("");
-                                    setNome("");
-                                    navigate("/")
-                                }}>Sair</Button>
-                        </div>
-                    </div>
-                </Modal.Footer>
-            </Modal>);
+                    </Modal.Footer>
+                </CardModal>
+            </Modal>
+        );
     }
 
     if (props.tipo === null || props.tipo === "" || props.tipo === 1) {
         return (
             <>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+                <Nav className="navbar navbar-expand-lg navbar-dark static-top">
                     <a className="navbar-brand ps-2" href="/">
                         <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                     </a>
                     <ul className="nav justify-content-center pe-2">
                         <h2 className="text-light">{props.titulo}</h2>
                     </ul>
-                </nav>
+                </Nav>
             </>
         );
     } else {
         return (
             <>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top w-100">
+                <Nav className="navbar navbar-expand-lg navbar-dark static-top w-100">
                     <a className="navbar-brand ps-4" href="/home">
                         <img src="uploads/panic_no_padding.gif" alt="..." height="50" />
                     </a>
@@ -104,12 +112,12 @@ export const Navbar = (props) => {
                                     <li>
                                         <p className="dropdown-item fw-bold texto-nome">Olá,  {nome.split(' ').slice(0, 1).join(' ')}</p>
                                     </li>
-                                    {/* <li>
+                                    <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                     <li>
-                                        <span className="dropdown-item cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</span>
-                                    </li> */}
+                                    <li>
+                                        <span className="dropdown-item cursorPointer" onClick={props.themeToggler}>Mudar Tema</span>
+                                    </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
@@ -128,10 +136,9 @@ export const Navbar = (props) => {
                                     </li>
                                 </ul>
                             </li>
-
-                            {/* <li className="nav-item d-lg-none d-xxl-none d-xl-none">
-                                <span className="nav-link text-light cursorPointer" onClick={() => { navigate("/edit") }}>Perfil</span>
-                            </li> */}
+                            <li className='nav-item d-lg-none d-xxl-none d-xl none'>
+                                <span className="nav-link text-light cursorPointer" onClick={props.themeToggler}>Mudar Tema</span>
+                            </li>
                             <li className="nav-item d-lg-none d-xxl-none d-xl-none">
                                 <span className="nav-link text-light cursorPointer" onClick={() => { navigate("/senha-log") }}>Alterar Senha</span>
                             </li>
@@ -146,7 +153,7 @@ export const Navbar = (props) => {
                         show={modalSair}
                         onHide={() => showModalSair(false)}
                     />
-                </nav>
+                </Nav>
             </>
         );
     }

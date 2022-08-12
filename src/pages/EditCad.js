@@ -14,7 +14,8 @@ import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha } from '../components/Modal/Modal';
-export const EditCad = () => {
+import { Card } from '../components/Styles/Styles';
+export const EditCad = ({themeToggler}) => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -269,7 +270,7 @@ export const EditCad = () => {
     if (tipo === "mentorado") {
         return (
             <>
-                <Navbar titulo={"Perfil"} tipo={2} />
+                <Navbar titulo={"Perfil"} tipo={2} themeToggler={themeToggler} />
                 <ToastContainer
                     position="bottom-center"
                     autoClose={2500}
@@ -283,7 +284,7 @@ export const EditCad = () => {
                 />
                 <div className="container mx-auto pt-6 pb-2">
                     <div className="row justify-content-center">
-                        <div className="card minimo-320 max-w-75 shadow-lg p-3 mb-5 bg-body rounded">
+                        <Card className="card minimo-320 max-w-75 shadow-lg p-3 mb-5 bg-body rounded">
                             <div className="container h-100 ">
                                 <form action="" method="get" className="h-100 pb-3">
                                     <div className="row">
@@ -409,7 +410,7 @@ export const EditCad = () => {
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </Card>
                     </div>
                 </div>
             </>
@@ -429,7 +430,7 @@ export const EditCad = () => {
                     draggable
                     pauseOnHover
                 />
-                <Navbar titulo={"Perfil"} tipo={2} />
+                <Navbar titulo={"Perfil"} tipo={2} themeToggler={themeToggler} />
                 <div className="container mx-auto pt-6 pb-2">
                     <div className="row justify-content-center">
                         <div className="card minimo-320 max-w-75 shadow-lg p-3 mb-5 bg-body rounded">

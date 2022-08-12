@@ -1,13 +1,14 @@
 import { Navbar } from '../components/Navbar';
 import React from 'react';
-export const Sobre = () => {
+import { Card } from '../components/Styles/Styles';
+export const Sobre = ({themeToggler}) => {
     return (
         <>
-            <Navbar titulo={"Sobre Nós"} tipo={2} />
+            <Navbar titulo={"Sobre Nós"} tipo={2} themeToggler={themeToggler} />
             <div className="mx-auto pt-5 pb-5">
                 <h1 className="mb-3 text-center">Sobre Nós: TecnoPower</h1>
                 <div className="container w-65 minimo-320">
-                    <div className="card">
+                    <Card className="card mb-5">
                         <div className='d-flex align-items-center justify-content-center'>
                             <img src="uploads/danilo.webp" className="card-img-top minimo-fotos w-30" alt="..." /></div>
                         <div className="card-body">
@@ -22,8 +23,8 @@ export const Sobre = () => {
                                 <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white' alt="..."/>
                             </a>
                         </div>
-                    </div>
-                    <div className="card">
+                    </Card>
+                    <Card className="card mb-5">
                         <div className='d-flex align-items-center justify-content-center'>
                             <img src="uploads/ghabryellen.webp" className="card-img-top minimo-fotos w-30" alt="..." /></div>
                         <div className="card-body">
@@ -38,8 +39,8 @@ export const Sobre = () => {
                                 <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white' alt="..."/>
                             </a>
                         </div>
-                    </div>
-                    <div className="card">
+                    </Card>
+                    <Card className="card mb-5">
                         <div className='d-flex align-items-center justify-content-center'>
                             <img src="uploads/paulo.webp" className="card-img-top minimo-fotos w-30" alt="..." /></div>
                         <div className="card-body">
@@ -54,7 +55,7 @@ export const Sobre = () => {
                                 <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white' alt="..."/>
                             </a>
                         </div>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </>

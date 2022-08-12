@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { axiosInstance } from '../config/axios';
 import { useEffect } from 'react';
+import { Card } from '../components/Styles/Styles';
 import { ModalMsgPreenchimento, ModalMsgSenha, ModalMensagem, GenericModalClose } from '../components/Modal/Modal';
-export const SenhaLog = () => {
+export const SenhaLog = ({themeToggler}) => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowMensagem, setModalShowMensagem] = useState(false);
@@ -53,11 +54,11 @@ export const SenhaLog = () => {
     }
     return (
         <>
-            <Navbar tipo={2} />
+            <Navbar tipo={2} themeToggler={themeToggler} />
             <div className="cad-padding-log">
                 <div className="row justify-content-center">
-                    <div className="card w-50 minimo-320 shadow-lg p-3 mb-5 bg-body rounded">
-                        <h1 className='pt-2 pb-2 text-center'>Insira suas Credenciais</h1>
+                    <Card className="card w-50 minimo-320 shadow-lg p-3 mb-5 bg-body rounded">
+                        <h2 className='pt-2 pb-2 text-center'>Insira suas Credenciais</h2>
                         <form action="" method="get" className='container'>
                             <div className="row g-2 pt-2">
                                 <div className="col-md form-floating">
@@ -83,7 +84,7 @@ export const SenhaLog = () => {
                                 </p>
                             </div>
                         </form>
-                    </div>
+                    </Card>
                 </div>
                 <ModalMsgPreenchimento
                     show={modalShowPreencher}

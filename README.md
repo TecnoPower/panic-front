@@ -53,6 +53,7 @@
 -   **[Axios](https://github.com/axios/axios)**
 -   **[React Bootstrap](https://react-bootstrap.github.io/)**
 -   **[Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/)**
+-   **[Styled Components](https://styled-components.com/)**
 -   **[CPF Check](https://www.npmjs.com/package/cpf-check)**
 -   **[dotENV](https://github.com/motdotla/dotenv)**
 -   **[React Dom](https://www.npmjs.com/package/react-dom)**

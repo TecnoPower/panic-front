@@ -7,8 +7,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Card } from '../components/Styles/Styles';
 import { ModalErro, ModalSucesso, GenericModal } from '../components/Modal/Modal';
-export const Home = () => {
+export const Home = ({themeToggler}) => {
 
     const { tipo, } = useContext(UserContext);
     const [mentores, setMentores] = useState([]);
@@ -114,7 +115,7 @@ export const Home = () => {
     if (tipo === 'mentorado') {
         return (
             <>
-                <Navbar tipo={2} />
+                <Navbar tipo={2} themeToggler={themeToggler} />
                 <ToastContainer
                     position="bottom-center"
                     autoClose={2500}
@@ -140,7 +141,7 @@ export const Home = () => {
 
                             {mentores.map((mentor) => (
                                 <div className="col mb-2" key={mentor._id}>
-                                    <div className="card text-center max-height">
+                                    <Card className="card text-center max-height">
                                         <div className="card-header">
                                             {mentor.area}
                                         </div>
@@ -170,7 +171,7 @@ export const Home = () => {
                                             textbody={"Conectado com Sucesso"}
 
                                         />
-                                    </div>
+                                    </Card>
                                 </div>
                             ))
                             }
@@ -183,7 +184,7 @@ export const Home = () => {
     if (tipo === 'mentor') {
         return (
             <>
-                <Navbar tipo={2} />
+                <Navbar tipo={2} themeToggler={themeToggler} />
                 <ToastContainer
                     position="bottom-center"
                     autoClose={2500}

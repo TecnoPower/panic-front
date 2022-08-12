@@ -4,9 +4,9 @@ import { axiosInstance } from '../config/axios';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Container } from '../components/Styles/Styles';
 import { ModalServidor, ModalMsgPreenchimento, ModalCadastros } from '../components/Modal/Modal';
-
-export const Index = () => {
+export const Index = ({ setMode }) => {
     const { setToken } = useContext(UserContext);
     const { setTipo } = useContext(UserContext);
     const { setNome } = useContext(UserContext);
@@ -14,7 +14,9 @@ export const Index = () => {
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const [modalCadastros, setModalCadastros] = useState(false);
     let navigate = useNavigate();
-
+    useEffect(() => {
+        setMode("light");
+    }, [setMode])
     useEffect(() => {
         if (localStorage.getItem('token')) {
             navigate("/home");
@@ -49,8 +51,7 @@ export const Index = () => {
     }
     return (
 
-        <div className="container form-login w-50">
-
+        <Container className="container form-login w-50">
             <form className='pt-5'>
                 <div className="form-floating text-center" id='img-login'>
                     <img className="mb-2 img-fluid" src="uploads/panic.gif" alt="" />
@@ -71,7 +72,6 @@ export const Index = () => {
                         className="btn btn-default width-bt" type="submit">Entrar</button>
                 </div>
             </form>
-
             <div className="container">
                 <div className="text-center mt-2 pt-2">
                     <a className="link-dark cursorPointer" href="/senha-no-log">Esqueci minha senha</a>
@@ -92,7 +92,7 @@ export const Index = () => {
                 />
                 <p variant="primary" onClick={() => setModalCadastros(true)} className="link-dark text-center mt-2 cursorPointer text-decoration-underline">Não possui uma conta? Cadastre-se</p>
             </div>
-        </div>
+        </Container>
     )
 
 }

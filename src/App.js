@@ -11,14 +11,36 @@ import { Home } from './pages/Home';
 import { EditCad } from './pages/EditCad';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import { lightTheme, darkTheme } from './components/Styles/Theme';
+import { GlobalStyles } from './GlobalStyles';
+import { ThemeProvider } from 'styled-components';
+import { Navbar } from './components/Navbar';
 
 export const UserContext = React.createContext({});
 
 function App() {
-
+  const [theme, setTheme] = useState('dark');
   const [token, setToken] = useState('');
   const [tipo, setTipo] = useState('');
   const [nome, setNome] = useState('');
+  const setMode = (mode) => {
+    window.localStorage.setItem("theme", mode);
+    setTheme(mode);
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("theme");
+    localTheme ? setTheme(localTheme) : setMode("npmdark");
+  }, []);
+
+  function themeToggler() {
+    if (theme === "light") {
+      setMode("npmdark");
+    } else {
+      setMode("light");
+    }
+  }
+
   useEffect(() => {
     localStorage.getItem('token') && setToken(localStorage.getItem('token'));
     localStorage.getItem('tipo') && setTipo(localStorage.getItem('tipo'));
@@ -26,23 +48,27 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ token, setToken, tipo, setTipo, nome, setNome }}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Index />} />
-          <Route exact path="/index.html" element={<Index />} />
-          <Route exact path="/cad-mentor" element={<CadastroMentor />} />
-          <Route exact path="/cad-mentorado" element={<CadastroMentorado />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/senha-log" element={<SenhaLog />} />
-          <Route exact path="/senha-no-log" element={<SenhaNoLog />} />
-          <Route exact path="/sobre" element={<Sobre />} />
-          <Route exact path="/edit" element={<EditCad />} />
-          <Route exact path="/*" element={<NotFound404 />} />
-          <Route exact path="/404" element={<NotFound404 />} />
-        </Routes>
-      </Router>
-    </UserContext.Provider>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <UserContext.Provider value={{ token, setToken, tipo, setTipo, nome, setNome }}>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<Index setMode={setMode}/>} />
+            <Route exact path="/index.html" element={<Index />} />
+            <Route exact path="/cad-mentor" element={<CadastroMentor themeToggler={themeToggler} />} />
+            <Route exact path="/cad-mentorado" element={<CadastroMentorado themeToggler={themeToggler} />} />
+            <Route exact path="/home" element={<Home themeToggler={themeToggler} />} />
+            <Route exact path="/senha-log" element={<SenhaLog themeToggler={themeToggler} />} />
+            <Route exact path="/senha-no-log" element={<SenhaNoLog themeToggler={themeToggler} />} />
+            <Route exact path="/sobre" element={<Sobre themeToggler={themeToggler} />} />
+            <Route exact path="/edit" element={<EditCad themeToggler={themeToggler} />} />
+            <Route exact path="/*" element={<NotFound404 themeToggler={themeToggler} />} />
+            <Route exact path="/nav" element={<Navbar />} />
+            <Route exact path="/404" element={<NotFound404 />} />
+          </Routes>
+        </Router>
+      </UserContext.Provider>
+    </ThemeProvider>
   );
 }
 
