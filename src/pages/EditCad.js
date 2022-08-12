@@ -13,16 +13,16 @@ import Popover from 'react-bootstrap/Popover';
 import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha} from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha } from '../components/Modal/Modal';
 export const EditCad = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     const [modalShowDelete, setModalShowDelete] = useState(false);
-    const {  setToken } = useContext(UserContext);
+    const { setToken } = useContext(UserContext);
     const { tipo, setTipo } = useContext(UserContext);
-    const {  setNome } = useContext(UserContext);
+    const { setNome } = useContext(UserContext);
     const toastId = React.useRef(null);
 
     const notify = (text) => toastId.current = toast.success(text, {
@@ -105,22 +105,22 @@ export const EditCad = () => {
 
     function submitMentor(e) {
         e.preventDefault();
-        cadastroMentor.cpf = cadastroMentor.cpf.replaceAll("-", "").replaceAll(".", "");
-        cadastroMentor.date = cadastroMentor.date.replaceAll("/", "").replaceAll("/", "");
-        cadastroMentor.contato = cadastroMentor.contato.replaceAll("-", "").replaceAll("(", "")
-            .replaceAll(")", "").replaceAll(" ", "");
-        if (cadastroMentor.name === "" ||
-            cadastroMentor.date === "" ||
-            cadastroMentor.sexo === "" ||
+        setCadastroMentor({
+            ...cadastroMentor, cpf: cadastroMentor.cpf.replaceAll("-", "").replaceAll(".", ""),
+            date: cadastroMentor.date.replaceAll("/", "").replaceAll("/", ""),
+            contato: cadastroMentor.contato.replaceAll("-", "").replaceAll("(", "")
+                .replaceAll(")", "").replaceAll(" ", "").replaceAll("_", ""),
+        });
+        if ((cadastroMentor.name,
+            cadastroMentor.date,
+            cadastroMentor.sexo,
+            cadastroMentor.email,
+            cadastroMentor.cpf,
+            cadastroMentor.contato,
+            cadastroMentor.seg,
+            cadastroMentor.desc) === "" ||
             cadastroMentor.sexo === "Selecione" ||
-            cadastroMentor.email === "" ||
-            cadastroMentor.area === "" ||
-            cadastroMentor.area === "Selecione" ||
-            cadastroMentor.profissao === "" ||
-            cadastroMentor.cpf === "" ||
-            cadastroMentor.contato === "" ||
-            cadastroMentor.seg === "" ||
-            cadastroMentor.desc === "") {
+            cadastroMentor.contato < 11) {
             setModalShowPreencher(true)
         } else {
             axiosInstance.get('/auth/check').then((res) => {
@@ -144,20 +144,25 @@ export const EditCad = () => {
 
     function submitMentorado(e) {
         e.preventDefault();
-        cadastroMentorado.cpf = cadastroMentorado.cpf.replaceAll("-", "").replaceAll(".", "");
-        cadastroMentorado.date = cadastroMentorado.date.replaceAll("/", "").replaceAll("/", "");
-        cadastroMentorado.contato = cadastroMentorado.contato.replaceAll("-", "").replaceAll("(", "")
-            .replaceAll(")", "").replaceAll(" ", "");
-        console.log("sexo: ", cadastroMentorado.sexo)
-        if (cadastroMentorado.name === "" ||
-            cadastroMentorado.date === "" ||
+        setCadastroMentorado({
+            ...cadastroMentorado, cpf: cadastroMentorado.cpf.replaceAll("-", "").replaceAll(".", ""),
+            date: cadastroMentorado.date.replaceAll("/", "").replaceAll("/", ""),
+            contato: cadastroMentorado.contato.replaceAll("-", "").replaceAll("(", "")
+                .replaceAll(")", "").replaceAll(" ", "").replaceAll("_", ""),
+        });
+
+
+
+        if ((cadastroMentorado.name,
+            cadastroMentorado.date,
+            cadastroMentorado.sexo,
+            cadastroMentorado.email,
+            cadastroMentorado.cpf,
+            cadastroMentorado.contato,
+            cadastroMentorado.seg,
+            cadastroMentorado.desc) === "" ||
             cadastroMentorado.sexo === "Selecione" ||
-            cadastroMentorado.sexo === "" ||
-            cadastroMentorado.email === "" ||
-            cadastroMentorado.cpf === "" ||
-            cadastroMentorado.contato === "" ||
-            cadastroMentorado.seg === "" ||
-            cadastroMentorado.desc === "") {
+            cadastroMentorado.contato < 11) {
             setModalShowPreencher(true)
         } else {
             axiosInstance.get('/auth/check').then((res) => {
@@ -166,6 +171,7 @@ export const EditCad = () => {
                     cadastroMentorado._id = res.data.user._id;
                     axiosInstance.put('/api/mentorado-data', cadastroMentorado).then((res) => {
                         if (res.status === 200) {
+                            axiosInstance.put("/api/mentoria-data", cadastroMentorado);
                             <>{notify("Salvo com Sucesso!")}</>
                         } else {
                             setModalShowErro(true)

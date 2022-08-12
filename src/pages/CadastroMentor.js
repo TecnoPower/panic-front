@@ -1,5 +1,6 @@
 import '../css/auxBootstrap.css';
 import Form from 'react-bootstrap/Form';
+import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { axiosInstance } from '../config/axios';
@@ -9,6 +10,8 @@ import { useEffect, useState } from 'react';
 import validator from 'validator';
 import CPF from 'cpf-check';
 import InputMask from "react-input-mask";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const CadastroMentor = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
@@ -23,7 +26,16 @@ export const CadastroMentor = () => {
             navigate("/home");
         }
     }, [navigate]);
-    
+    const toastId = React.useRef(null);
+    const notify = (text) => toastId.current = toast.error(text, {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     const [cadastro, setCadastro] = useState({
         name: "",
         date: "",
@@ -40,26 +52,20 @@ export const CadastroMentor = () => {
         tipo: "mentor"
     });
 
-    function submitCadastro(e) {
+    async function submitCadastro(e) {
         e.preventDefault();
-        cadastro.cpf = cadastro.cpf.replaceAll("-", "").replaceAll(".", "");
-        cadastro.date = cadastro.date.replaceAll("/", "").replaceAll("/", "");
-        cadastro.contato = cadastro.contato.replaceAll("-", "").replaceAll("(", "")
-            .replaceAll(")", "").replaceAll(" ", "");
+        const userExists = (await axiosInstance.post("/auth/find", { email: cadastro.email, cpf: cadastro.cpf })).data;
+        setCadastro({
+            ...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", ""),
+            date: cadastro.date.replaceAll("/", "").replaceAll("/", ""),
+            contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "")
+                .replaceAll(")", "").replaceAll(" ", "").replaceAll("_","")
+        })
         console.log(cadastro);
-        if (cadastro.name === "" ||
-            cadastro.date === "" ||
-            cadastro.sexo === "" ||
-            cadastro.pass === "" ||
-            cadastro.confirmPass === "" ||
-            cadastro.email === "" ||
-            cadastro.area === "" ||
-            cadastro.profissao === "" ||
-            cadastro.cpf === "" ||
-            cadastro.contato === "" ||
-            cadastro.contato.length < 11 ||
-            cadastro.seg === "" ||
-            cadastro.desc === "") {
+        if ((cadastro.name,cadastro.date,cadastro.sexo,cadastro.pass,
+            cadastro.confirmPass,cadastro.email,cadastro.area,cadastro.profissao,
+            cadastro.cpf,cadastro.contato,cadastro.seg,cadastro.desc) === "" ||
+            cadastro.contato.length < 11) {
             setModalShowPreencher(true)
         } else {
             if (cadastro.pass !== cadastro.confirmPass) {
@@ -71,14 +77,18 @@ export const CadastroMentor = () => {
                     if (validator.isEmail(cadastro.email) === false) {
                         setModalShowEmail(true);
                     } else {
-                        axiosInstance.post("/api/mentor", cadastro).then((res) => {
-                            console.log(res)
-                            if (res.status === 201) {
-                                setModalShowSucesso(true)
-                            } else {
-                                setModalShowErro(true);
-                            }
-                        })
+                        if (userExists) {
+                            <>{notify("Usuário já existe em nossa base de dados")}</>
+                        } else {
+                            axiosInstance.post("/api/mentor", cadastro).then((res) => {
+                                console.log(res)
+                                if (res.status === 201) {
+                                    setModalShowSucesso(true)
+                                } else {
+                                    setModalShowErro(true);
+                                }
+                            })
+                        }
                     }
                 }
             }
@@ -89,6 +99,7 @@ export const CadastroMentor = () => {
     return (
         <>
             <Navbar titulo={"Cadastro Mentor"} tipo={1} />
+            <ToastContainer />
             <div className="cad-padding">
                 <div className='card shadow p-3 mb-5 bg-body rounded'>
                     <div className="row row-cols-1 row-cols-lg-2 g-4 ">
@@ -247,7 +258,7 @@ export const CadastroMentor = () => {
                                                                 </Popover>
                                                             }
                                                         >
-                                                            <input value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="text" className="form-control font-size-text" id="campo-seguranca"
+                                                            <input value={cadastro.seg} required onChange={(e) => { setCadastro({ ...cadastro, seg: e.target.value }) }} type="number" className="form-control font-size-text" id="campo-seguranca"
                                                                 aria-describedby="seguranca-help" placeholder="Número de segurança" data-bs-toggle="popover"
                                                                 data-bs-trigger="focus" title="Atenção" data-bs-content="Guarde esse número para um possível esquecimento de senha" />
 

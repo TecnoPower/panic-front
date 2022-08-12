@@ -1,26 +1,21 @@
 import { Navbar } from '../components/Navbar';
-import React, { useContext } from 'react';
-import { UserContext } from '../App';
-import { Navigate } from 'react-router';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { axiosInstance } from '../config/axios';
 import { useEffect } from 'react';
-import { ModalMsgPreenchimento, ModalMsgSenha, ModalSucesso, ModalMensagem, GenericModal, GenericModalClose } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalMsgSenha, ModalMensagem, GenericModalClose } from '../components/Modal/Modal';
 export const SenhaLog = () => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowMensagem, setModalShowMensagem] = useState(false);
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
-    const { token, setToken } = useContext(UserContext);
-   useEffect(() => {
+    useEffect(() => {
         if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
             navigate("/");
         }
-    }, []);
+    }, [navigate]);
 
     const [troca, setTroca] = useState({
         confirmPass: "",
@@ -58,12 +53,12 @@ export const SenhaLog = () => {
     }
     return (
         <>
-             <Navbar tipo={2} />
-            <div className="container mx-auto pt-6">
+            <Navbar tipo={2} />
+            <div className="cad-padding-log">
                 <div className="row justify-content-center">
                     <div className="card w-50 minimo-320 shadow-lg p-3 mb-5 bg-body rounded">
                         <h1 className='pt-2 pb-2 text-center'>Insira suas Credenciais</h1>
-                        <form action="" method="get" >
+                        <form action="" method="get" className='container'>
                             <div className="row g-2 pt-2">
                                 <div className="col-md form-floating">
                                     <input value={troca.currentPass} onChange={(e) => { setTroca({ ...troca, currentPass: e.target.value }) }} required type="password" className="form-control" id="campo-senha-atual" autoComplete='off' placeholder="Senha Atual" />

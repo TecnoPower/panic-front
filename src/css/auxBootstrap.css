@@ -114,6 +114,12 @@
     margin-bottom: 5%;
     margin-right: 5%;
 }
+.cad-padding-log{
+    margin-top: 10rem;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+    margin-right: 5rem;
+}
 .cad-padding-size {
     max-width: 80%;
 }

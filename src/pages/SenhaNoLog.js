@@ -2,7 +2,7 @@ import { Navbar } from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha, GenericModal } from '../components/Modal/Modal';
 export const SenhaNoLog = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -36,6 +36,7 @@ export const SenhaNoLog = () => {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post("/auth/senha", troca).then((res) => {
+                    console.log("response" + res.data.user)
                     troca._id = res.data.user._id;
                     if (res.status === 202) {
                         if (res.data.user.tipo === "mentor") {
@@ -68,7 +69,7 @@ export const SenhaNoLog = () => {
             <Navbar titulo={"Esqueci minha senha"} tipo={1} />
             <div className="container mx-auto pt-6">
                 <div className="row justify-content-center">
-                    <div className="card w-50 minimo-320">
+                    <div className="card shadow p-3 mb-5 bg-body rounded w-50 minimo-320">
                         <h1 className='pt-2 pb-2 text-center'>Insira seus Dados</h1>
                         <form action="" method="get" >
                             <div className="row g-2 pt-2">
@@ -119,9 +120,11 @@ export const SenhaNoLog = () => {
                     show={modalShowErro}
                     onHide={() => setModalShowErro(false)}
                 />
-                <ModalSucesso
+                <GenericModal
                     show={modalShowSucesso}
                     onHide={() => setModalShowSucesso(false)}
+                    titulo={"Sucesso!"}
+                    textbody={"Senha Alterada com Sucesso!"}
                 />
             </div>
         </>
