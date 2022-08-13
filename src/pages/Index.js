@@ -15,6 +15,10 @@ export const Index = ({ setMode }) => {
     const [modalCadastros, setModalCadastros] = useState(false);
     let navigate = useNavigate();
     useEffect(() => {
+        //Refresh para dar o start no deploy do heroku
+        axiosInstance.get('/').then((res) => console.log(res.data))
+    })
+    useEffect(() => {
         setMode("light");
     }, [setMode])
     useEffect(() => {
