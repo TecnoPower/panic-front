@@ -10,7 +10,8 @@ import { useEffect, useState } from 'react';
 import validator from 'validator';
 import CPF from 'cpf-check';
 import InputMask from "react-input-mask";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { ToastContainerStyled } from '../components/Styles/Styles';
 import 'react-toastify/dist/ReactToastify.css';
 import { ModalMsgPreenchimento, ModalCpf, ModalEmail, ModalErro, ModalMsgSenha, ModalSucesso } from '../components/Modal/Modal';
 export const CadastroMentor = () => {
@@ -99,7 +100,7 @@ export const CadastroMentor = () => {
     return (
         <>
             <Navbar titulo={"Cadastro Mentor"} tipo={1} />
-            <ToastContainer />
+            <ToastContainerStyled />
             <div className="cad-padding">
                 <div className='card shadow p-3 mb-5 bg-body rounded'>
                     <div className="row row-cols-1 row-cols-lg-2 g-4 ">

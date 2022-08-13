@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { ToastContainer } from 'react-toastify';
 export const Container = styled.div`
 background: ${({ theme }) => theme.body};
 color: ${({ theme }) => theme.texto};
@@ -19,8 +19,14 @@ label{
 h1, h2, h3, h4, h5{
     color: ${({ theme }) => theme.texto};
 }
-
-    
+`
+export const ContainerLoader = styled.div`
+background: ${({ theme }) => theme.body};
+color: ${({ theme }) => theme.texto};
+*{
+    margin: -1px;
+    padding: -1px;
+}
 `
 export const Nav = styled.nav`
 transition: all .6s ease;
@@ -40,6 +46,9 @@ box-shadow: 0px 2px 6px 1px ${({ theme }) => theme.shadowCard}!important;
 background: ${({ theme }) => theme.colorCardMentor}!important;
 h2, h5, h4, h3, p{
     color: ${({ theme }) => theme.texto};
+}
+.text-justificado{
+    text-align: justify!important;
 }
 .text-card-modal{
     color: ${({ theme }) => theme.texto};
@@ -79,5 +88,19 @@ input{
 label{
     color: rgb(0,0,0);
 }
-
 `
+export const ToastContainerStyled = styled(ToastContainer)`
+.Toastify__toast {
+background: ${({ theme }) => theme.body};
+}
+.Toastify__toast-body {
+background: ${({ theme }) => theme.body};
+color: ${({ theme }) => theme.texto}
+}
+.Toastify__progress-bar {
+background: ${({ theme }) => theme.progressBar};
+}
+.Toastify__close-button{
+color: ${({ theme }) => theme.texto}
+}
+`;

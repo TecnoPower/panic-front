@@ -63,6 +63,9 @@
     min-height: 130px;
     max-height: 250px;
 }
+.acc-color{
+    color: #a421e1!important;
+}
 
 .bg-default {
     background-color: #5271FF !important;
@@ -92,6 +95,10 @@
     min-width: 320px !important;
 }
 
+.minimo-card-280 {
+    min-width: 280px !important;
+}
+
 .minimo-160 {
     min-width: 160px !important;
 }
@@ -114,12 +121,14 @@
     margin-bottom: 5%;
     margin-right: 5%;
 }
-.cad-padding-log{
+
+.cad-padding-log {
     margin-top: 10rem;
     margin-left: 5rem;
     margin-bottom: 5rem;
     margin-right: 5rem;
 }
+
 .cad-padding-size {
     max-width: 80%;
 }

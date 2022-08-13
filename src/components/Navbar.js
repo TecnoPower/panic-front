@@ -100,7 +100,7 @@ export const Navbar = (props) => {
                             </li>
                             <li className="nav-item">
                                 <span className="nav-link text-light cursorPointer pe-3" onClick={() => { navigate("/sobre") }} >
-                                    Sobre nós
+                                    Sobre
                                 </span>
                             </li>
                             <li className="nav-item dropdown d-none d-lg-block">
