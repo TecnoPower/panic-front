@@ -17,7 +17,7 @@ export const Index = ({ setMode }) => {
     useEffect(() => {
         //Refresh para dar o start no deploy do heroku
         axiosInstance.get('/').then((res) => console.log(res.data.msg))
-    })
+    },[])
     useEffect(() => {
         setMode("light");
     }, [setMode])
