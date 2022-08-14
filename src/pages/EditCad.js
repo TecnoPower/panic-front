@@ -66,31 +66,11 @@ export const EditCad = ({ themeToggler }) => {
 
                 if (res.status === 202) {
                     if (res.data.user.tipo === "mentorado") {
-                        setCadastroMentorado({
-                            name: res.data.user.name,
-                            date: res.data.user.date,
-                            email: res.data.user.email,
-                            cpf: res.data.user.cpf,
-                            seg: res.data.user.seg,
-                            contato: res.data.user.contato,
-                            sexo: res.data.user.sexo,
-                            desc: res.data.user.desc
-                        })
+                        setCadastroMentorado({...res.data.user})
                         setReady(true);
                     }
                     if (res.data.user.tipo === "mentor") {
-                        setCadastroMentor({
-                            name: res.data.user.name,
-                            date: res.data.user.date,
-                            sexo: res.data.user.sexo,
-                            email: res.data.user.email,
-                            area: res.data.user.area,
-                            profissao: res.data.user.profissao,
-                            cpf: res.data.user.cpf,
-                            contato: res.data.user.contato,
-                            seg: res.data.user.seg,
-                            desc: res.data.user.desc,
-                        });
+                        setCadastroMentor({...res.data.user});
                         setReady(true);
                     }
                 }
@@ -356,7 +336,7 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg pt-2">
                                                     <div className="form-floating">
-                                                        <textarea maxLength="100" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control px-250" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                        <textarea maxLength="100" value={cadastroMentorado.desc} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, desc: e.target.value }) }} className="form-control px-80" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
                                                         <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                                     </div>
                                                 </div>
@@ -542,7 +522,7 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg pt-2">
                                                     <div className="form-floating">
-                                                        <textarea maxLength="100" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-250" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
+                                                        <textarea maxLength="100" value={cadastroMentor.desc} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, desc: e.target.value }) }} className="form-control px-80" placeholder="Descrição Sobre Você " id="floatingTextarea"></textarea>
                                                         <label htmlFor="floatingTextarea">Descrição Sobre Você </label>
                                                     </div>
                                                 </div>
