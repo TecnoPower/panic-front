@@ -21,6 +21,7 @@ export const Index = ({ setMode }) => {
             await axiosInstance.get('/').then((res) => {
                 console.log(res.data.msg);
                 setReady(true)
+                navigate("/")
             })
         }
         startServer();
