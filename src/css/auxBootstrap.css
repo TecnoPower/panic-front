@@ -70,7 +70,10 @@
 .bg-default {
     background-color: #5271FF !important;
 }
-
+.px-80{
+    min-height: 80px!important;
+    max-height: 120px!important;
+}
 .px-86 {
     width: 86px !important;
 }
