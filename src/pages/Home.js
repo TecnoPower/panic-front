@@ -169,10 +169,6 @@ export const Home = ({ themeToggler }) => {
                                                     titulo={"Ops"}
                                                     textbody={"Você já possuí uma conexão"}
                                                 />
-                                                <ModalSucesso
-                                                    show={modalShowSucesso}
-                                                    onHide={() => setModalShowSucesso(false)}
-                                                />
                                                 <GenericModal
                                                     show={modalShowGeneric}
                                                     onHide={() => setModalShowGeneric(false)}
