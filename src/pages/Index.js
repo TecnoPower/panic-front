@@ -21,16 +21,15 @@ export const Index = ({ setMode }) => {
     useEffect(() => {
         async function startServer() {
             await axiosInstance.get('/').then((res) => {
-                if (res.status === 200) {
-                    setReady(true)
-                } else {
-                    startServer();
-                }
+                navigate("/");
+                setReady(true);
             }).catch(() => {
+                navigate("/");
+                setReady(true);
             })
         }
         startServer();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         setMode("light");
@@ -53,7 +52,7 @@ export const Index = ({ setMode }) => {
             setModalShowPreencher(true);
         } else {
             axiosInstance.post("/auth/login", login).then((res) => {
-               // console.log(res)
+                // console.log(res)
                 if (res.status === 203) {
                     setModalShowModalServidor(true);
                 } else {
