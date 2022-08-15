@@ -20,15 +20,17 @@ export const Index = ({ setMode }) => {
     //Tirar delay do servidor no heroku
     useEffect(() => {
         async function startServer() {
-            await axiosInstance.get('/').then(() => {
-                setReady(true)
-                navigate("/");
+            await axiosInstance.get('/').then((res) => {
+                if (res.status === 200) {
+                    setReady(true)
+                } else {
+                    startServer();
+                }
             }).catch(() => {
-                startServer();
             })
         }
         startServer();
-    }, [navigate]);
+    }, []);
 
     useEffect(() => {
         setMode("light");
