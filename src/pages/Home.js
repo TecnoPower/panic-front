@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../config/axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Card, CardModal,ToastContainerStyled } from '../components/Styles/Styles';
+import { Card, CardModal, ToastContainerStyled } from '../components/Styles/Styles';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from '../components/Loader'
@@ -154,7 +154,9 @@ export const Home = ({ themeToggler }) => {
                                                 </div>
                                                 <div className="card-body">
                                                     <h5 className="card-title">{mentor.profissao}</h5>
-                                                    <h3 className="card-title">{mentor.name}</h3>
+                                                    <h3 className="card-title">{
+                                                        mentor.name.split(' ').slice(0, 1) + " " + mentor.name.split(' ').slice(mentor.name.split(' ').length - 1, mentor.name.split(' ').length)
+                                                    }</h3>
                                                     <p className="card-text descricao-box text-center">{mentor.desc}</p>
                                                 </div>
                                                 <div className="card-footer">
