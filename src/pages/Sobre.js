@@ -1,6 +1,6 @@
 import { Navbar } from '../components/Navbar';
 import React, { useState } from 'react';
-import { Card } from '../components/Styles/Styles';
+import { Card, Text } from '../components/Styles/Styles';
 import { Loader } from '../components/Loader';
 export const Sobre = ({ themeToggler }) => {
     const [ready, setReady] = useState(false);
@@ -14,7 +14,7 @@ export const Sobre = ({ themeToggler }) => {
                 <>
                     <Navbar titulo={"Sobre"} tipo={2} themeToggler={themeToggler} />
                     <div className="mx-auto pt-5 pb-5">
-                        <h1 className="mb-3 text-center">Sobre: TecnoPower</h1>
+                        <Text className="mb-3 text-center">Sobre: TecnoPower</Text>
                         <div className="container w-65 minimo-320">
                             <Card className="card mb-5">
                                 <div className='d-flex align-items-center justify-content-center'>

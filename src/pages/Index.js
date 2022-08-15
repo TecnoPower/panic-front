@@ -16,16 +16,19 @@ export const Index = ({ setMode }) => {
     const [modalCadastros, setModalCadastros] = useState(false);
     const [ready, setReady] = useState(false);
     let navigate = useNavigate();
+
+    //Tirar delay do servidor no heroku
     useEffect(() => {
         async function startServer() {
-            await axiosInstance.get('/').then((res) => {
-                console.log(res.data.msg);
+            await axiosInstance.get('/').then(() => {
                 setReady(true)
-                navigate("/")
+                navigate("/");
+            }).catch(() => {
+                startServer();
             })
         }
         startServer();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         setMode("light");
