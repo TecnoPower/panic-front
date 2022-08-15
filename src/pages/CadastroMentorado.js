@@ -1,4 +1,4 @@
-import '../css/auxBootstrap.css';
+import '../css/aux-bootstrap.css';
 import Form from 'react-bootstrap/Form';
 import { axiosInstance } from '../config/axios';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -63,7 +63,7 @@ export const CadastroMentorado = () => {
                 .replaceAll(")", "").replaceAll(" ", "")
         })
 
-        console.log(cadastro);
+     //   console.log(cadastro);
         if ((cadastro.name,cadastro.date,cadastro.sexo,cadastro.pass,
             cadastro.confirmPass,cadastro.email,cadastro.area,cadastro.profissao,
             cadastro.cpf,cadastro.contato,cadastro.seg,cadastro.desc) === "" ||
@@ -83,7 +83,7 @@ export const CadastroMentorado = () => {
                             <>{notify("Usuário já existe em nossa base de dados")}</>
                         } else {
                             axiosInstance.post("/api/mentorado", cadastro).then((res) => {
-                                console.log("resposta: ", res)
+                                //console.log("resposta: ", res)
                                 if (res.status === 201) {
                                     setModalShowSucesso(true)
                                 } else {

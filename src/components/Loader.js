@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import '../css/auxBootstrap.css';
+import '../css/aux-bootstrap.css';
 import Spinner from 'react-bootstrap/Spinner';
 import { ContainerLoader } from './Styles/Styles';
 export const Loader = () => {

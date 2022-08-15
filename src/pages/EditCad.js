@@ -15,7 +15,7 @@ import { Loader } from '../components/Loader';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha } from '../components/Modal/Modal';
-import { Card, CardModal,ToastContainerStyled } from '../components/Styles/Styles';
+import { Card, CardModal, ToastContainerStyled } from '../components/Styles/Styles';
 export const EditCad = ({ themeToggler }) => {
     let navigate = useNavigate();
     const [modalShowSenha, setModalShowSenha] = useState(false);
@@ -30,7 +30,7 @@ export const EditCad = ({ themeToggler }) => {
     const notify = (text) => toastId.current = toast.success(text);
 
     useEffect(() => {
-        if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
+        if (!localStorage.getItem('token')) {
             navigate("/");
         }
     }, [navigate]);
@@ -66,11 +66,11 @@ export const EditCad = ({ themeToggler }) => {
 
                 if (res.status === 202) {
                     if (res.data.user.tipo === "mentorado") {
-                        setCadastroMentorado({...res.data.user})
+                        setCadastroMentorado({ ...res.data.user })
                         setReady(true);
                     }
                     if (res.data.user.tipo === "mentor") {
-                        setCadastroMentor({...res.data.user});
+                        setCadastroMentor({ ...res.data.user });
                         setReady(true);
                     }
                 }
@@ -143,7 +143,7 @@ export const EditCad = ({ themeToggler }) => {
         } else {
             axiosInstance.get('/auth/check').then((res) => {
                 if (res.status === 202) {
-                    console.log(res)
+                    //console.log(res)
                     cadastroMentorado._id = res.data.user._id;
                     axiosInstance.put('/api/mentorado-data', cadastroMentorado).then((res) => {
                         if (res.status === 200) {
@@ -196,7 +196,7 @@ export const EditCad = ({ themeToggler }) => {
                                                 "content-type": "application/json"
                                             }
                                         }).then((res) => {
-                                            console.log(res);
+                                            //  console.log(res);
                                             if (res.status === 202) {
                                                 axiosInstance.post('/api/delete/mentoria/mentor', {
                                                     headers: {
@@ -225,7 +225,7 @@ export const EditCad = ({ themeToggler }) => {
                                                 "content-type": "application/json"
                                             }
                                         }).then((res) => {
-                                            console.log(res);
+                                            //  console.log(res);
                                             if (res.status === 202) {
                                                 localStorage.removeItem('token');
                                                 localStorage.removeItem('tipo');

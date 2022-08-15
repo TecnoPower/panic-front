@@ -35,6 +35,7 @@ export const Index = ({ setMode }) => {
     useEffect(() => {
         setMode("light");
     }, [setMode])
+
     useEffect(() => {
         if (localStorage.getItem('token')) {
             navigate("/home");
@@ -52,7 +53,7 @@ export const Index = ({ setMode }) => {
             setModalShowPreencher(true);
         } else {
             axiosInstance.post("/auth/login", login).then((res) => {
-                console.log(res)
+               // console.log(res)
                 if (res.status === 203) {
                     setModalShowModalServidor(true);
                 } else {

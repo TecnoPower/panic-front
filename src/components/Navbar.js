@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import '../css/auxBootstrap.css';
+import '../css/aux-bootstrap.css';
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';

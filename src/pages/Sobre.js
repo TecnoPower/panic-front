@@ -12,7 +12,10 @@ export const Sobre = ({ themeToggler }) => {
         <>
             {ready ?
                 <>
-                    <Navbar titulo={"Sobre"} tipo={2} themeToggler={themeToggler} />
+                    {localStorage.getItem("token") ? <><Navbar titulo={"Sobre"} tipo={2} themeToggler={themeToggler} /></>
+                        :<> <Navbar titulo={"Sobre"} tipo={1} themeToggler={themeToggler}/></>
+                    }
+
                     <div className="mx-auto pt-5 pb-5">
                         <Text className="mb-3 text-center">Sobre: TecnoPower</Text>
                         <div className="container w-65 minimo-320">

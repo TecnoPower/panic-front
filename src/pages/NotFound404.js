@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import '../css/auxBootstrap.css';
+import '../css/aux-bootstrap.css';
 export const NotFound404 = () => {
     return (
         <div className="d-flex align-items-center justify-content-center vh-100 bg-default mb-1">

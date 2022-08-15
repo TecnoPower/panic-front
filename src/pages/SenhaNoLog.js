@@ -2,7 +2,7 @@ import { Navbar } from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
-import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha, GenericModal } from '../components/Modal/Modal';
+import { ModalMsgPreenchimento, ModalErro, ModalMsgSenha, GenericModalClose } from '../components/Modal/Modal';
 export const SenhaNoLog = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -36,7 +36,7 @@ export const SenhaNoLog = () => {
                 setModalShowSenha(true);
             } else {
                 axiosInstance.post("/auth/senha", troca).then((res) => {
-                    console.log("response" + res.data.user)
+                   // console.log("response" + res.data.user)
                     troca._id = res.data.user._id;
                     if (res.status === 202) {
                         if (res.data.user.tipo === "mentor") {
@@ -120,7 +120,7 @@ export const SenhaNoLog = () => {
                     show={modalShowErro}
                     onHide={() => setModalShowErro(false)}
                 />
-                <GenericModal
+                <GenericModalClose
                     show={modalShowSucesso}
                     onHide={() => setModalShowSucesso(false)}
                     titulo={"Sucesso!"}

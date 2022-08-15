@@ -13,7 +13,7 @@ export const SenhaLog = ({themeToggler}) => {
     const [modalShowSucesso, setModalShowSucesso] = useState(false);
     const [modalShowPreencher, setModalShowPreencher] = useState(false);
     useEffect(() => {
-        if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
+        if (!localStorage.getItem('token')) {
             navigate("/");
         }
     }, [navigate]);
@@ -39,7 +39,7 @@ export const SenhaLog = ({themeToggler}) => {
                     pass: troca.pass,
                     currentPass: troca.currentPass
                 }).then((res) => {
-                    console.log(res);
+                  //  console.log(res);
                     if (res.status === 202) {
                         setModalShowSucesso(true);
                     }

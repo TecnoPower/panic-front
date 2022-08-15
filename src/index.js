@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { createPortal } from 'react-dom';
-import './css/auxBootstrap.css';
+import './css/aux-bootstrap.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/auxBootstrap.css'
+import './css/aux-bootstrap.css'
 import './css/scroll.css';
 import 'bootstrap/dist/js/bootstrap.js'
 import Footer from './components/Footer';

@@ -35,7 +35,7 @@ export const Home = ({ themeToggler }) => {
 
     let navigate = useNavigate();
     useEffect(() => {
-        if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
+        if (!localStorage.getItem('token')) {
             navigate("/");
         }
     }, [navigate]);

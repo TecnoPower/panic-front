@@ -1,4 +1,4 @@
-import '../css/auxBootstrap.css';
+import '../css/aux-bootstrap.css';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -27,6 +27,8 @@ export const CadastroMentor = () => {
             navigate("/home");
         }
     }, [navigate]);
+
+
     const toastId = React.useRef(null);
     const notify = (text) => toastId.current = toast.error(text, {
         position: "top-center",
@@ -37,6 +39,7 @@ export const CadastroMentor = () => {
         draggable: true,
         progress: undefined,
     });
+    
     const [cadastro, setCadastro] = useState({
         name: "",
         date: "",
@@ -62,7 +65,7 @@ export const CadastroMentor = () => {
             contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "")
                 .replaceAll(")", "").replaceAll(" ", "").replaceAll("_","")
         })
-        console.log(cadastro);
+        //console.log(cadastro);
         if ((cadastro.name,cadastro.date,cadastro.sexo,cadastro.pass,
             cadastro.confirmPass,cadastro.email,cadastro.area,cadastro.profissao,
             cadastro.cpf,cadastro.contato,cadastro.seg,cadastro.desc) === "" ||
@@ -82,7 +85,7 @@ export const CadastroMentor = () => {
                             <>{notify("Usuário já existe em nossa base de dados")}</>
                         } else {
                             axiosInstance.post("/api/mentor", cadastro).then((res) => {
-                                console.log(res)
+                               // console.log(res)
                                 if (res.status === 201) {
                                     setModalShowSucesso(true)
                                 } else {

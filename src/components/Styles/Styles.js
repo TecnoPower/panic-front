@@ -67,7 +67,7 @@ label{
 }
 `
 export const Text = styled.h1`
- color: ${({ theme }) => theme.texto}
+color: ${({ theme }) => theme.texto}
 `;
 
 export const CardModal = styled.span`
