@@ -66,6 +66,9 @@ label{
     color: ${({ theme }) => theme.texto}
 }
 `
+export const Text = styled.h1`
+ color: ${({ theme }) => theme.texto}
+`;
 
 export const CardModal = styled.span`
 transition: all .6s ease;
