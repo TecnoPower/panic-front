@@ -115,12 +115,12 @@ export const Navbar = (props) => {
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <span className="dropdown-item cursorPointer" onClick={props.themeToggler}>Mudar Tema</span>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <span className="dropdown-item cursorPointer"
                                             onClick={() => { navigate("/senha-log") }}>Alterar Senha</span>
@@ -136,9 +136,9 @@ export const Navbar = (props) => {
                                     </li>
                                 </ul>
                             </li>
-                            <li className='nav-item d-lg-none d-xxl-none d-xl none'>
+                            {/* <li className='nav-item d-lg-none d-xxl-none d-xl none'>
                                 <span className="nav-link text-light cursorPointer" onClick={props.themeToggler}>Mudar Tema</span>
-                            </li>
+                            </li> */}
                             <li className="nav-item d-lg-none d-xxl-none d-xl-none">
                                 <span className="nav-link text-light cursorPointer" onClick={() => { navigate("/senha-log") }}>Alterar Senha</span>
                             </li>
