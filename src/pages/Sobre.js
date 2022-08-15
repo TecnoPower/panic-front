@@ -47,7 +47,8 @@ export const Sobre = ({ themeToggler }) => {
                                         <div className="text-center">
                                             <img className="w-50 minimo-card-280" alt='...' src="https://github-readme-stats.vercel.app/api/top-langs/?username=daniloeb19&layout=compact&langs_count=71&theme=default&hide_border=true" />
                                         </div>
-                                    </>}
+                                    </>
+                                }
 
                                 <div className="card-footer text-muted text-center">
                                     <a href='https://www.linkedin.com/in/danilofdasilva/' rel="noreferrer" target="_blank" type="button" className="btn bg-none minimo-160-2 me-1 ms-1 mt-2 ">
