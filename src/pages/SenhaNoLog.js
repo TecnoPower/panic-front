@@ -76,7 +76,7 @@ export const SenhaNoLog = () => {
                                 <div className="col-md form-floating">
                                     <input value={troca.email} onChange={(e) => { setTroca({ ...troca, email: e.target.value }) }} required type="email" className="form-control" id="campo-email"
                                         placeholder="nome@dominio.com" />
-                                    <label htmlFor="campo-email" className="form-label">Email</label>
+                                    <label htmlFor="campo-email" className="form-label">E-mail</label>
                                 </div>
                             </div>
                             <div className="row g-2 pt-2">

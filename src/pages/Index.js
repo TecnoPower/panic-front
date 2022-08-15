@@ -80,7 +80,7 @@ export const Index = ({ setMode }) => {
 
                             <div className="form-floating pb-3">
                                 <input value={login.email} onChange={(e) => { setLogin({ ...login, email: e.target.value }) }} required type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label htmlFor="floatingInput">Email</label>
+                                <label htmlFor="floatingInput">E-mail</label>
                             </div>
                             <div className="form-floating">
                                 <input value={login.pass} onChange={(e) => { setLogin({ ...login, pass: e.target.value }) }} required type="password" className="form-control" id="senha-campo" placeholder="Password" autoComplete="off" />

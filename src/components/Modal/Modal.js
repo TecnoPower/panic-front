@@ -121,7 +121,7 @@ export const ModalEmail = (props) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Email Inválido</h4>
+                    <h4>E-mail Inválido</h4>
                 </Modal.Body>
                 <Modal.Footer className='justify-content-center'>
                     <Button className='w-80' onClick={props.onHide}>Fechar</Button>

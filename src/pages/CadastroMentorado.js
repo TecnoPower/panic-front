@@ -144,7 +144,7 @@ export const CadastroMentorado = () => {
                                                     <div className="form-floating">
                                                         <input required type="email" value={cadastro.email} onChange={(e) => { setCadastro({ ...cadastro, email: e.target.value }) }} className="form-control" id="campo-email"
                                                             placeholder="nome@dominio.com" />
-                                                        <label htmlFor="campo-email" className="form-label">Email</label>
+                                                        <label htmlFor="campo-email" className="form-label">E-mail</label>
                                                     </div>
                                                 </div>
                                             </div>
