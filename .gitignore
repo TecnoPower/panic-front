@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+#temp
+src/pages/Termos.js
+#arquivos de teste
+src/pages/Teste.js
