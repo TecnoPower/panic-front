@@ -196,7 +196,6 @@ export const EditCad = ({ themeToggler }) => {
                                                 "content-type": "application/json"
                                             }
                                         }).then((res) => {
-                                            //  console.log(res);
                                             if (res.status === 202) {
                                                 axiosInstance.post('/api/delete/mentoria/mentor', {
                                                     headers: {
@@ -273,7 +272,7 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg">
                                                     <div className="col-lg pt-2">
-                                                        <h2 className="text-center pb-2">Atualize seus Dados</h2>
+                                                        <h2 className="text-center pb-2">Atualize seus dados</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -291,7 +290,7 @@ export const EditCad = ({ themeToggler }) => {
                                                     <div className="form-floating">
                                                         <input disabled required type="email" value={cadastroMentorado.email} onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, email: e.target.value }) }} className="form-control" id="campo-email"
                                                             placeholder="nome@dominio.com" />
-                                                        <label htmlFor="campo-email" className="form-label">Email</label>
+                                                        <label htmlFor="campo-email" className="form-label">E-mail</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -427,7 +426,7 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg">
                                                     <div className="col-lg pt-2">
-                                                        <h2 className="text-center pb-2">Atualize seus Dados</h2>
+                                                        <h2 className="text-center pb-2">Atualize seus dados</h2>
                                                     </div>
                                                 </div>
                                             </div>

@@ -70,7 +70,7 @@ export const SenhaNoLog = () => {
             <div className="container mx-auto pt-6">
                 <div className="row justify-content-center">
                     <div className="card shadow p-3 mb-5 bg-body rounded w-50 minimo-320">
-                        <h1 className='pt-2 pb-2 text-center'>Insira seus Dados</h1>
+                        <h1 className='pt-2 pb-2 text-center'>Insira suas credenciais</h1>
                         <form action="" method="get" >
                             <div className="row g-2 pt-2">
                                 <div className="col-md form-floating">

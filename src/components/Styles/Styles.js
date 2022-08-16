@@ -56,8 +56,9 @@ h2, h5, h4, h3, p{
 .bg-card-modal{
     background: ${({ theme }) => theme.colorCardMentor}!important;
 }
-input{
+input, select, textarea{
     color: rgb(0,0,0);
+    background-color: ${({ theme }) => theme.inputBack}!important;
 }
 label{
     color: rgb(0,0,0);
@@ -69,7 +70,9 @@ label{
 export const Text = styled.h1`
 color: ${({ theme }) => theme.texto}
 `;
-
+export const Paragrafo = styled.p`
+ color: ${({ theme }) => theme.texto}
+ `
 export const CardModal = styled.span`
 transition: all .6s ease;
 background: ${({ theme }) => theme.colorCardMentor}!important;

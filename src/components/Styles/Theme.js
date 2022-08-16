@@ -7,7 +7,8 @@ export const lightTheme = {
     shadowCard: "rgba(0,0,0,.175)",
     colorCard: "rgb(244,244,244)",
     colorCardMentor: "rgb(244,244,244)!important",
-    progressBar: "rgb(45,45,45)"
+    progressBar: "rgb(45,45,45)",
+    inputBack: "rgb(244,244,244)!important"
 
 }
 export const darkTheme = {
@@ -19,5 +20,6 @@ export const darkTheme = {
     shadowCard: "rgba(255,255,255,.175)",
     colorCard: "rgba(33,37,41)",
     colorCardMentor: "rgb(33,37,41)",
-    progressBar: "#5271FF"
+    progressBar: "#5271FF",
+    inputBack: "rgb(234,234,234)!important"
 } 

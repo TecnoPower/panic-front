@@ -14,6 +14,7 @@ import InputMask from "react-input-mask";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
+import { calculaIdade, validarData } from '../functions/Validade';
 export const CadastroMentorado = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -56,17 +57,10 @@ export const CadastroMentorado = () => {
     async function submitCadastro(e) {
         e.preventDefault();
         const userExists = (await axiosInstance.post("/auth/find", { email: cadastro.email, cpf: cadastro.cpf })).data;
-        setCadastro({
-            ...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", ""),
-            date: cadastro.date.replaceAll("/", "").replaceAll("/", ""),
-            contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "")
-                .replaceAll(")", "").replaceAll(" ", "")
-        })
-
-     //   console.log(cadastro);
-        if ((cadastro.name,cadastro.date,cadastro.sexo,cadastro.pass,
-            cadastro.confirmPass,cadastro.email,cadastro.area,cadastro.profissao,
-            cadastro.cpf,cadastro.contato,cadastro.seg,cadastro.desc) === "" ||
+        await setCadastro({...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", "")})
+        if ((cadastro.name, cadastro.date, cadastro.sexo, cadastro.pass,
+            cadastro.confirmPass, cadastro.email, cadastro.area, cadastro.profissao,
+            cadastro.cpf, cadastro.contato, cadastro.seg, cadastro.desc) === "" ||
             cadastro.contato.length < 11) {
             setModalShowPreencher(true)
         } else {
@@ -82,21 +76,29 @@ export const CadastroMentorado = () => {
                         if (userExists) {
                             <>{notify("Usuário já existe em nossa base de dados")}</>
                         } else {
-                            axiosInstance.post("/api/mentorado", cadastro).then((res) => {
-                                //console.log("resposta: ", res)
-                                if (res.status === 201) {
-                                    setModalShowSucesso(true)
+                            if (await validarData(cadastro.date) === false) {
+                                <>{notify("Data Inválida")}</>
+                            } else {
+                                if (await calculaIdade(cadastro.date) < 18) {
+                                    <>{notify("Plataforma acessível apenas para maiores de idade!")}</>
                                 } else {
-                                    setModalShowErro(true);
+                                    await setCadastro({...cadastro,date: cadastro.date.replaceAll("/", "").replaceAll("/", ""), contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "").replaceAll("_", "")})
+                                    axiosInstance.post("/api/mentorado", cadastro).then((res) => {
+                                        if (res.status === 201) {
+                                            setModalShowSucesso(true)
+                                        } else {
+                                            setModalShowErro(true);
+                                        }
+                                    })
                                 }
-                            })
+                            }
                         }
                     }
+
                 }
-
             }
-        }
 
+        }
     }
     return (
         <>

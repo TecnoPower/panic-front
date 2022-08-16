@@ -21,19 +21,17 @@ export const Index = ({ setMode }) => {
     useEffect(() => {
         async function startServer() {
             await axiosInstance.get('/').then((res) => {
-                navigate("/");
                 setReady(true);
             }).catch(() => {
-                navigate("/");
-                setReady(true);
+                navigate("/")
             })
         }
         startServer();
     }, [navigate]);
 
-    useEffect(() => {
+    setTimeout(() => {
         setMode("light");
-    }, [setMode])
+    }, 200);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
