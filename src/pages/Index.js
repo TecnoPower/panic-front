@@ -31,7 +31,7 @@ export const Index = ({ setMode }) => {
 
     setTimeout(() => {
         setMode("light");
-    }, 333);
+    }, 450);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {

@@ -207,9 +207,9 @@ export const Home = ({ themeToggler }) => {
                         {mentorias.toString() === "" ?
                             <Text className="fs-1 text-center mt-5 fw-bold">Você ainda não possui mentorias</Text>
                             :
-                            <div className='pt-4'>
+                            <div className='pt-6'>
                                 {mentorias.map((mentoria) => (
-                                    <div key={mentoria._id_mentorado} className="pt-4">
+                                    <div key={mentoria._id_mentorado} className="pt-6">
                                         <Card className="card text-center container minimo-320 w-50">
                                             <div className="card-body" >
                                                 <h5 className="card-title">Mentoria</h5>
