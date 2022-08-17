@@ -69,8 +69,8 @@ function App() {
             <Route exact path="/*" element={<NotFound404  />} />
             <Route exact path="/loader" element={<Loader themeToggler={themeToggler} />} />
             <Route exact path="/404" element={<NotFound404 />} />
-            {/* <Route exact path="/teste" element={<Teste />} />
-            <Route exact path="/termos" element={<Termos />} /> */}
+             <Route exact path="/teste" element={<Teste />} />
+            <Route exact path="/termos" element={<Termos />} /> 
           </Routes>
         </Router>
       </UserContext.Provider>

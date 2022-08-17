@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import { ToastContainer } from 'react-toastify';
+
+export const DivStatus = styled.div`
+transition: all .6s ease;
+
+`;
+
 export const Container = styled.div`
 background: ${({ theme }) => theme.body};
 color: ${({ theme }) => theme.texto};

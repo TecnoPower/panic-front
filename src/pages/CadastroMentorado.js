@@ -14,7 +14,7 @@ import InputMask from "react-input-mask";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
-import { calculaIdade, validarData } from '../functions/Validade';
+import { calculaIdade, validarData } from '../functions/Validate';
 export const CadastroMentorado = () => {
     const [modalShowSenha, setModalShowSenha] = useState(false);
     const [modalShowErro, setModalShowErro] = useState(false);
@@ -57,7 +57,7 @@ export const CadastroMentorado = () => {
     async function submitCadastro(e) {
         e.preventDefault();
         const userExists = (await axiosInstance.post("/auth/find", { email: cadastro.email, cpf: cadastro.cpf })).data;
-        await setCadastro({...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", "")})
+        await setCadastro({ ...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", "") })
         if ((cadastro.name, cadastro.date, cadastro.sexo, cadastro.pass,
             cadastro.confirmPass, cadastro.email, cadastro.area, cadastro.profissao,
             cadastro.cpf, cadastro.contato, cadastro.seg, cadastro.desc) === "" ||
@@ -82,7 +82,7 @@ export const CadastroMentorado = () => {
                                 if (await calculaIdade(cadastro.date) < 18) {
                                     <>{notify("Plataforma acessível apenas para maiores de idade!")}</>
                                 } else {
-                                    await setCadastro({...cadastro,date: cadastro.date.replaceAll("/", "").replaceAll("/", ""), contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "").replaceAll("_", "")})
+                                    await setCadastro({ ...cadastro, date: cadastro.date.replaceAll("/", "").replaceAll("/", ""), contato: cadastro.contato.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "").replaceAll("_", "") })
                                     axiosInstance.post("/api/mentorado", cadastro).then((res) => {
                                         if (res.status === 201) {
                                             setModalShowSucesso(true)
@@ -175,9 +175,9 @@ export const CadastroMentorado = () => {
                                             <div className="row">
                                                 <div className="col-lg pt-2">
                                                     <div className="form-floating">
-                                                        <InputMask mask="(99) 9 9999-9999" value={cadastro.contato} required onChange={(e) => { setCadastro({ ...cadastro, contato: e.target.value }) }} type="text" placeholder="Contato" className="form-control"
+                                                        <InputMask mask="(99) 9 9999-9999" value={cadastro.contato} required onChange={(e) => { setCadastro({ ...cadastro, contato: e.target.value }) }} type="text" placeholder="Telefone" className="form-control"
                                                             id="campo-numero" />
-                                                        <label htmlFor="campo-numero" className="form-label">Contato</label>
+                                                        <label htmlFor="campo-numero" className="form-label">Telefone</label>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg pt-2">
@@ -237,7 +237,15 @@ export const CadastroMentorado = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="container pt-4 pb-2">
+                                            <div className="container">
+                                                <div className="text-center mt-2 pt-5">
+                                                    <span>
+                                                        Ao cadastrar-se você concorda com nossos: &nbsp;
+                                                        <a className="link-dark link-primary" href="/termos" target="_blank">Termos de Uso</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="container mt-5 pb-2">
                                                 <div className="text-center">
                                                     <button className="w-50 minimo-140 btn btn-lg btn-default" type="submit" onClick={submitCadastro}>Cadastrar</button>
                                                 </div>

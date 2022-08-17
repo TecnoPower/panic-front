@@ -1,13 +1,13 @@
 export const lightTheme = {
     texto: "rgb(0,0,0)",
     paragrafoHover: "rgb(120,120,120)",
-    body: "rgb(255,255,255)",
+    body: "rgb(245,245,245)",
     navBar: "rgb(33,37,41)",
     navBarDrop: "rgb(255,255,255)",
     shadowCard: "rgba(0,0,0,.175)",
     colorCard: "rgb(244,244,244)",
     colorCardMentor: "rgb(244,244,244)!important",
-    progressBar: "rgb(45,45,45)",
+    progressBar: "rgb(43, 204, 18)",
     inputBack: "rgb(244,244,244)!important"
 
 }

@@ -319,9 +319,9 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg pt-2">
                                                     <div className="form-floating">
-                                                        <InputMask mask="(99) 9 9999-9999" value={cadastroMentorado.contato} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, contato: e.target.value }) }} type="text" placeholder="Contato" className="form-control"
+                                                        <InputMask mask="(99) 9 9999-9999" value={cadastroMentorado.contato} required onChange={(e) => { setCadastroMentorado({ ...cadastroMentorado, contato: e.target.value }) }} type="text" placeholder="Telefone" className="form-control"
                                                             id="campo-numero" />
-                                                        <label htmlFor="campo-numero" className="form-label">Contato</label>
+                                                        <label htmlFor="campo-numero" className="form-label">Telefone</label>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg pt-2">
@@ -475,9 +475,9 @@ export const EditCad = ({ themeToggler }) => {
                                             <div className="row">
                                                 <div className="col-lg pt-2">
                                                     <div className="form-floating">
-                                                        <InputMask mask="(99) 9 9999-9999" value={cadastroMentor.contato} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, contato: e.target.value }) }} type="text" placeholder="Contato" className="form-control"
+                                                        <InputMask mask="(99) 9 9999-9999" value={cadastroMentor.contato} required onChange={(e) => { setCadastroMentor({ ...cadastroMentor, contato: e.target.value }) }} type="text" placeholder="Telefone" className="form-control"
                                                             id="campo-numero" />
-                                                        <label htmlFor="campo-numero" className="form-label">Contato</label>
+                                                        <label htmlFor="campo-numero" className="form-label">Telefone</label>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg pt-2">
