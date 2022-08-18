@@ -31,14 +31,16 @@ export const Sobre = ({ themeToggler }) => {
                                 </div>
                                 <div className="card-body">
                                     <h3 className="card-title text-center pt-2 pb-4">Danilo Ferreira</h3>
-                                    <h5 className='card-text container ps-2 pe-2'>Formado em Desenvolvimento de Sistemas pela Escola Técnica Estadual Miguel Batista.
-                                    </h5>
-                                    <h5 className='card-text container ps-2 pe-2'>Participante do programa START da
-                                        <a href='https://www.redecidada.org.br/' rel="noreferrer" target="_blank" className='text-decoration-none'> Rede Cidadã </a>
-                                        em parceria com a <a href='https://www.accenture.com/' rel="noreferrer" target="_blank" className='text-decoration-none acc-color'> Accenture Brasil, </a> onde tive a oportunidade
-                                        de aprender diversas tecnologias, em especial Node.js, React e MongoDB.
-                                    </h5>
-                                    <h5 className='card-text container ps-2 pe-2'>Conhecimentos extras em frameworks MaterializeCSS e Bootstrap, Java com Framework Swing, PHP e SQL com MySQL Oracle.</h5>
+                                    <div className="text-center">
+                                        <h5 className='card-text container ps-2 pe-2'>Formado em Desenvolvimento de Sistemas pela Escola Técnica Estadual Miguel Batista.
+                                        </h5>
+                                        <h5 className='card-text container ps-2 pe-2'>Participante do programa START da
+                                            <a href='https://www.redecidada.org.br/' rel="noreferrer" target="_blank" className='text-decoration-none'> Rede Cidadã </a>
+                                            em parceria com a <a href='https://www.accenture.com/' rel="noreferrer" target="_blank" className='text-decoration-none acc-color'> Accenture Brasil, </a> onde tive a oportunidade
+                                            de aprender diversas tecnologias, em especial Node.js, React e MongoDB.
+                                        </h5>
+                                        <h5 className='card-text container ps-2 pe-2'>Conhecimentos extras em frameworks MaterializeCSS e Bootstrap, Java com Framework Swing, PHP e SQL com MySQL Oracle.</h5>
+                                    </div>
                                 </div>
                                 {localStorage.getItem('theme') === "dark" ?
                                     <>
