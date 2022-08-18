@@ -55,6 +55,18 @@
     padding-top: 5rem !important;
 }
 
+.pb-6 {
+    padding-bottom: 5rem !important;
+}
+
+.mt-6 {
+    margin-top: 5rem !important;
+}
+
+.mb-6 {
+    margin-bottom: 5rem !important;
+}
+
 .text-default {
     color: #5271FF !important;
 }
@@ -64,17 +76,20 @@
     min-height: 130px;
     max-height: 250px;
 }
-.acc-color{
-    color: #a421e1!important;
+
+.acc-color {
+    color: #a421e1 !important;
 }
 
 .bg-default {
     background-color: #5271FF !important;
 }
-.px-80{
-    min-height: 80px!important;
-    max-height: 120px!important;
+
+.px-80 {
+    min-height: 80px !important;
+    max-height: 120px !important;
 }
+
 .px-86 {
     width: 86px !important;
 }

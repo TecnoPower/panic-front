@@ -60,7 +60,7 @@ export const CadastroMentor = () => {
     async function submitCadastro(e) {
         e.preventDefault();
         const userExists = (await axiosInstance.post("/auth/find", { email: cadastro.email, cpf: cadastro.cpf })).data;
-        await setCadastro({ ...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", "") })
+        await setCadastro({...cadastro, cpf: cadastro.cpf.replaceAll("-", "").replaceAll(".", "") })
         if ((cadastro.name, cadastro.date, cadastro.sexo, cadastro.pass,
             cadastro.confirmPass, cadastro.email, cadastro.area, cadastro.profissao,
             cadastro.cpf, cadastro.contato, cadastro.seg, cadastro.desc) === "" ||

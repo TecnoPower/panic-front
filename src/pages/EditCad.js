@@ -188,37 +188,29 @@ export const EditCad = ({ themeToggler }) => {
                             </div>
                             <div className='col'></div>
                             <div className='col'>
-                                <Button className='btn-danger' onClick={() => {
+                                <Button className='btn-danger' onClick={async () => {
                                     if (tipo === "mentor") {
-                                        axiosInstance.delete('/api/delete/mentor', {
+                                        await axiosInstance.delete('/api/delete/mentor', {
                                             headers: {
                                                 "x-access-token": localStorage.getItem('token'),
                                                 "content-type": "application/json"
                                             }
-                                        }).then((res) => {
+                                        }).then(async (res) => {
                                             if (res.status === 202) {
-                                                axiosInstance.post('/api/delete/mentoria/mentor', {
-                                                    headers: {
-                                                        "x-access-token": localStorage.getItem('token'),
-                                                        "content-type": "application/json"
-                                                    }
-                                                }).then((res) => {
-                                                    console.log(res)
-                                                    localStorage.removeItem('token');
-                                                    localStorage.removeItem('tipo');
-                                                    localStorage.removeItem('nome');
-                                                    setToken("");
-                                                    setTipo("");
-                                                    setNome("");
-                                                    navigate("/")
-                                                })
-
+                                                console.log(res)
+                                                localStorage.removeItem('token');
+                                                localStorage.removeItem('tipo');
+                                                localStorage.removeItem('nome');
+                                                setToken("");
+                                                setTipo("");
+                                                setNome("");
+                                                navigate("/")
                                             }
                                         });
                                     }
 
                                     if (tipo === "mentorado") {
-                                        axiosInstance.delete('/api/delete/mentorado', {
+                                        await axiosInstance.delete('/api/delete/mentorado', {
                                             headers: {
                                                 "x-access-token": localStorage.getItem('token'),
                                                 "content-type": "application/json"

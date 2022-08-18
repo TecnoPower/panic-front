@@ -142,7 +142,7 @@ export const Home = ({ themeToggler }) => {
                             {mentores.toString() === "" ?
                                 <Text className="fs-1 text-center mt-5 fw-bold">Não há mentores no momento</Text>
                                 :
-                                <div className="row row-cols-1 row-cols-md-2 g-4 pt-2">
+                                <div className="row row-cols-1 row-cols-md-2 g-4 mt-2 mb-4">
 
                                     {mentores.map((mentor) => (
                                         <div className="col mb-2" key={mentor._id}>
